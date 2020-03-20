@@ -13,17 +13,15 @@ const Footer = () => (
         </S.Logo>
       </Link>
       <S.Nav>
-        <Link href="/privacy" passHref>
-          <S.Item>Privacy</S.Item>
-        </Link>
-        <span>{' | '}</span>
         <Link href="/disclaimer" passHref>
           <S.Item>Disclaimer</S.Item>
         </Link>
         <span>{' | '}</span>
-        <Link href="/dmca-policy" passHref>
-          <S.Item>DMCA Policy</S.Item>
+        <Link href="/privacy" passHref>
+          <S.Item>Privacy Policy</S.Item>
         </Link>
+        <span>{' | '}</span>
+        <S.Item href="https://www.dmca.com" rel="noopener noreferrer" target="__blank">DMCA Policy</S.Item>
       </S.Nav>
       <S.Copyright>&copy;2020 Likha Adhika Media</S.Copyright>
     </S.Container>

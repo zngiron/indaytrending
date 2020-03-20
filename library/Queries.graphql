@@ -4,15 +4,29 @@ fragment POST_FRAGMENT on Post {
   title
   published: date
   modified
+  image: featuredImage {
+    featured: sourceUrl,
+    medium: sourceUrl(size:MEDIUM)
+  }
+}
+
+fragment PAGE_FRAGMENT on Page {
+  id
+  slug
+  title
+  published: date
+  modified
+  content
 }
 
 fragment CATEGORY_FRAGMENT on Category {
   id
   name
   slug
+  description
 }
 
-query GET_POSTS($first: Int, $after: String, $categoryName: String) {  
+query GET_POSTS($first: Int, $after: String, $category: ID!, $categoryName: String) {  
   posts(
     first: $first,
     after: $after,
@@ -23,9 +37,6 @@ query GET_POSTS($first: Int, $after: String, $categoryName: String) {
   ) {
     nodes {
       ...POST_FRAGMENT
-      image: featuredImage {
-        medium: sourceUrl(size:MEDIUM)
-      }
       categories(
         where: {
           exclude: 2
@@ -36,6 +47,15 @@ query GET_POSTS($first: Int, $after: String, $categoryName: String) {
         }
       }
     }
+  }
+  category(id: $category, idType: SLUG) {
+    ...CATEGORY_FRAGMENT
+  }
+}
+
+query GET_PAGE($page: ID!) {
+  page(id: $page, idType: URI) {
+    ...PAGE_FRAGMENT
   }
 }
 
