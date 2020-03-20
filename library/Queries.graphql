@@ -1,0 +1,40 @@
+fragment POST_FRAGMENT on Post {
+  id
+  slug
+  title
+  published: date
+  modified
+}
+
+fragment CATEGORY_FRAGMENT on Category {
+  id
+  name
+  slug
+}
+
+query GET_POSTS($first: Int, $after: String, $categoryName: String) {  
+  posts(
+    first: $first,
+    after: $after,
+    where: {
+      categoryName: $categoryName, 
+      status: PUBLISH
+    }
+  ) {
+    nodes {
+      ...POST_FRAGMENT
+      image: featuredImage {
+        medium: sourceUrl(size:MEDIUM)
+      }
+      categories(
+        where: {
+          exclude: 2
+        }
+      ) {
+        nodes {
+          ...CATEGORY_FRAGMENT
+        }
+      }
+    }
+  }
+}

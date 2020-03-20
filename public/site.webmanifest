@@ -1,0 +1,33 @@
+{
+  "name": "Inday Trending",
+  "short_name": "Inday Trending",
+  "description": "Inday Trending - Pinoy Short Stories",
+  "categories": ["entertainment"], 
+  "start_url": "/?utm_source=Homescreen&utm_medium=App",
+  "display": "standalone",
+  "orientation": "portrait",
+  "serviceworker": {
+    "src": "./service-worker.js"
+  },
+  "background_color": "#253f4c",
+  "theme_color": "#253f4c",
+  "icons": [
+    {
+      "src": "/indaytrending-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/indaytrending-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/indaytrending-thumbnail.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ]
+}
