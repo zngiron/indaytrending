@@ -1,3 +1,4 @@
+import normalize from 'emotion-normalize';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { config, dom, library } from '@fortawesome/fontawesome-svg-core';
@@ -10,6 +11,7 @@ import {
 } from '@fortawesome/pro-regular-svg-icons';
 
 export const Root = css`
+  ${normalize}
   ${dom.css()}
 
   :root {
@@ -24,6 +26,7 @@ export const Root = css`
     --container-width: 100%;
     --menu-width: 20rem;
     --header-height: 3.125rem;
+    --transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
   }
 
   *,
@@ -36,6 +39,22 @@ export const Root = css`
     overflow-x: hidden;
     box-sizing: border-box;
     scroll-behavior: smooth;
+
+
+    @media (min-width: 36rem) {
+    }
+
+    @media (min-width: 48rem) {
+      
+    }
+
+    @media (min-width: 64rem) {
+      
+    }
+    
+    @media (min-width: 75rem) {
+      
+    }
   }
 
   body {

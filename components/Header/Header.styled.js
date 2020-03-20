@@ -27,7 +27,13 @@ export const Title = styled.h1`
   white-space: nowrap;
 `;
 
-export const Nav = styled.nav``;
+export const Nav = styled.nav`
+  @media (min-width: 64rem) {
+    display: flex;
+    height: 100%;
+    margin-right: 1.25rem;
+  }
+`;
 
 export const Button = styled.button`
   width: var(--header-height);
@@ -41,6 +47,10 @@ export const Button = styled.button`
   &:active,
   &:focus {
     background-color: var(--color-secondary);
+  }
+
+  @media (min-width: 64rem) {
+    display: none;
   }
 `;
 
@@ -62,6 +72,13 @@ export const Menu = styled(animated.ul)`
   list-style: none;
   background-color: var(--color-white);
   will-change: transform;
+
+  @media (min-width: 64rem) { 
+    position: static;
+    display: flex;
+    width: auto;
+    height: 100%;
+  }
 `;
 
 export const List = styled.li``;
@@ -78,5 +95,41 @@ export const Item = styled.a`
   &:focus {
     background-color: var(--color-primary);
     color: var(--color-white);
+  }
+
+  @media (min-width: 64rem) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0.75rem;
+    background-color: transparent;
+    font-size: 1rem;
+    color: var(--color-primary);
+
+    &::after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: block;
+      width: 100%;
+      height: 0.25rem;
+      background-color: var(--color-primary);
+      transform: scaleX(0) translateZ(0);
+      transition: var(--transition);
+      will-change: contents;
+      content: '';
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: transparent;
+      color: var(--color-primary);
+
+      &::after {
+        transform: scaleX(1) translateZ(0);
+      }
+    }
   }
 `;
