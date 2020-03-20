@@ -5,9 +5,10 @@ export const Preloader = styled.div`
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  color: var(--color-primary);
 `;
 
-export const Text = styled.span`
+export const Text = styled.div`
+  font-weight: 700;
+  color: var(--color-primary);
   margin-left: 0.75rem;
 `;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Global } from '@emotion/core';
 
+import * as S from './Layout.styled';
 import Header from '../Header';
 import Footer from '../Footer';
-import * as S from './Layout.styled';
 
 const Layout = ({ children }) => (
   <>

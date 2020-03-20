@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSpring } from 'react-spring';
+
 import * as S from './Overlay.styled';
 
 const Overlay = (props) => {

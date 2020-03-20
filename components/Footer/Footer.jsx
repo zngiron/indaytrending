@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+
 import * as S from './Footer.styled';
 
 const Footer = () => (
@@ -7,8 +8,8 @@ const Footer = () => (
     <S.Container>
       <Link href="/" passHref>
         <S.Logo title="Inday Trending">
-          <S.Image src="/indaytrending-icon.png" width={80} height={80} alt="Inday Trending" draggable={false} />
-          <S.Image src="/indaytrending-logo.svg" width={160} height={80} alt="Inday Trending" draggable={false} />
+          <S.Image src="/indaytrending-icon.png" width={80} height={80} alt="Inday Trending" title="Inday Trending" loading="eager" draggable={false} />
+          <S.Image src="/indaytrending-logo.svg" width={160} height={80} alt="Inday Trending" title="Inday Trending" loading="eager" draggable={false} />
         </S.Logo>
       </Link>
       <S.Nav>

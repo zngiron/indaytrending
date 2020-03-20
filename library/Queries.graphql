@@ -38,3 +38,11 @@ query GET_POSTS($first: Int, $after: String, $categoryName: String) {
     }
   }
 }
+
+query GET_CATEGORIES {
+  categories {
+    nodes {
+      ...CATEGORY_FRAGMENT
+    }
+  }
+}

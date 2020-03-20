@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Footer = styled.footer`
-  margin-top: 3.75rem;
+  margin-top: 2.5rem;
   background-color: var(--color-primary);
   font-size: 0.75rem;
   color: var(--color-white);
@@ -31,7 +31,7 @@ export const Nav = styled.nav`
 
 export const Item = styled.a`
   display: inline-block;
-  padding: 0.5rem;
+  padding: 0.75rem;
 
   &:hover,
   &:active,

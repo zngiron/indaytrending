@@ -5,12 +5,12 @@ import { DOMAIN, PUBLISHER, AUTHOR } from '../../library/Config';
 
 const Meta = ({
   type = 'website',
-  url,
+  url = '',
   category,
   slug,
   title,
   description,
-  image,
+  image = `${DOMAIN}/indaytrending-thumbnail.png`,
   published,
   modified,
 }) => (

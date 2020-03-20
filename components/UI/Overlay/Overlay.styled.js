@@ -3,6 +3,7 @@ import { animated } from 'react-spring';
 
 export const Overlay = styled(animated.div)`
   position: fixed;
+  z-index: 100;
   top: 0;
   width: 100vw;
   height: 100vh;

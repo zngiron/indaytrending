@@ -22,11 +22,29 @@ export const Root = css`
     --color-gray: #666;
     --color-dark: #111;
     --color-black: #000;
+    --color-gradient: linear-gradient(30deg, #832f3999, #253f4c99 50%);
     --box-shadow: 0 0 2.5rem #0001;
+    --border-radius: 1rem;
+    --header-height: 3.125rem;
     --container-width: 100%;
     --menu-width: 20rem;
-    --header-height: 3.125rem;
     --transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+    @media (min-width: 36rem) {
+      --container-width: 33.5rem;
+    }
+
+    @media (min-width: 48rem) {
+      --container-width: 45.5rem; 
+    }
+
+    @media (min-width: 64rem) {
+      --container-width: 61.5rem;
+    }
+    
+    @media (min-width: 75rem) {
+      --container-width: 72.5rem;
+    }
   }
 
   *,
@@ -39,22 +57,6 @@ export const Root = css`
     overflow-x: hidden;
     box-sizing: border-box;
     scroll-behavior: smooth;
-
-
-    @media (min-width: 36rem) {
-    }
-
-    @media (min-width: 48rem) {
-      
-    }
-
-    @media (min-width: 64rem) {
-      
-    }
-    
-    @media (min-width: 75rem) {
-      
-    }
   }
 
   body {
