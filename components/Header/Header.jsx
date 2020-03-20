@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-
 import Link from 'next/link';
 import { useSpring } from 'react-spring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import Overlay from '../UI/Overlay';
 import categories from './Header.json';
 import * as S from './Header.styled';
-import Overlay from '../UI/Overlay';
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -17,7 +16,7 @@ const Header = () => {
 
   return (
     <>
-      <Overlay overlay={menu || undefined} />
+      <Overlay overlay={menu || undefined} onClick={() => handleMenu()} />
       <S.Header>
         <Link href="/" passHref>
           <S.Logo onClick={() => handleMenu()}>

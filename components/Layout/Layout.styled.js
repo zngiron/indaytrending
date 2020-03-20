@@ -49,6 +49,12 @@ export const Root = css`
     text-decoration: none;
   }
 
+  a, button {
+    &:focus {
+      outline: none;
+    }
+  }
+
   #__next {
     display: flex;
     flex-direction: column;

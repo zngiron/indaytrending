@@ -5,6 +5,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import Apollo from '../library/Apollo';
 import Layout from '../components/Layout';
 
+import 'lazysizes';
 import 'normalize.css';
 
 const App = ({ Component, pageProps, apollo }) => (

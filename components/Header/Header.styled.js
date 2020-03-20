@@ -37,12 +37,10 @@ export const Button = styled.button`
   color: var(--color-white);
   cursor: pointer;
 
-  &:hover {
-    background-color: var(--color-secondary);
-  }
-
+  &:hover,
+  &:active,
   &:focus {
-    outline: none;
+    background-color: var(--color-secondary);
   }
 `;
 
@@ -75,7 +73,9 @@ export const Item = styled.a`
   font-weight: 700;
   color: var(--color-primary);
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     background-color: var(--color-primary);
     color: var(--color-white);
   }

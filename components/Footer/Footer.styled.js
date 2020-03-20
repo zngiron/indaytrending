@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const Footer = styled.footer`
   margin-top: 3.75rem;
   background-color: var(--color-primary);
+  font-size: 0.75rem;
   color: var(--color-white);
 `;
 
@@ -24,17 +25,13 @@ export const Image = styled.img`
 `;
 
 export const Nav = styled.nav`
-  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
 `;
 
 export const Item = styled.a`
-  &:not(:last-child) {
-    &::after {
-      margin: 0 0.25rem;
-      color: var(--color-white);
-      content: '•';
-    };
-  }
+  display: inline-block;
+  padding: 0.5rem;
 
   &:hover,
   &:active,
@@ -43,7 +40,6 @@ export const Item = styled.a`
   }
 `;
 
-export const Copyright = styled.small`
-  display: block;
+export const Copyright = styled.span`
   padding: 1.25rem;
 `;

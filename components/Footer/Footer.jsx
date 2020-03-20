@@ -15,9 +15,11 @@ const Footer = () => (
         <Link href="/privacy" passHref>
           <S.Item>Privacy</S.Item>
         </Link>
+        <span>{' | '}</span>
         <Link href="/disclaimer" passHref>
           <S.Item>Disclaimer</S.Item>
         </Link>
+        <span>{' | '}</span>
         <Link href="/dmca-policy" passHref>
           <S.Item>DMCA Policy</S.Item>
         </Link>
