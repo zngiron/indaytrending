@@ -2,6 +2,19 @@ import styled from '@emotion/styled';
 
 export const Stories = styled.div``;
 
+export const Grid = styled.div`
+  display: grid;
+  grid-gap: 1.25rem;
+  
+  @media (min-width: 48rem) {
+    grid-template-columns: repeat(2, 1fr);  
+  }
+
+  @media (min-width: 64rem) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
 export const Title = styled.h2`
   margin-bottom: 0;
   font-size: 2em;
@@ -25,18 +38,5 @@ export const Description = styled.p`
 
   @media (min-width: 64rem) {
     grid-column: 1/4;
-  }
-`;
-
-export const Grid = styled.div`
-  display: grid;
-  grid-gap: 1.25rem;
-  
-  @media (min-width: 48rem) {
-    grid-template-columns: repeat(2, 1fr);  
-  }
-
-  @media (min-width: 64rem) {
-    grid-template-columns: repeat(3, 1fr);
   }
 `;

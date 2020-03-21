@@ -26,7 +26,7 @@ export const Root = css`
     --box-shadow: 0 0 2.5rem #0001;
     --border-radius: 1rem;
     --header-height: 3.125rem;
-    --container-width: 100%;
+    --container-width: auto;
     --menu-width: 20rem;
     --transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
   }
@@ -39,11 +39,17 @@ export const Root = css`
 
   html {
     overflow-x: hidden;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
     scroll-behavior: smooth;
   }
 
   body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: var(--color-white);
     color: var(--color-gray);
@@ -69,7 +75,7 @@ export const Root = css`
   #__next {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    flex-grow: 1;
   }
 `;
 
