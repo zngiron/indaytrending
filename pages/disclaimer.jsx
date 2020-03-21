@@ -9,7 +9,7 @@ import Page from '../components/Page';
 import { GET_PAGE } from '../library/Queries.graphql';
 
 const Discalimer = () => {
-  const page = 'discalimer';
+  const page = 'disclaimer';
 
   const { asPath } = useRouter();
   const { loading, error, data } = useQuery(GET_PAGE, {
