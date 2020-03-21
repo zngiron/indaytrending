@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost';
 import { getDataFromTree } from '@apollo/react-ssr';
 
 import withApollo from 'next-with-apollo';
-import fetch from 'node-fetch';
+import fetch from 'isomorphic-unfetch';
 
 import { API } from './Config';
 
