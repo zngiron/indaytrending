@@ -27,6 +27,7 @@ const App = ({ Component, pageProps, apollo }) => (
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
       <link rel="preconnect" href="https://www.googletagmanager.com" />
+      <link rel="preconnect" href="https://www.google-analytics.com" />
     </Head>
     <ApolloProvider client={apollo}>
       <Layout>
