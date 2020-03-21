@@ -42,7 +42,6 @@ export const Image = styled.img`
   mix-blend-mode: darken;
   transform: scale(1.05);
   transition: var(--transition);
-  will-change: transform;
 
   ${Item}:hover &,
   ${Item}:active &,

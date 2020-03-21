@@ -2,13 +2,6 @@ import styled from '@emotion/styled';
 
 export const Stories = styled.div``;
 
-export const Container = styled.div`
-  width: 100%;
-  max-width: var(--container-width);
-  padding: 1.25rem;
-  margin: 0 auto;
-`;
-
 export const Title = styled.h2`
   margin-bottom: 0;
   font-size: 2em;

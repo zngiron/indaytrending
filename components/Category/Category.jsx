@@ -1,14 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 
-import * as S from './Category.styled';
+import * as UI from './Category.styled';
 
 const Category = ({ category }) => {
   const { slug, name } = category;
 
   return (
     <Link href="/[category]" as={`/${slug}`} passHref>
-      <S.Category>{name}</S.Category>
+      <UI.Category>{name}</UI.Category>
     </Link>
   );
 };

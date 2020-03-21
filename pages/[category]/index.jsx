@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_POSTS } from '../../library/Queries.graphql';
 
-import Preloader from '../../components/UI/Preloader';
+import Preloader from '../../components/Preloader';
 import Meta from '../../components/Meta';
 import Stories from '../../components/Stories';
 
 const Category = () => {
-  const router = useRouter();
-  const { category } = router.query;
+  const { asPath, query } = useRouter();
+  const { category } = query;
 
   const { loading, error, data } = useQuery(GET_POSTS, {
     variables: {
@@ -24,6 +24,7 @@ const Category = () => {
   return (
     <>
       <Meta
+        url={asPath}
         title={`${data.category.name} | Inday Trending - Pinoy Short Stories`}
         description={data.category.description}
       />

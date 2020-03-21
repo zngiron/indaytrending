@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import parse from 'html-react-parser';
 
-import * as S from './Card.styled';
+import * as UI from './Card.styled';
 import Category from '../Category';
 
 const Card = ({ post }) => {
@@ -14,28 +14,26 @@ const Card = ({ post }) => {
   } = post;
 
   return (
-    <S.Card>
+    <UI.Card>
       <Link href="/[category]/[slug]" as={`/stories/${slug}`} passHref>
-        <S.Item>
-          <S.Title>{parse(title)}</S.Title>
-          <S.Image
-            className="lazyload"
+        <UI.Item>
+          <UI.Title>{parse(title)}</UI.Title>
+          <UI.Image
             src={image.medium || undefined}
             alt={parse(title)}
             title={parse(title)}
             width={1280}
             height={670}
+            className="lazyload"
             loading="lazy"
             draggable={false}
           />
-        </S.Item>
+        </UI.Item>
       </Link>
-      <S.Categories>
-        {categories.nodes.map((category) => (
-          <Category key={category.id} category={category} />
-        ))}
-      </S.Categories>
-    </S.Card>
+      <UI.Categories>
+        {categories.nodes.map((category) => <Category key={category.id} category={category} />)}
+      </UI.Categories>
+    </UI.Card>
   );
 };
 

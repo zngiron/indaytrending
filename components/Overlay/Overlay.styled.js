@@ -8,7 +8,6 @@ export const Overlay = styled(animated.div)`
   width: 100vw;
   height: 100vh;
   background-color: #000c;
-  will-change: opacity;
   pointer-events: none;
   cursor: auto;
 

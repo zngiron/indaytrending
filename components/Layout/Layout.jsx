@@ -1,15 +1,15 @@
 import React from 'react';
 import { Global } from '@emotion/core';
 
-import * as S from './Layout.styled';
+import * as UI from './Layout.styled';
 import Header from '../Header';
 import Footer from '../Footer';
 
 const Layout = ({ children }) => (
   <>
-    <Global styles={S.Root} />
+    <Global styles={UI.Root} />
     <Header />
-    <S.Main>{children}</S.Main>
+    <UI.Main>{children}</UI.Main>
     <Footer />
   </>
 );

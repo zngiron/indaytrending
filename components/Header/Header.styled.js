@@ -18,12 +18,12 @@ export const Logo = styled.a`
   margin-right: auto;
 `;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  margin-right: 0.5rem;
+`;
 
 export const Title = styled.h1`
-  margin-left: 0.625rem;
   font-size: 0.875rem;
-  color: var(--color-primary);
   white-space: nowrap;
 `;
 
@@ -49,14 +49,16 @@ export const Button = styled.button`
     background-color: var(--color-secondary);
   }
 
+  &:focus {
+    outline: none;
+  }
+
   @media (min-width: 64rem) {
     display: none;
   }
 `;
 
-export const Icon = styled(animated.div)`
-  will-change: transform;
-`;
+export const Icon = styled(animated.div)``;
 
 export const Menu = styled(animated.ul)`
   overflow-y: scroll;
@@ -71,7 +73,6 @@ export const Menu = styled(animated.ul)`
   margin: 0;
   list-style: none;
   background-color: var(--color-white);
-  will-change: transform;
 
   @media (min-width: 64rem) { 
     position: static;
@@ -117,7 +118,6 @@ export const Item = styled.a`
       background-color: var(--color-primary);
       transform: scaleX(0) translateZ(0);
       transition: var(--transition);
-      will-change: contents;
       content: '';
     }
 

@@ -53,6 +53,20 @@ query GET_POSTS($first: Int, $after: String, $category: ID!, $categoryName: Stri
   }
 }
 
+query GET_POST($slug: ID!) {
+  post(id: $slug, idType:SLUG) {
+    ...POST_FRAGMENT
+    content
+    categories(where: {
+      exclude: 2
+    }) {
+      nodes {
+        ...CATEGORY_FRAGMENT
+      }
+    }
+  }
+}
+
 query GET_PAGE($page: ID!) {
   page(id: $page, idType: URI) {
     ...PAGE_FRAGMENT

@@ -40,6 +40,12 @@ export const Item = styled.a`
   }
 `;
 
+export const Divider = styled.span`
+  &:after {
+    content: ' | ';
+  }
+`;
+
 export const Copyright = styled.span`
   padding: 1.25rem;
 `;

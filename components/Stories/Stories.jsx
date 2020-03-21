@@ -1,19 +1,20 @@
 import React from 'react';
-import * as S from './Stories.styled';
-import Card from '../UI/Card';
+import * as UI from './Stories.styled';
+
+import { Container } from '../UI';
+
+import Card from '../Card';
 
 const Stories = ({ posts, category }) => (
-  <S.Stories>
-    <S.Container>
-      <S.Grid>
-        <S.Title>{category.name}</S.Title>
-        <S.Description>{category.description}</S.Description>
-        {posts.nodes.map((post) => (
-          <Card key={post.id} post={post} />
-        ))}
-      </S.Grid>
-    </S.Container>
-  </S.Stories>
+  <UI.Stories>
+    <Container>
+      <UI.Grid>
+        <UI.Title>{category.name}</UI.Title>
+        <UI.Description>{category.description}</UI.Description>
+        {posts.nodes.map((post) => <Card key={post.id} post={post} />)}
+      </UI.Grid>
+    </Container>
+  </UI.Stories>
 );
 
 export default Stories;

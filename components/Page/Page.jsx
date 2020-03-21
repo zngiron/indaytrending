@@ -1,20 +1,20 @@
 import React from 'react';
 import parse from 'html-react-parser';
 
+import * as UI from './Page.styled';
+import { Container } from '../UI';
 import { clean } from '../../library/Functions';
-
-import * as S from './Page.styled';
 
 const Page = ({ page }) => {
   const { title, content } = page;
 
   return (
-    <S.Page>
-      <S.Container>
-        <S.Title>{parse(title)}</S.Title>
-        <S.Content>{parse(clean(content))}</S.Content>
-      </S.Container>
-    </S.Page>
+    <UI.Page>
+      <Container>
+        <UI.Title>{parse(title)}</UI.Title>
+        <UI.Content>{parse(clean(content))}</UI.Content>
+      </Container>
+    </UI.Page>
   );
 };
 

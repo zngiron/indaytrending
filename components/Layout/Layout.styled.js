@@ -29,22 +29,6 @@ export const Root = css`
     --container-width: 100%;
     --menu-width: 20rem;
     --transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
-
-    @media (min-width: 36rem) {
-      --container-width: 33.5rem;
-    }
-
-    @media (min-width: 48rem) {
-      --container-width: 45.5rem; 
-    }
-
-    @media (min-width: 64rem) {
-      --container-width: 61.5rem;
-    }
-    
-    @media (min-width: 75rem) {
-      --container-width: 72.5rem;
-    }
   }
 
   *,
@@ -62,15 +46,21 @@ export const Root = css`
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: var(--color-white);
-    color: var(--color-dark);
+    color: var(--color-gray);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary);
+  }
+
+  h2 {
+    font-size: 2rem;
   }
 
   a {
     color: inherit;
     text-decoration: none;
-  }
 
-  a, button {
     &:focus {
       outline: none;
     }

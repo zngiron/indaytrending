@@ -2,12 +2,13 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_POSTS } from '../library/Queries.graphql';
 
-import Preloader from '../components/UI/Preloader';
+import Preloader from '../components/Preloader';
 import Meta from '../components/Meta';
 import Stories from '../components/Stories';
 
 const Home = () => {
   const category = 'stories';
+
   const { loading, error, data } = useQuery(GET_POSTS, {
     variables: {
       first: 12,

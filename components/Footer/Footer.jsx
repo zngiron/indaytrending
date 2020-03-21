@@ -1,31 +1,47 @@
 import React from 'react';
 import Link from 'next/link';
 
-import * as S from './Footer.styled';
+import * as UI from './Footer.styled';
 
 const Footer = () => (
-  <S.Footer>
-    <S.Container>
+  <UI.Footer>
+    <UI.Container>
       <Link href="/" passHref>
-        <S.Logo title="Inday Trending">
-          <S.Image src="/indaytrending-icon.png" width={80} height={80} alt="Inday Trending" title="Inday Trending" loading="eager" draggable={false} />
-          <S.Image src="/indaytrending-logo.svg" width={160} height={80} alt="Inday Trending" title="Inday Trending" loading="eager" draggable={false} />
-        </S.Logo>
+        <UI.Logo title="Inday Trending">
+          <UI.Image
+            src="/indaytrending-icon.png"
+            width={80}
+            height={80}
+            title="Inday Trending"
+            alt="Inday Trending"
+            loading="eager"
+            draggable={false}
+          />
+          <UI.Image
+            src="/indaytrending-logo.svg"
+            width={160}
+            height={80}
+            title="Inday Trending"
+            alt="Inday Trending"
+            loading="eager"
+            draggable={false}
+          />
+        </UI.Logo>
       </Link>
-      <S.Nav>
+      <UI.Nav>
         <Link href="/disclaimer" passHref>
-          <S.Item>Disclaimer</S.Item>
+          <UI.Item>Disclaimer</UI.Item>
         </Link>
-        <span>{' | '}</span>
+        <UI.Divider />
         <Link href="/privacy" passHref>
-          <S.Item>Privacy Policy</S.Item>
+          <UI.Item>Privacy Policy</UI.Item>
         </Link>
-        <span>{' | '}</span>
-        <S.Item href="https://www.dmca.com" rel="noopener noreferrer" target="__blank">DMCA Policy</S.Item>
-      </S.Nav>
-      <S.Copyright>&copy;2020 Likha Adhika Media</S.Copyright>
-    </S.Container>
-  </S.Footer>
+        <UI.Divider />
+        <UI.Item href="https://www.dmca.com" rel="noopener noreferrer" target="__blank">DMCA Policy</UI.Item>
+      </UI.Nav>
+      <UI.Copyright>&copy;2020 Likha Adhika Media</UI.Copyright>
+    </UI.Container>
+  </UI.Footer>
 );
 
 export default Footer;
