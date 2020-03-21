@@ -56,6 +56,8 @@ export const Category = styled.a`
 `;
 
 export const Content = styled.div`
+  margin-top: 1.25rem;
+  
   p {
     font-size: 0.875rem;
     line-height: 1.5;
@@ -68,3 +70,5 @@ export const Content = styled.div`
     border-radius: var(--border-radius);
   }
 `;
+
+export const Section = styled.section``;

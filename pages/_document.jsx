@@ -18,6 +18,7 @@ export default class Root extends Document {
         <body>
           <Main />
           <NextScript />
+          <script async src="/taboola.js" />
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS}`} />
           <script dangerouslySetInnerHTML={{

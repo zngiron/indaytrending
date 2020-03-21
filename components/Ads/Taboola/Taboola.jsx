@@ -20,7 +20,7 @@ const Taboola = () => {
   }, []);
 
   return (
-    <div id="taboola-below-article-thumbnails" />
+    <div id="taboola-below-article-thumbnails" style={{ margin: 0 }} />
   );
 };
 

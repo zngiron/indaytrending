@@ -7,6 +7,7 @@ import { clean } from '../../library/Functions';
 import { Container } from '../UI';
 
 import Adsense from '../Ads/Adsense';
+import Taboola from '../Ads/Taboola';
 import Sidebar from '../Sidebar';
 
 const Ads = (item, key) => (
@@ -51,6 +52,9 @@ const Post = ({ post }) => {
           </UI.Content>
           <Sidebar />
         </UI.Grid>
+        <UI.Section>
+          <Taboola />
+        </UI.Section>
       </Container>
     </UI.Post>
   );
