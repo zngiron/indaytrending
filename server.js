@@ -43,6 +43,11 @@ app.prepare().then(() => {
   const server = Express();
   server.use(Express.static('public'));
 
+  server.get('/wp-content/*', (req, res) => {
+    res.status(410);
+    res.end();
+  });
+
   server.get('/api/*', (req, res) => handle(req, res));
   server.get('/_next/*', (req, res) => handle(req, res));
   server.get('*', (req, res) => handleCache(req, res));
