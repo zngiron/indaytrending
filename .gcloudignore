@@ -1,0 +1,8 @@
+node_modules
+.git
+.gitignore
+.gcloudignore
+.next
+.now
+.lock
+.DS_Store
