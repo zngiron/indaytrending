@@ -3,15 +3,9 @@ import Link from 'next/link';
 import parse from 'html-react-parser';
 
 import * as UI from './Card.styled';
-import Category from '../Category';
 
 const Card = ({ post }) => {
-  const {
-    slug,
-    title,
-    image,
-    categories,
-  } = post;
+  const { slug, title, image } = post;
 
   return (
     <UI.Card>
@@ -30,9 +24,6 @@ const Card = ({ post }) => {
           />
         </UI.Item>
       </Link>
-      <UI.Categories>
-        {categories.nodes.map((category) => <Category key={category.id} category={category} />)}
-      </UI.Categories>
     </UI.Card>
   );
 };

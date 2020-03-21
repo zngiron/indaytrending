@@ -49,10 +49,3 @@ export const Image = styled.img`
     transform: scale(1.1)
   }
 `;
-
-export const Categories = styled.div`
-  position: absolute;
-  z-index: 10;
-  top: 1.25rem;
-  left: 1.25rem;
-`;

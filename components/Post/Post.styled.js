@@ -30,3 +30,24 @@ export const Content = styled.div`
 `;
 
 export const Categories = styled.div``;
+
+export const Category = styled.a`
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-white);
+  transition: var(--transition);
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--color-secondary);
+  }
+
+  &:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+`;

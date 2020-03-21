@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import parse from 'html-react-parser';
 
 import { clean } from '../../library/Functions';
@@ -6,7 +7,6 @@ import { clean } from '../../library/Functions';
 import * as UI from './Post.styled';
 import { Container } from '../UI';
 
-import Category from '../Category';
 
 const Post = ({ post }) => {
   const {
@@ -31,7 +31,11 @@ const Post = ({ post }) => {
           draggable={false}
         />
         <UI.Categories>
-          {categories.nodes.map((category) => <Category key={category.id} category={category} />)}
+          {categories.nodes.map((category) => (
+            <Link href="/[category]" as={`/${category.slug}`} passHref>
+              <UI.Category>{category.name}</UI.Category>
+            </Link>
+          ))}
         </UI.Categories>
         <UI.Content>{parse(clean(content))}</UI.Content>
       </Container>
