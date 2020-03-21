@@ -30,7 +30,7 @@ const Post = ({ post }) => {
         <UI.Grid>
           <UI.Title>{parse(title)}</UI.Title>
           <UI.Image
-            src={image.medium}
+            src={image.medium || undefined}
             alt={parse(title)}
             title={parse(title)}
             width={1280}
