@@ -26,6 +26,26 @@ fragment CATEGORY_FRAGMENT on Category {
   description
 }
 
+query GET_FEED($first: Int, $categoryName: String) {  
+  posts(
+    first: $first,
+    where: {
+      categoryName: $categoryName, 
+      status: PUBLISH
+    }
+  ) {
+    nodes {
+      ...POST_FRAGMENT
+      content
+      categories{
+        nodes {
+          ...CATEGORY_FRAGMENT
+        }
+      }
+    }
+  }
+}
+
 query GET_POSTS($first: Int, $after: String, $category: ID!, $categoryName: String) {  
   posts(
     first: $first,
