@@ -7,9 +7,9 @@ const Taboola = () => {
   useEffect(() => {
     window._taboola = window._taboola || [];
     _taboola.push({
-      mode: 'thumbnails-rr',
-      container: 'taboola-right-rail-thumbnails',
-      placement: 'Right Rail Thumbnails',
+      mode: 'thumbnails-a',
+      container: 'taboola-below-article-thumbnails',
+      placement: 'Below Article Thumbnails',
       target_type: 'mix',
     });
   }, []);
@@ -20,7 +20,7 @@ const Taboola = () => {
   }, []);
 
   return (
-    <div id="taboola-right-rail-thumbnails" />
+    <div id="taboola-below-article-thumbnails" />
   );
 };
 
