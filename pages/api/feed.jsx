@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { oneLineTrim } from 'common-tags';
 
 import { DOMAIN, BANNER, RECIRCULATION } from '../../library/Config';
@@ -51,7 +53,7 @@ const Story = ({ post }) => oneLineTrim`
   </html>
 `;
 
-const Stories = ({ posts }) => `
+const Stories = ({ posts }) => oneLineTrim`
   <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
       <title>Inday Trending</title>
@@ -90,7 +92,6 @@ const Feed = async (req, res) => {
     res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
     res.send(Stories(data));
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error(`❌[Error]: ${error.message}`);
     res.status(500);
     res.end();

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const Express = require('express');
 const Next = require('next');
 const LRUCache = require('lru-cache');
@@ -41,6 +43,7 @@ app.prepare().then(() => {
   const server = Express();
   server.use(Express.static('public'));
 
+  server.get('/api/*', (req, res) => handle(req, res));
   server.get('/_next/*', (req, res) => handle(req, res));
   server.get('*', (req, res) => handleCache(req, res));
 
