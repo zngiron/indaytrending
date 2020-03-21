@@ -1,5 +1,6 @@
 import React from 'react';
 import parse from 'html-react-parser';
+import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/react-hooks';
 
@@ -20,6 +21,8 @@ const Story = () => {
   });
 
   if (loading || error) return <Preloader loading={loading} error={error} />;
+
+  if (data.post === null) return <Error statusCode={404} />;
 
   const description = data.post.content.match(/<p>(.*?)<\/p>/)[1];
 

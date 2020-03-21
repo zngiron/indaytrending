@@ -1,4 +1,5 @@
 import React from 'react';
+import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_POSTS } from '../../library/Queries.graphql';
@@ -20,6 +21,8 @@ const Category = () => {
   });
 
   if (loading || error) return <Preloader loading={loading} error={error} />;
+
+  if (data.category === null) return <Error statusCode={404} />;
 
   return (
     <>
