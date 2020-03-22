@@ -72,3 +72,4 @@ export const Content = styled.div`
 `;
 
 export const Section = styled.section``;
+export const Subtitle = styled.h3``;

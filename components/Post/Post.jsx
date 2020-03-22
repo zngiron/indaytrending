@@ -53,6 +53,7 @@ const Post = ({ post }) => {
           <Sidebar />
         </UI.Grid>
         <UI.Section>
+          <UI.Subtitle>More Stories</UI.Subtitle>
           <Taboola />
         </UI.Section>
       </Container>
