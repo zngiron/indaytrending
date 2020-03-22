@@ -25,6 +25,11 @@ export default class Root extends Document {
             __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ANALYTICS}');`,
           }}
           />
+          <script dangerouslySetInnerHTML={{
+            __html: '_atrk_opts={atrk_acct:"4FMtu1Y1Mn20Io",domain:"indaytrending.com",dynamic:!0},function(){const t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://certify-js.alexametrics.com/atrk.js";const e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();',
+          }}
+          />
+          <noscript><img src="https://certify.alexametrics.com/atrk.gif?account=4FMtu1Y1Mn20Io" width={1} height={1} alt="" style={{ display: 'none' }} /></noscript>
         </body>
       </Html>
     );
