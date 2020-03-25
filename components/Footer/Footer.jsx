@@ -14,8 +14,8 @@ const Footer = () => (
             height={80}
             title="Inday Trending"
             alt="Inday Trending"
-            loading="eager"
             draggable={false}
+            loading="eager"
           />
           <UI.Image
             src="/indaytrending-logo.svg"
@@ -23,8 +23,8 @@ const Footer = () => (
             height={80}
             title="Inday Trending"
             alt="Inday Trending"
-            loading="eager"
             draggable={false}
+            loading="eager"
           />
         </UI.Logo>
       </Link>

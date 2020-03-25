@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 
 const Adsense = ({
   slot,
@@ -27,4 +27,4 @@ const Adsense = ({
   );
 };
 
-export default Adsense;
+export default memo(Adsense);

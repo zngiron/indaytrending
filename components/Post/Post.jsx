@@ -1,4 +1,4 @@
-/* eslint-disable no-return-assign */
+import 'lazysizes';
 
 import React from 'react';
 import Link from 'next/link';
@@ -27,27 +27,24 @@ const Post = ({ post }) => {
     categories,
   } = post;
 
-  const handleError = (e) => e.target.src = image.featured || undefined;
-
   return (
     <UI.Post>
       <Container>
         <UI.Grid>
           <UI.Title>{parse(title)}</UI.Title>
           <UI.Image
-            src={`${image.featured}.webp`}
-            alt={parse(title)}
+            className="lazyload"
+            data-sizes="auto"
+            data-src={image.featured || undefined}
             title={parse(title)}
+            alt={parse(title)}
             width={1280}
             height={670}
-            className="lazyload"
-            loading="lazy"
             draggable={false}
-            onError={handleError}
           />
           <UI.Categories>
             {categories.nodes.map((category) => (
-              <Link href="/[category]" as={`/${category.slug}`} passHref>
+              <Link key={category.id} href="/[category]" as={`/${category.slug}`} passHref>
                 <UI.Category>{category.name}</UI.Category>
               </Link>
             ))}
