@@ -1,5 +1,3 @@
-const nextOffline = require('next-offline');
-
 const nextConfig = {
   webpack: (config) => {
     config.module.rules.push(
@@ -16,9 +14,6 @@ const nextConfig = {
 
     return config;
   },
-  workboxOpts: {
-    swDest: `${__dirname}/public/service-worker.js`,
-  },
 };
 
-module.exports = nextOffline(nextConfig);
+module.exports = nextConfig;

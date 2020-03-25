@@ -50,10 +50,6 @@ app.prepare().then(() => {
     res.end();
   });
 
-  server.get('/service-worker.js', (req, res) => {
-    res.sendFile(`${__dirname}/public/sevice-worker.js`);
-  });
-
   server.get('/api/*', (req, res) => handle(req, res));
   server.get('/_next/*', (req, res) => handle(req, res));
   server.get('*', (req, res) => handleCache(req, res));
