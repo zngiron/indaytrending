@@ -1,6 +1,6 @@
 import 'lazysizes';
 
-import React, { memo } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import parse from 'html-react-parser';
 
@@ -30,4 +30,4 @@ const Card = ({ post }) => {
   );
 };
 
-export default memo(Card);
+export default Card;

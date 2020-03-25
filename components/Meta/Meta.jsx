@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import Head from 'next/head';
 
 import { DOMAIN, PUBLISHER, AUTHOR } from '../../library/Config';
@@ -53,4 +53,4 @@ const Meta = ({
   </Head>
 );
 
-export default memo(Meta);
+export default Meta;
