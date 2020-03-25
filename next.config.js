@@ -17,7 +17,7 @@ const nextConfig = {
     return config;
   },
   workboxOpts: {
-    swDest: `${__dirname}/public/service-worker.js`,
+    swDest: '../public/service-worker.js',
   },
 };
 
