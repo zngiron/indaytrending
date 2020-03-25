@@ -35,7 +35,7 @@ const Post = ({ post }) => {
           <UI.Image
             className="lazyload"
             data-sizes="auto"
-            data-src={image.featured || undefined}
+            data-src={image.medium || undefined}
             title={parse(title)}
             alt={parse(title)}
             width={1280}

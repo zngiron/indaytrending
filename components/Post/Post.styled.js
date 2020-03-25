@@ -35,8 +35,9 @@ export const Categories = styled.div`
 `;
 
 export const Category = styled.a`
-  display: inline-block;
+  display: inline-flex;
   padding: 0.5rem 1.25rem;
+  margin-bottom: 0.5rem;
   border-radius: var(--border-radius);
   background-color: var(--color-primary);
   font-size: 0.75rem;
