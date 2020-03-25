@@ -5,8 +5,6 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import Apollo from '../library/Apollo';
 import Layout from '../components/Layout';
 
-import 'lazysizes';
-
 const App = ({ Component, pageProps, apollo }) => (
   <>
     <Head>
@@ -27,8 +25,10 @@ const App = ({ Component, pageProps, apollo }) => (
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="preconnect" href="https://indaytrending.com" />
       <link rel="preconnect" href="https://cms.indaytrending.com" />
-      <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+      <link rel="preconnect" href="https://www.google-analytics.com" />
       <link rel="preconnect" href="https://www.googletagmanager.com" />
+      <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+      <link rel="preconnect" href="https://cdn.taboola.com" />
     </Head>
     <ApolloProvider client={apollo}>
       <Layout>
