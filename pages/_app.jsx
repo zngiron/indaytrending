@@ -25,9 +25,10 @@ const App = ({ Component, pageProps, apollo }) => (
       <link rel="icon" type="image/png" sizes="80x80" href="/indaytrending-icon.png" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="manifest" href="/site.webmanifest" />
+      <link rel="preconnect" href="https://indaytrending.com" />
+      <link rel="preconnect" href="https://cms.indaytrending.com" />
       <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
       <link rel="preconnect" href="https://www.googletagmanager.com" />
-      <link rel="preconnect" href="https://www.google-analytics.com" />
     </Head>
     <ApolloProvider client={apollo}>
       <Layout>
