@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 
 const Express = require('express');
+const Compression = require('compression');
 const Next = require('next');
 const LRUCache = require('lru-cache');
 
@@ -42,6 +43,7 @@ const handleCache = async (req, res) => {
 app.prepare().then(() => {
   const server = Express();
   server.use(Express.static('public'));
+  server.use(Compression());
 
   server.get('/wp-content/*', (req, res) => {
     res.status(410);
