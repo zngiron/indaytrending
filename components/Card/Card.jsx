@@ -1,10 +1,10 @@
-import 'lazysizes';
-
 import React from 'react';
 import Link from 'next/link';
 import parse from 'html-react-parser';
 
 import * as UI from './Card.styled';
+
+import('lazysizes');
 
 const Card = ({ post }) => {
   const { slug, title, image } = post;

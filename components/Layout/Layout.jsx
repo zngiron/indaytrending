@@ -1,9 +1,11 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { Global } from '@emotion/core';
 
 import * as UI from './Layout.styled';
-import Header from '../Header';
-import Footer from '../Footer';
+
+const Header = dynamic(import('../Header'));
+const Footer = dynamic(import('../Footer'));
 
 const Layout = ({ children }) => (
   <>

@@ -1,9 +1,11 @@
 import React from 'react';
-import * as UI from './Stories.styled';
+import dynamic from 'next/dynamic';
 
 import { Container } from '../UI';
 
-import Card from '../Card';
+import * as UI from './Stories.styled';
+
+const Card = dynamic(import('../Card'));
 
 const Stories = ({ posts, category }) => (
   <UI.Stories>

@@ -1,16 +1,20 @@
-import 'lazysizes';
+// import 'lazysizes';
 
 import React from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import parse from 'html-react-parser';
 
-import * as UI from './Post.styled';
 import { clean } from '../../library/Functions';
 import { Container } from '../UI';
 
-import Adsense from '../Ads/Adsense';
-import Taboola from '../Ads/Taboola';
-import Sidebar from '../Sidebar';
+import * as UI from './Post.styled';
+
+import('lazysizes');
+
+const Adsense = dynamic(import('../Ads/Adsense'));
+const Taboola = dynamic(import('../Ads/Taboola'));
+const Sidebar = dynamic(import('../Sidebar'));
 
 const Ads = (item, key) => (
   <React.Fragment key={key}>

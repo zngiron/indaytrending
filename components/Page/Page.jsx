@@ -1,9 +1,10 @@
 import React from 'react';
 import parse from 'html-react-parser';
 
-import * as UI from './Page.styled';
-import { Container } from '../UI';
 import { clean } from '../../library/Functions';
+import { Container } from '../UI';
+
+import * as UI from './Page.styled';
 
 const Page = ({ page }) => {
   const { title, content } = page;
