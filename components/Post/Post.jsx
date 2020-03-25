@@ -1,3 +1,5 @@
+/* eslint-disable no-return-assign */
+
 import React from 'react';
 import Link from 'next/link';
 import parse from 'html-react-parser';
@@ -25,13 +27,15 @@ const Post = ({ post }) => {
     categories,
   } = post;
 
+  const handleError = (e) => e.target.src = image.featured || undefined;
+
   return (
     <UI.Post>
       <Container>
         <UI.Grid>
           <UI.Title>{parse(title)}</UI.Title>
           <UI.Image
-            src={image.medium || undefined}
+            src={`${image.featured}.webp`}
             alt={parse(title)}
             title={parse(title)}
             width={1280}
@@ -39,6 +43,7 @@ const Post = ({ post }) => {
             className="lazyload"
             loading="lazy"
             draggable={false}
+            onError={handleError}
           />
           <UI.Categories>
             {categories.nodes.map((category) => (
