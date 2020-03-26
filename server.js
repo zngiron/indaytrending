@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 
 const Express = require('express');
-const Compression = require('compression');
 const Next = require('next');
 const LRUCache = require('lru-cache');
 
@@ -36,14 +35,13 @@ const handleCache = async (req, res) => {
     res.setHeader('X-Cache', 'MISS');
     return res.send(html);
   } catch (error) {
-    app.renderError(error, req, res, req.path, req.query);
+    return app.renderError(error, req, res, req.path, req.query);
   }
 };
 
 app.prepare().then(() => {
   const server = Express();
   server.use(Express.static('public'));
-  server.use(Compression());
 
   server.get('/wp-content/*', (req, res) => {
     res.status(410);
