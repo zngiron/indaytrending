@@ -4,8 +4,6 @@ import parse from 'html-react-parser';
 
 import * as UI from './Card.styled';
 
-import('lazysizes');
-
 const Card = ({ post }) => {
   const { slug, title, image } = post;
 
@@ -15,14 +13,13 @@ const Card = ({ post }) => {
         <UI.Item>
           <UI.Title>{parse(title)}</UI.Title>
           <UI.Image
-            className="lazyload"
-            data-sizes="auto"
-            data-src={image.medium || undefined}
+            src={image.medium || undefined}
             title={parse(title)}
             alt={parse(title)}
             width={1280}
             height={670}
             draggable={false}
+            loading="eager"
           />
         </UI.Item>
       </Link>

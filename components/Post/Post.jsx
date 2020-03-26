@@ -1,5 +1,3 @@
-// import 'lazysizes';
-
 import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -9,8 +7,6 @@ import { clean } from '../../library/Functions';
 import { Container } from '../UI';
 
 import * as UI from './Post.styled';
-
-import('lazysizes');
 
 const Adsense = dynamic(import('../Ads/Adsense'));
 const Taboola = dynamic(import('../Ads/Taboola'));
@@ -35,24 +31,25 @@ const Post = ({ post }) => {
     <UI.Post>
       <Container>
         <UI.Grid>
-          <UI.Title>{parse(title)}</UI.Title>
-          <UI.Image
-            className="lazyload"
-            data-sizes="auto"
-            data-src={image.medium || undefined}
-            title={parse(title)}
-            alt={parse(title)}
-            width={1280}
-            height={670}
-            draggable={false}
-          />
-          <UI.Categories>
-            {categories.nodes.map((category) => (
-              <Link key={category.id} href="/[category]" as={`/${category.slug}`} passHref>
-                <UI.Category>{category.name}</UI.Category>
-              </Link>
-            ))}
-          </UI.Categories>
+          <UI.Header>
+            <UI.Title>{parse(title)}</UI.Title>
+            <UI.Image
+              src={image.medium}
+              title={parse(title)}
+              alt={parse(title)}
+              width={1280}
+              height={670}
+              draggable={false}
+              loading="eager"
+            />
+            <UI.Categories>
+              {categories.nodes.map((category) => (
+                <Link key={category.id} href="/[category]" as={`/${category.slug}`} passHref>
+                  <UI.Category>{category.name}</UI.Category>
+                </Link>
+              ))}
+            </UI.Categories>
+          </UI.Header>
           <UI.Content>
             {clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
           </UI.Content>

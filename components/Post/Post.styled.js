@@ -10,11 +10,13 @@ export const Grid = styled.div`
   }
 `;
 
-export const Title = styled.h2`
+export const Header = styled.header`
   @media (min-width: 48rem) {
     grid-column: 1/3;
   }
 `;
+
+export const Title = styled.h2``;
 
 export const Image = styled.img`
   display: block;
@@ -22,17 +24,9 @@ export const Image = styled.img`
   height: auto;
   margin-bottom: 1.25rem;
   border-radius: var(--border-radius);
-
-  @media (min-width: 48rem) {
-    grid-column: 1/3;
-  }
 `;
 
-export const Categories = styled.div`
-  @media (min-width: 48rem) {
-    grid-column: 1/3;
-  }
-`;
+export const Categories = styled.div``;
 
 export const Category = styled.a`
   display: inline-flex;
