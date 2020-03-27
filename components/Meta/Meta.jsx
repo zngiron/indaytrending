@@ -27,7 +27,9 @@ const Meta = ({
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="670" />
     <meta property="og:image:alt" content={title} />
-    <meta property="og:locale" content="tl_ph" />
+    <meta property="og:locale" content="en_us" />
+    <meta property="og:locale:alternate" content="en_ph" />
+    <meta property="og:locale:alternate" content="tl_ph" />
     <meta property="og:site_name" content="Inday Trending" />
 
     {(type === 'article' && slug) && (
@@ -36,7 +38,7 @@ const Meta = ({
         <meta property="article:modified_time" content={modified} />
         <meta property="article:publisher" content={PUBLISHER} />
         <meta property="article:author" content={AUTHOR} />
-        <meta property="article:section" content="Entertainment" />
+        <meta property="article:section" content="Stories" />
       </>
     )}
 
