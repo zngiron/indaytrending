@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 const Taboola = () => {
   useEffect(() => {
     window._taboola = window._taboola || [];
+
     _taboola.push({ article: 'auto' });
     _taboola.push({
       mode: 'thumbnails-a',
@@ -13,15 +14,12 @@ const Taboola = () => {
       placement: 'Below Article Thumbnails',
       target_type: 'mix',
     });
-  }, []);
 
-  useEffect(() => {
-    window._taboola = window._taboola || [];
     _taboola.push({ flush: true });
   }, []);
 
   return (
-    <div id="taboola-below-article-thumbnails" />
+    <div id="taboola-below-article-thumbnails" style={{ margin: 0 }} />
   );
 };
 
