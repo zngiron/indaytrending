@@ -2,41 +2,37 @@
 
 const Express = require('express');
 const Next = require('next');
-const LRUCache = require('lru-cache');
+const Redis = require('redis');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const development = process.env.NODE_ENV !== 'production';
 const app = Next({ development });
 const handle = app.getRequestHandler();
+const client = Redis.createClient();
 
-const cache = new LRUCache({
-  max: 100 * 1024 * 1024,
-  maxAge: 1000 * 60 * 60,
-});
+const handleCache = (req, res) => {
+  const key = `${req.path}`;
 
-const getCacheKey = (req) => `${req.path}`;
-
-const handleCache = async (req, res) => {
-  const key = getCacheKey(req);
-
-  if (cache.has(key)) {
-    res.setHeader('X-Cache', 'HIT');
-    return res.send(cache.get(key));
-  }
-
-  try {
-    const html = await app.renderToHTML(req, res, req.path, req.query);
-
-    if (res.statusCode !== 200) {
-      return res.send(html);
+  client.get(key, async (error, cache) => {
+    if (cache !== null) {
+      res.setHeader('X-Cache', 'HIT');
+      res.send(cache);
+      return client.quit();
     }
 
-    cache.set(key, html);
-    res.setHeader('X-Cache', 'MISS');
-    return res.send(html);
-  } catch (error) {
-    return app.renderError(error, req, res, req.path, req.query);
-  }
+    try {
+      const html = await app.renderToHTML(req, res, req.path, req.query);
+
+      client.set(key, html);
+
+      res.setHeader('X-Cache', 'MISS');
+      res.send(html);
+    } catch (err) {
+      app.renderError(err, req, res, req.path, req.query);
+    }
+
+    return client.quit();
+  });
 };
 
 app.prepare().then(() => {
