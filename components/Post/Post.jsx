@@ -1,8 +1,9 @@
+import parse from 'html-react-parser';
+
 import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import parse from 'html-react-parser';
 
 import { clean } from '../../library/Functions';
 import { DOMAIN } from '../../library/Config';
@@ -16,6 +17,7 @@ const Sidebar = dynamic(import('../Sidebar'));
 const Ads = (item, key) => (
   <React.Fragment key={key}>
     {parse(item)}
+    {(key === 4) && <Adsense slot="6234342116" />}
     {(key % 8 === 0 && key !== 0) && <Adsense slot="3640794162" format="fluid" layout="in-article" />}
   </React.Fragment>
 );
@@ -60,11 +62,7 @@ const Post = ({ post }) => {
               data-share="true"
             />
           </UI.Header>
-          <UI.Content>
-            <Adsense slot="6234342116" />
-            {clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
-            <Adsense slot="7634905842" />
-          </UI.Content>
+          <UI.Content>{clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}</UI.Content>
           <Sidebar />
         </UI.Grid>
       </Container>

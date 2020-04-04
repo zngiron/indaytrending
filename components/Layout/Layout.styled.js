@@ -72,6 +72,11 @@ export const Root = css`
     }
   }
 
+  p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
   #__next {
     display: flex;
     flex-direction: column;
