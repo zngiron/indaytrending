@@ -36,7 +36,7 @@ const Post = ({ post }) => {
           <UI.Header>
             <UI.Title>{parse(title)}</UI.Title>
             <UI.Image
-              src={image.medium}
+              src={image.featured}
               title={parse(title)}
               alt={parse(title)}
               width={1280}
