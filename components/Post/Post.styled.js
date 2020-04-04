@@ -26,7 +26,9 @@ export const Image = styled.img`
   border-radius: var(--border-radius);
 `;
 
-export const Categories = styled.div``;
+export const Categories = styled.div`
+  margin-bottom: 0.5rem;
+`;
 
 export const Category = styled.a`
   display: inline-flex;

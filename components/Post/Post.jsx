@@ -1,9 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import parse from 'html-react-parser';
 
 import { clean } from '../../library/Functions';
+import { DOMAIN } from '../../library/Config';
 import { Container } from '../UI';
 
 import * as UI from './Post.styled';
@@ -26,6 +28,7 @@ const Post = ({ post }) => {
     categories,
   } = post;
 
+  const { asPath } = useRouter();
   return (
     <UI.Post>
       <Container>
@@ -48,6 +51,14 @@ const Post = ({ post }) => {
                 </Link>
               ))}
             </UI.Categories>
+            <div
+              className="fb-like"
+              data-href={`${DOMAIN}${asPath}`}
+              data-layout="button_count"
+              data-action="like"
+              data-size="large"
+              data-share="true"
+            />
           </UI.Header>
           <UI.Content>
             <Adsense slot="6234342116" />
