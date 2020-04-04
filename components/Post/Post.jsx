@@ -9,7 +9,6 @@ import { Container } from '../UI';
 import * as UI from './Post.styled';
 
 const Adsense = dynamic(import('../Ads/Adsense'));
-const Taboola = dynamic(import('../Ads/Taboola'));
 const Sidebar = dynamic(import('../Sidebar'));
 
 const Ads = (item, key) => (
@@ -51,14 +50,12 @@ const Post = ({ post }) => {
             </UI.Categories>
           </UI.Header>
           <UI.Content>
+            <Adsense slot="6234342116" />
             {clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
+            <Adsense slot="6234342116" />
           </UI.Content>
           <Sidebar />
         </UI.Grid>
-        <UI.Section>
-          <UI.Subtitle>More Stories</UI.Subtitle>
-          <Taboola />
-        </UI.Section>
       </Container>
     </UI.Post>
   );

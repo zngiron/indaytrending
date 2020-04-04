@@ -30,7 +30,6 @@ const App = ({ Component, pageProps, apollo }) => (
       <link rel="preconnect" href="https://www.google-analytics.com" />
       <link rel="preconnect" href="https://www.googletagmanager.com" />
       <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-      <link rel="preconnect" href="https://cdn.taboola.com" />
     </Head>
     <ApolloProvider client={apollo}>
       <Layout>
