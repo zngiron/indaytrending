@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 export const Sidebar = styled.aside`
-  width: 18.75rem;
   min-width: 18.75rem;
 `;
 

@@ -52,7 +52,7 @@ const Post = ({ post }) => {
           <UI.Content>
             <Adsense slot="6234342116" />
             {clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
-            <Adsense slot="6234342116" />
+            <Adsense slot="7634905842" />
           </UI.Content>
           <Sidebar />
         </UI.Grid>
