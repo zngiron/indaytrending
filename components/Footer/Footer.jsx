@@ -2,10 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 
 import * as UI from './Footer.styled';
+import * as Layout from '../UI/Layout.styled';
 
 const Footer = () => (
   <UI.Footer>
-    <UI.Container>
+    <Layout.Container as={UI.Container}>
       <Link href="/" passHref>
         <UI.Logo title="Inday Trending">
           <UI.Image
@@ -40,7 +41,7 @@ const Footer = () => (
         <UI.Item href="https://www.dmca.com" rel="noopener noreferrer" target="__blank">DMCA Policy</UI.Item>
       </UI.Nav>
       <UI.Copyright>&copy;2020 Likha Adhika Media</UI.Copyright>
-    </UI.Container>
+    </Layout.Container>
   </UI.Footer>
 );
 

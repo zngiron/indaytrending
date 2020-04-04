@@ -7,9 +7,9 @@ import { useRouter } from 'next/router';
 
 import { clean } from '../../library/Functions';
 import { DOMAIN } from '../../library/Config';
-import { Container } from '../UI';
 
 import * as UI from './Post.styled';
+import * as Layout from '../UI/Layout.styled';
 
 const Adsense = dynamic(import('../Ads/Adsense'));
 const Sidebar = dynamic(import('../Sidebar'));
@@ -33,7 +33,7 @@ const Post = ({ post }) => {
   const { asPath } = useRouter();
   return (
     <UI.Post>
-      <Container>
+      <Layout.Container>
         <UI.Grid>
           <UI.Header>
             <UI.Title>{parse(title)}</UI.Title>
@@ -65,7 +65,7 @@ const Post = ({ post }) => {
           <UI.Content>{clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}</UI.Content>
           <Sidebar />
         </UI.Grid>
-      </Container>
+      </Layout.Container>
     </UI.Post>
   );
 };

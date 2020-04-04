@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import * as Layout from '../UI/Layout.styled';
 
 export const Footer = styled.footer`
   margin-top: 2.5rem;
@@ -7,16 +8,14 @@ export const Footer = styled.footer`
   color: var(--color-white);
 `;
 
-export const Container = styled.div`
+export const Container = styled(Layout.Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: var(--container--width, 100%);
-  margin: 0 1.25rem;
 `;
 
 export const Logo = styled.a`
-  margin-top: -2.5rem;
+  margin-top: -3.75rem;
 `;
 
 export const Image = styled.img`

@@ -15,28 +15,14 @@ export const Grid = styled.div`
   }
 `;
 
+export const Header = styled.header`
+  margin-bottom: 2.5rem;
+`;
+
 export const Title = styled.h2`
   margin-bottom: 0;
   font-size: 2em;
-  color: var(--color-primary);
-
-  @media (min-width: 48rem) {
-    grid-column: 1/3;
-  }
-
-  @media (min-width: 64rem) {
-    grid-column: 1/4;
-  }
+  color: var(--color-primary); 
 `;
 
-export const Description = styled.p`
-  margin-top: 0;
-
-  @media (min-width: 48rem) {
-    grid-column: 1/3;
-  }
-
-  @media (min-width: 64rem) {
-    grid-column: 1/4;
-  }
-`;
+export const Description = styled.p``;

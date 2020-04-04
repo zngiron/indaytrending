@@ -10,7 +10,9 @@ import {
   faTimes,
 } from '@fortawesome/pro-regular-svg-icons';
 
-export const Root = css`
+export { Global } from '@emotion/core';
+
+export const Styles = css`
   ${normalize}
   ${dom.css()}
 
@@ -72,11 +74,6 @@ export const Root = css`
     }
   }
 
-  p {
-    font-size: 0.875rem;
-    line-height: 1.5;
-  }
-
   #__next {
     display: flex;
     flex-direction: column;
@@ -88,6 +85,29 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  max-width: var(--container-width);
+  padding: 1.25rem;
+  margin: 0 auto;
+
+  @media (min-width: 36rem) {
+    --container-width: 33.5rem;
+  }
+
+  @media (min-width: 48rem) {
+    --container-width: 45.5rem; 
+  }
+
+  @media (min-width: 64rem) {
+    --container-width: 61.5rem;
+  }
+  
+  @media (min-width: 75rem) {
+    --container-width: 72.5rem;
+  }
 `;
 
 config.autoAddCss = false;

@@ -58,4 +58,9 @@ export const Content = styled.div`
     max-width: 100%;
     border-radius: var(--border-radius);
   }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
 `;

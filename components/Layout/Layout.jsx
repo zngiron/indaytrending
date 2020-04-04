@@ -1,18 +1,17 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { Global } from '@emotion/core';
 
-import * as UI from './Layout.styled';
+import * as Layout from '../UI/Layout.styled';
 
 const Header = dynamic(import('../Header'));
 const Footer = dynamic(import('../Footer'));
 
-const Layout = ({ children }) => (
+const Root = ({ children }) => (
   <>
-    <Global styles={UI.Root} />
+    <Layout.Global styles={Layout.Styles} />
     <Header />
-    <UI.Main>{children}</UI.Main>
+    <Layout.Main>{children}</Layout.Main>
     <Footer />
   </>
 );
-export default Layout;
+export default Root;
