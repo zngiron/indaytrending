@@ -10,7 +10,7 @@ import { GET_FEED } from '../../library/Queries.graphql';
 
 const Story = ({ post }) => oneLineTrim`
   <!doctype html>
-  <html lang="en" prefix="op: http://media.facebook.com/op#">
+  <html lang="tl" prefix="op: http://media.facebook.com/op#">
     <head>
       <meta charset="utf-8">
       <meta property="op:markup_version" content="v1.0">

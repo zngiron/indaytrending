@@ -13,7 +13,7 @@ import { ANALYTICS } from '../library/Config';
 export default class Root extends Document {
   render() {
     return (
-      <Html lang="en_PH">
+      <Html lang="tl">
         <Head />
         <body>
           <Main />
