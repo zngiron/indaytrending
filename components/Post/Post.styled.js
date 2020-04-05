@@ -67,3 +67,6 @@ export const Content = styled.div`
     line-height: 1.5;
   }
 `;
+
+export const Section = styled.section``;
+export const Subtitle = styled.h3``;
