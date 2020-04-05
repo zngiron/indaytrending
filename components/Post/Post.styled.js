@@ -18,25 +18,40 @@ export const Header = styled.div`
 
 export const Title = styled.h2``;
 
-export const Image = styled.img`
-  display: block;
-  width: 100%;
-  height: auto;
+export const Section = styled.div`
+  overflow: hidden;
+  position: relative;
+  padding-top: 52.34375%;
   margin-bottom: 1.25rem;
   border-radius: var(--border-radius);
+  background-image: var(--color-gradient);
+  transform: translateZ(0);
+  will-change: contents;
 `;
 
-export const Categories = styled.div`
-  display: flex;
-  align-items: center;
+export const Image = styled.img`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: darken;
 `;
 
-export const Social = styled.div``;
+export const Social = styled.div`
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+`;
+
+export const Facebook = styled.div``;
+
+export const Categories = styled.div``;
 
 export const Category = styled.a`
   display: inline-flex;
   padding: 0.5rem 1.25rem;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   background-color: var(--color-primary);
   font-size: 0.75rem;
   font-weight: 700;
@@ -67,6 +82,3 @@ export const Content = styled.div`
     line-height: 1.5;
   }
 `;
-
-export const Section = styled.section``;
-export const Subtitle = styled.h3``;

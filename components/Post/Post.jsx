@@ -37,29 +37,33 @@ const Post = ({ post }) => {
         <UI.Grid>
           <UI.Header>
             <UI.Title>{parse(title)}</UI.Title>
-            <UI.Image
-              src={image.featured}
-              title={parse(title)}
-              alt={parse(title)}
-              width={1280}
-              height={670}
-              draggable={false}
-              loading="eager"
-            />
+            <UI.Section>
+              <UI.Image
+                src={image.featured}
+                title={parse(title)}
+                alt={parse(title)}
+                width={1280}
+                height={670}
+                draggable={false}
+                loading="eager"
+              />
+              <UI.Social>
+                <UI.Facebook
+                  className="fb-like"
+                  data-href={`${DOMAIN}${asPath}`}
+                  data-layout="button_count"
+                  data-action="like"
+                  data-size="large"
+                  data-share="true"
+                />
+              </UI.Social>
+            </UI.Section>
             <UI.Categories>
               {categories.nodes.map((category) => (
                 <Link key={category.id} href="/[category]" as={`/${category.slug}`} passHref>
                   <UI.Category>{category.name}</UI.Category>
                 </Link>
               ))}
-              <UI.Social
-                className="fb-like"
-                data-href={`${DOMAIN}${asPath}`}
-                data-layout="button_count"
-                data-action="like"
-                data-size="large"
-                data-share="true"
-              />
             </UI.Categories>
           </UI.Header>
           <UI.Content>
