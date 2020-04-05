@@ -41,7 +41,7 @@ const Post = ({ post }) => {
             <Typography.Title>{parse(title)}</Typography.Title>
             <UI.Card>
               <UI.Image
-                src={image.featured}
+                src={image.medium}
                 title={parse(title)}
                 alt={parse(title)}
                 width={1280}

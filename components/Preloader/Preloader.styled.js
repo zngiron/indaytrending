@@ -5,6 +5,7 @@ export const Preloader = styled.div`
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  margin: 1.25rem;
 `;
 
 export const Text = styled.div`
