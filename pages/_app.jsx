@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ApolloProvider } from '@apollo/react-hooks';
 
-import { DOMAIN, ANALYTICS } from '../library/Config';
+import { ANALYTICS } from '../library/Config';
 import Apollo from '../library/Apollo';
 
 import Layout from '../components/Layout';
@@ -17,7 +17,7 @@ const App = ({ Component, pageProps, apollo }) => {
   }, []);
 
   useEffect(() => {
-    ReactGA.pageview(`${DOMAIN}${asPath}`);
+    ReactGA.pageview(asPath);
   }, [asPath]);
 
   return (
