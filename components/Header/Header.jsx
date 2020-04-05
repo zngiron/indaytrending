@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { useSpring } from 'react-spring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import Overlay from '../Overlay';
+
 import * as UI from './Header.styled';
 import categories from './Header.json';
-
-const Overlay = dynamic(import('../Overlay'));
 
 const Header = () => {
   const [menu, setMenu] = useState(false);

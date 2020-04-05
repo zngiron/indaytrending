@@ -1,11 +1,10 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_POSTS } from '../library/Queries.graphql';
 
-const Preloader = dynamic(import('../components/Preloader'));
-const Meta = dynamic(import('../components/Meta'));
-const Stories = dynamic(import('../components/Stories'));
+import Preloader from '../components/Preloader';
+import Meta from '../components/Meta';
+import Stories from '../components/Stories';
 
 const Home = () => {
   const category = 'stories';

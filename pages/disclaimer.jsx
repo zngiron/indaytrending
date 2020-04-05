@@ -1,13 +1,12 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/react-hooks';
 
 import { GET_PAGE } from '../library/Queries.graphql';
 
-const Preloader = dynamic(import('../components/Preloader'));
-const Meta = dynamic(import('../components/Meta'));
-const Page = dynamic(import('../components/Page'));
+import Preloader from '../components/Preloader';
+import Meta from '../components/Meta';
+import Page from '../components/Page';
 
 const Discalimer = () => {
   const page = 'disclaimer';

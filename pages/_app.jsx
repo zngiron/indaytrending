@@ -1,11 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import Apollo from '../library/Apollo';
 
-const Layout = dynamic(import('../components/Layout'));
+import Layout from '../components/Layout';
 
 const App = ({ Component, pageProps, apollo }) => (
   <>
