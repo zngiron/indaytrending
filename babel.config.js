@@ -6,7 +6,6 @@ module.exports = (api) => {
   ];
 
   const plugins = [
-    '@babel/syntax-dynamic-import',
     'emotion',
     'graphql-tag',
   ];
