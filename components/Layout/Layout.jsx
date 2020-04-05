@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
 import * as Layout from '../UI/Layout.styled';
+import * as Typography from '../UI/Typography.styled';
 
 const Header = dynamic(import('../Header'));
 const Footer = dynamic(import('../Footer'));
@@ -17,6 +18,7 @@ const Root = ({ children }) => {
       <Header />
       <Layout.Main>{children}</Layout.Main>
       <Layout.Container hidden={query.slug === undefined}>
+        <Typography.Sub>More Stories</Typography.Sub>
         <Taboola />
       </Layout.Container>
       <Footer />

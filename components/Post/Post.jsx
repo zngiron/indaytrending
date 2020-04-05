@@ -10,6 +10,7 @@ import { DOMAIN } from '../../library/Config';
 
 import * as UI from './Post.styled';
 import * as Layout from '../UI/Layout.styled';
+import * as Typography from '../UI/Typography.styled';
 
 const Adsense = dynamic(import('../Ads/Adsense'));
 const Sidebar = dynamic(import('../Sidebar'));
@@ -31,13 +32,14 @@ const Post = ({ post }) => {
   } = post;
 
   const { asPath } = useRouter();
+
   return (
     <UI.Post>
       <Layout.Container>
         <UI.Grid>
           <UI.Header>
-            <UI.Title>{parse(title)}</UI.Title>
-            <UI.Section>
+            <Typography.Title>{parse(title)}</Typography.Title>
+            <UI.Card>
               <UI.Image
                 src={image.featured}
                 title={parse(title)}
@@ -57,7 +59,7 @@ const Post = ({ post }) => {
                   data-share="true"
                 />
               </UI.Social>
-            </UI.Section>
+            </UI.Card>
             <UI.Categories>
               {categories.nodes.map((category) => (
                 <Link key={category.id} href="/[category]" as={`/${category.slug}`} passHref>

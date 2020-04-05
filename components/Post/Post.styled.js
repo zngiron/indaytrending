@@ -18,8 +18,8 @@ export const Header = styled.div`
 
 export const Title = styled.h2``;
 
-export const Section = styled.div`
-  overflow: hidden;
+export const Card = styled.div`
+  /* overflow: hidden; */
   position: relative;
   padding-top: 52.34375%;
   margin-bottom: 1.25rem;
@@ -34,6 +34,7 @@ export const Image = styled.img`
   top: 0;
   width: 100%;
   height: 100%;
+  border-radius: var(--border-radius);
   object-fit: cover;
   mix-blend-mode: darken;
 `;

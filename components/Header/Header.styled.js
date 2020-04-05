@@ -24,6 +24,7 @@ export const Image = styled.img`
 
 export const Title = styled.h1`
   font-size: 0.875rem;
+  color: var(--color-primary);
   white-space: nowrap;
 `;
 

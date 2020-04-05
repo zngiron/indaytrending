@@ -9,5 +9,3 @@ export const Section = styled.section`
   top: calc(var(--header-height) + 1.25rem);
   background-color: var(--color-white);
 `;
-
-export const Title = styled.h3``;

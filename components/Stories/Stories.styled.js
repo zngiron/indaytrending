@@ -18,11 +18,3 @@ export const Grid = styled.div`
 export const Header = styled.header`
   margin-bottom: 2.5rem;
 `;
-
-export const Title = styled.h2`
-  margin-bottom: 0;
-  font-size: 2em;
-  color: var(--color-primary); 
-`;
-
-export const Description = styled.p``;

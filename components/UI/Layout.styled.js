@@ -57,14 +57,6 @@ export const Styles = css`
     color: var(--color-gray);
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--color-primary);
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
   a {
     color: inherit;
     text-decoration: none;
