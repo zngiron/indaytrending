@@ -12,6 +12,7 @@ import * as UI from './Post.styled';
 import * as Layout from '../UI/Layout.styled';
 
 const Adsense = dynamic(import('../Ads/Adsense'));
+const Taboola = dynamic(import('../Ads/Taboola'));
 const Sidebar = dynamic(import('../Sidebar'));
 
 const Ads = (item, key) => (
@@ -67,6 +68,10 @@ const Post = ({ post }) => {
           </UI.Content>
           <Sidebar />
         </UI.Grid>
+        <UI.Section>
+          <UI.Subtitle>More Stories</UI.Subtitle>
+          <Taboola />
+        </UI.Section>
       </Layout.Container>
     </UI.Post>
   );
