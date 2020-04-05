@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Post = styled.article``;
+export const Post = styled.div``;
 
 export const Grid = styled.div`
   @media (min-width: 48rem) {
@@ -10,7 +10,7 @@ export const Grid = styled.div`
   }
 `;
 
-export const Header = styled.header`
+export const Header = styled.div`
   @media (min-width: 48rem) {
     grid-column: span 2;
   }
@@ -27,13 +27,16 @@ export const Image = styled.img`
 `;
 
 export const Categories = styled.div`
-  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
 `;
+
+export const Social = styled.div``;
 
 export const Category = styled.a`
   display: inline-flex;
   padding: 0.5rem 1.25rem;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   background-color: var(--color-primary);
   font-size: 0.75rem;
   font-weight: 700;
@@ -47,7 +50,7 @@ export const Category = styled.a`
   }
 
   &:not(:last-child) {
-    margin-right: 0.5rem;
+    margin-right: 0.25rem;
   }
 `;
 

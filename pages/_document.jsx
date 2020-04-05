@@ -19,7 +19,7 @@ export default class Root extends Document {
           <div id="fb-root" />
           <Main />
           <NextScript />
-          <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=1201824889948708&autoLogAppEvents=1" />
+          <script async src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v6.0&amp;appId=1201824889948708&amp;autoLogAppEvents=1" />
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS}`} />
           <script dangerouslySetInnerHTML={{

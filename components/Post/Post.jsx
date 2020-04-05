@@ -17,7 +17,7 @@ const Sidebar = dynamic(import('../Sidebar'));
 const Ads = (item, key) => (
   <React.Fragment key={key}>
     {parse(item)}
-    {(key === 4) && <Adsense slot="6234342116" />}
+    {(key === 2) && <Adsense slot="6234342116" />}
     {(key % 8 === 0 && key !== 0) && <Adsense slot="3640794162" format="fluid" layout="in-article" />}
   </React.Fragment>
 );
@@ -52,15 +52,15 @@ const Post = ({ post }) => {
                   <UI.Category>{category.name}</UI.Category>
                 </Link>
               ))}
+              <UI.Social
+                className="fb-like"
+                data-href={`${DOMAIN}${asPath}`}
+                data-layout="button_count"
+                data-action="like"
+                data-size="large"
+                data-share="true"
+              />
             </UI.Categories>
-            <div
-              className="fb-like"
-              data-href={`${DOMAIN}${asPath}`}
-              data-layout="button_count"
-              data-action="like"
-              data-size="large"
-              data-share="true"
-            />
           </UI.Header>
           <UI.Content>{clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}</UI.Content>
           <Sidebar />
