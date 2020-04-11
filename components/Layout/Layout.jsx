@@ -1,12 +1,13 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-
-import Header from '../Header';
-import Footer from '../Footer';
-import Taboola from '../Ads/Taboola';
 
 import * as Layout from '../UI/Layout.styled';
 import * as Typography from '../UI/Typography.styled';
+
+const Header = dynamic(import('../Header'));
+const Footer = dynamic(import('../Footer'));
+const Taboola = dynamic(import('../Ads/Taboola'));
 
 const Root = ({ children }) => {
   const { query } = useRouter();

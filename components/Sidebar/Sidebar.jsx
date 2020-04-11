@@ -1,9 +1,10 @@
 import React from 'react';
-
-import Adsense from '../Ads/Adsense';
+import dynamic from 'next/dynamic';
 
 import * as UI from './Sidebar.styled';
 import * as Typography from '../UI/Typography.styled';
+
+const Adsense = dynamic(import('../Ads/Adsense'));
 
 const Sidebar = () => (
   <UI.Sidebar>

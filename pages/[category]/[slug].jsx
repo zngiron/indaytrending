@@ -1,14 +1,15 @@
 import React from 'react';
 import Error from 'next/error';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/react-hooks';
 import parse from 'html-react-parser';
 
 import { GET_POST } from '../../library/Queries.graphql';
 
-import Preloader from '../../components/Preloader';
-import Meta from '../../components/Meta';
-import Post from '../../components/Post';
+const Preloader = dynamic(import('../../components/Preloader'));
+const Meta = dynamic(import('../../components/Meta'));
+const Post = dynamic(import('../../components/Post'));
 
 const Story = () => {
   const { asPath, query } = useRouter();

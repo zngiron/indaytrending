@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import ReactGA from 'react-ga';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import { ANALYTICS } from '../library/Config';
 import Apollo from '../library/Apollo';
 
-import Layout from '../components/Layout';
+const Layout = dynamic(import('../components/Layout'));
 
 const App = ({ Component, pageProps, apollo }) => {
   const { asPath } = useRouter();

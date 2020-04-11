@@ -2,17 +2,18 @@ import parse from 'html-react-parser';
 
 import React from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-import { DOMAIN } from '../../library/Config';
 import { clean } from '../../library/Functions';
-
-import Adsense from '../Ads/Adsense';
-import Sidebar from '../Sidebar';
+import { DOMAIN } from '../../library/Config';
 
 import * as UI from './Post.styled';
 import * as Layout from '../UI/Layout.styled';
 import * as Typography from '../UI/Typography.styled';
+
+const Adsense = dynamic(import('../Ads/Adsense'));
+const Sidebar = dynamic(import('../Sidebar'));
 
 const Ads = (item, key) => (
   <React.Fragment key={key}>
