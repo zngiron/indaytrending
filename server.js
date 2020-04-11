@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 
 const Express = require('express');
+const Helmet = require('helmet');
 const Next = require('next');
 const LRUCache = require('lru-cache');
 
@@ -41,12 +42,15 @@ const handleCache = async (req, res) => {
 
 app.prepare().then(() => {
   const server = Express();
-  server.use(Express.static('public'));
 
-  server.get('/wp-content/*', (req, res) => {
-    res.status(410);
-    res.end();
-  });
+  server.use(Helmet());
+  server.use(Helmet({
+    referrerPolicy: {
+      policy: ['strict-origin'],
+    },
+  }));
+
+  server.use(Express.static('public'));
 
   server.get('/api/*', (req, res) => handle(req, res));
   server.get('/_next/*', (req, res) => handle(req, res));
