@@ -42,7 +42,7 @@ const Footer = () => (
           href="https://www.dmca.com/Protection/Status.aspx?ID=1adf6641-7822-45f6-ac1d-d61d20847bbc"
           className="dmca-badge"
           title="DMCA.com Protection Status"
-          rel="noopener noreferrer"
+          rel="noopener"
           target="__blank"
         >
           <img src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-02.png?ID=1adf6641-7822-45f6-ac1d-d61d20847bbc" alt="DMCA.com Protection Status" />
