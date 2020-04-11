@@ -30,7 +30,7 @@ export const Nav = styled.nav`
 
 export const Item = styled.a`
   display: inline-block;
-  padding: 0.75rem;
+  padding: 0.5rem;
 
   &:hover,
   &:active,
@@ -41,6 +41,7 @@ export const Item = styled.a`
 
 export const Divider = styled.span`
   &:after {
+    margin: 0.25rem;
     content: ' | ';
   }
 `;

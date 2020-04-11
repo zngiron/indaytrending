@@ -38,7 +38,15 @@ const Footer = () => (
           <UI.Item>Privacy Policy</UI.Item>
         </Link>
         <UI.Divider />
-        <UI.Item href="https://www.dmca.com" rel="noopener noreferrer" target="__blank">DMCA Policy</UI.Item>
+        <UI.Item
+          href="https://www.dmca.com/Protection/Status.aspx?ID=1adf6641-7822-45f6-ac1d-d61d20847bbc"
+          className="dmca-badge"
+          title="DMCA.com Protection Status"
+          rel="noopener noreferrer"
+          target="__blank"
+        >
+          <img src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-02.png?ID=1adf6641-7822-45f6-ac1d-d61d20847bbc" alt="DMCA.com Protection Status" />
+        </UI.Item>
       </UI.Nav>
       <UI.Copyright>&copy;2020 Likha Adhika Media</UI.Copyright>
     </Layout.Container>
