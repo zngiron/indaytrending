@@ -66,6 +66,10 @@ export const Styles = css`
     }
   }
 
+  h1, h2, h3 {
+    color: var(--color-primary);
+  }
+
   #__next {
     display: flex;
     flex-direction: column;

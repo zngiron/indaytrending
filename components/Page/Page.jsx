@@ -5,6 +5,7 @@ import { clean } from '../../library/Functions';
 
 import * as UI from './Page.styled';
 import * as Layout from '../UI/Layout.styled';
+import * as Typography from '../UI/Typography.styled';
 
 const Page = ({ page }) => {
   const { title, content } = page;
@@ -12,7 +13,7 @@ const Page = ({ page }) => {
   return (
     <UI.Page>
       <Layout.Container>
-        <UI.Title>{parse(title)}</UI.Title>
+        <Typography.Title>{parse(title)}</Typography.Title>
         <UI.Content>{parse(clean(content))}</UI.Content>
       </Layout.Container>
     </UI.Page>
