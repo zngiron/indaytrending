@@ -2,7 +2,12 @@
 
 import { oneLineTrim } from 'common-tags';
 
-import { DOMAIN, BANNER, RECIRCULATION } from '../../library/Config';
+import {
+  DOMAIN,
+  BANNER,
+  RECIRCULATION,
+  ANALYTICS,
+} from '../../library/Config';
 import { clean, date } from '../../library/Functions';
 import { createApolloClient } from '../../library/Apollo';
 
@@ -41,7 +46,7 @@ const Story = ({ post }) => oneLineTrim`
         ${clean(post.content)}
         <figure class="op-tracker">
           <iframe>
-            <script src="https://www.googletagmanager.com/gtag/js?id=UA-67525380-3"></script>
+            <script src="https://www.googletagmanager.com/gtag/js?id=${ANALYTICS}"></script>
             <script src="${DOMAIN}/analytics.js"></script>
           </iframe>
         </figure>
