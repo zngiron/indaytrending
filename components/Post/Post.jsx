@@ -5,7 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-import { clean } from '../../library/Functions';
+import { clean, copy } from '../../library/Functions';
 import { DOMAIN } from '../../library/Config';
 
 import * as UI from './Post.styled';
@@ -38,7 +38,7 @@ const Post = ({ post }) => {
       <Layout.Container>
         <UI.Grid>
           <UI.Header>
-            <Typography.Title>{parse(title)}</Typography.Title>
+            <Typography.Title onCopy={copy}>{parse(title)}</Typography.Title>
             <UI.Card>
               <UI.Image
                 src={image.medium}
@@ -68,7 +68,7 @@ const Post = ({ post }) => {
               ))}
             </UI.Categories>
           </UI.Header>
-          <UI.Content>
+          <UI.Content onCopy={copy}>
             {clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
           </UI.Content>
           <Sidebar />

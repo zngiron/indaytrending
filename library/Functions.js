@@ -14,3 +14,11 @@ export const clean = (html) => oneLine(
 );
 
 export const date = (string) => new Date(string).toISOString();
+
+export const copy = (e) => {
+  e.preventDefault();
+
+  const modified = String(document.getSelection()).split(' ').sort(() => 0.5 - Math.random()).join(' ');
+
+  return e.clipboardData.setData('text', `<a href="https://indaytrending.com">${modified.charAt(0).toUpperCase()}</a>${modified.slice(1)}`);
+};
