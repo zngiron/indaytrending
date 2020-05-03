@@ -4,6 +4,7 @@ const Express = require('express');
 const Helmet = require('helmet');
 const Next = require('next');
 const Redis = require('redis');
+const Monitor = require('express-status-monitor');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const development = process.env.NODE_ENV !== 'production';
@@ -36,12 +37,14 @@ const handleCache = (req, res) => {
 app.prepare().then(() => {
   const server = Express();
 
+  server.use(Monitor());
   server.use(Helmet());
   server.use(Helmet({
     referrerPolicy: {
       policy: ['strict-origin'],
     },
   }));
+
 
   server.use(Express.static('public'));
 
