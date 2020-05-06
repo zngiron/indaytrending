@@ -34,6 +34,17 @@ const handleCache = (req, res) => {
   });
 };
 
+const Slash = (req, res, next) => {
+  const { url } = req;
+
+  if (url.substr(-1) === '/' && url.length > 1) {
+    res.status(301);
+    res.redirect(url.slice(0, -1));
+  }
+
+  next();
+};
+
 app.prepare().then(() => {
   const server = Express();
 
@@ -45,7 +56,7 @@ app.prepare().then(() => {
     },
   }));
 
-
+  server.use(Slash);
   server.use(Express.static('public'));
 
   server.get('/api/*', (req, res) => handle(req, res));
