@@ -9,3 +9,11 @@ export const Section = styled.section`
   top: calc(var(--header-height) + 1.25rem);
   background-color: var(--color-white);
 `;
+
+export const Social = styled.div`
+  display: flex;
+`;
+
+export const Facebook = styled.div`
+  margin: 0 auto;
+`;
