@@ -52,6 +52,7 @@ export const Categories = styled.div``;
 export const Category = styled.a`
   display: inline-flex;
   padding: 0.5rem 1.25rem;
+  margin: 0.25rem 0;
   border-radius: var(--border-radius);
   background-color: var(--color-primary);
   font-size: 0.75rem;
@@ -82,4 +83,12 @@ export const Content = styled.div`
     font-size: 0.875rem;
     line-height: 1.5;
   }
+`;
+
+export const Flex = styled.div`
+  display: flex;
+`;
+
+export const FacebookPage = styled.div`
+  margin: 1.25rem auto;
 `;

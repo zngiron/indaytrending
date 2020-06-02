@@ -69,6 +69,15 @@ const Post = ({ post }) => {
             </UI.Categories>
           </UI.Header>
           <UI.Content onCopy={copy}>
+            <UI.Flex>
+              <UI.FacebookPage
+                className="fb-page"
+                data-href="https://www.facebook.com/indaytrending/"
+                data-tabs=""
+                data-show-facepile={false}
+                data-hide-cta
+              />
+            </UI.Flex>
             {clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
           </UI.Content>
           <Sidebar />
