@@ -19,6 +19,17 @@ const Ads = (item, key) => (
   <React.Fragment key={key}>
     {parse(item)}
     {(key === 2) && <Adsense slot="6234342116" />}
+    {(key === 6 && (
+      <UI.Flex>
+        <UI.FacebookPage
+          className="fb-page"
+          data-href="https://www.facebook.com/indaytrending/"
+          data-tabs=""
+          data-show-facepile={false}
+          data-hide-cta
+        />
+      </UI.Flex>
+    ))}
     {(key % 8 === 0 && key !== 0) && <Adsense slot="3640794162" format="fluid" layout="in-article" />}
   </React.Fragment>
 );
@@ -69,15 +80,6 @@ const Post = ({ post }) => {
             </UI.Categories>
           </UI.Header>
           <UI.Content onCopy={copy}>
-            <UI.Flex>
-              <UI.FacebookPage
-                className="fb-page"
-                data-href="https://www.facebook.com/indaytrending/"
-                data-tabs=""
-                data-show-facepile={false}
-                data-hide-cta
-              />
-            </UI.Flex>
             {clean(content).match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
           </UI.Content>
           <Sidebar />
