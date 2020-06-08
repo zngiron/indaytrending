@@ -36,10 +36,7 @@ const Story = ({ post }) => oneLineTrim`
           </address>
           <h3 class="op-kicker">Stories</h3>
           <figure class="op-ad">
-            <iframe
-              src="https://www.facebook.com/adnw_request?placement=${BANNER}&adtype=banner300x250"
-              width="300"
-              height="250">
+            <iframe src="https://www.facebook.com/adnw_request?placement=${BANNER}&adtype=banner300x250" width="300" height="250">
             </iframe>
           </figure>
         </header>
