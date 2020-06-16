@@ -23,7 +23,7 @@ const Meta = ({
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${DOMAIN}/api/image?url=${image}`} />
-    <meta property="og:image:secure_url" content={`${DOMAIN}/api/image/?url${image}`} />
+    <meta property="og:image:secure_url" content={`${DOMAIN}/api/image/?url=${image}`} />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="670" />
     <meta property="og:image:alt" content={title} />
@@ -41,11 +41,8 @@ const Meta = ({
     )}
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@indaytrending" />
     <meta name="twitter:creator" content="@indaytrending" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${DOMAIN}/api/image/?url${image}`} />
-    <meta name="twitter:image:alt" content={title} />
 
     {(type === 'article' && slug && category !== 'stories') && (
       <link rel="canonical" href={`${DOMAIN}/stories/${slug}`} />
