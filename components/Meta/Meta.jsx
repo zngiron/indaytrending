@@ -23,7 +23,6 @@ const Meta = ({
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${DOMAIN}/api/image?url=${image}`} />
-    <meta property="og:image:secure_url" content={`${DOMAIN}/api/image/?url=${image}`} />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="670" />
     <meta property="og:image:alt" content={title} />
