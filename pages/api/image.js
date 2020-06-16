@@ -2,7 +2,7 @@
 
 import { createCanvas, loadImage } from 'canvas';
 
-import { DOMAIN } from '../../library/Config';
+const { DOMAIN } = process.env;
 
 export default async (req, res) => {
   const { query: { url } } = req;

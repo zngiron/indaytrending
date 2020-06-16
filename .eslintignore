@@ -1,6 +1,3 @@
 node_modules
 .next
-.now
-service-worker.js
-analytics.js
-taboola.js
+.vercel

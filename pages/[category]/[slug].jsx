@@ -1,48 +1,69 @@
 import React from 'react';
 import Error from 'next/error';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/react-hooks';
+import dynamic from 'next/dynamic';
+import { NextSeo } from 'next-seo';
 import parse from 'html-react-parser';
 
-import { GET_POST } from '../../library/Queries.graphql';
-
 const Preloader = dynamic(import('../../components/Preloader'));
-const Meta = dynamic(import('../../components/Meta'));
 const Post = dynamic(import('../../components/Post'));
 
-const Story = () => {
-  const { asPath, query } = useRouter();
-  const { category, slug } = query;
+const Page = ({ post }) => {
+  const { isFallback } = useRouter();
 
-  const { loading, error, data } = useQuery(GET_POST, {
-    variables: {
-      slug,
-    },
-  });
-
-  if (loading || error) return <Preloader loading={loading} error={error} />;
-
-  if (data.post === null) return <Error statusCode={404} />;
-
-  const description = data.post.content.match(/<p>(.*?)<\/p>/)[1];
+  if (!isFallback && !post?.slug) return <Error statusCode={404} />;
+  if (isFallback) return <Preloader />;
 
   return (
     <>
-      <Meta
-        type="article"
-        url={asPath}
-        category={category}
-        slug={slug}
-        title={parse(data.post.title)}
-        description={parse(description)}
-        image={data.post.image.featured || undefined}
-        published={data.post.published}
-        modified={data.post.modified}
+      <NextSeo
+        title={parse(post?.title)}
+        description={parse(post.content.match(/<p>(.*?)<\/p>/)[1])}
+        openGraph={{
+          title: parse(post?.title),
+          description: parse(post.content.match(/<p>(.*?)<\/p>/)[1]),
+          url: `${process.env.DOMAIN}/stories/${post?.slug}`,
+          type: 'article',
+          article: {
+            publishedTime: post?.published,
+            modifiedTime: post?.modified,
+          },
+          authors: [
+            'https://www.facebook.com/indaytrending',
+          ],
+          images: [
+            {
+              url: post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : undefined,
+              alt: post?.title,
+            },
+          ],
+        }}
       />
-      <Post post={data.post} />
+      <Post post={post} />
     </>
   );
 };
 
-export default Story;
+export const getStaticProps = async ({ params }) => {
+  const { getPost } = await import('../../library/api');
+  const data = await getPost(params.slug);
+
+  return {
+    props: {
+      post: data?.post,
+    },
+  };
+};
+
+export const getStaticPaths = async () => {
+  const { getPosts } = await import('../../library/api');
+  const data = await getPosts();
+  const paths = data?.edges?.map(({ node }) => `/stories/${node.slug}`) || [];
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export default Page;

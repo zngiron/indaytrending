@@ -2,6 +2,11 @@
 /* eslint-disable no-undef */
 
 import React, { useEffect } from 'react';
+import styled from '@emotion/styled';
+
+const Root = styled.div`
+  margin: 0;
+`;
 
 const Taboola = () => {
   useEffect(() => {
@@ -19,7 +24,7 @@ const Taboola = () => {
   }, []);
 
   return (
-    <div id="taboola-below-article-thumbnails" style={{ margin: 0 }} />
+    <Root id="taboola-below-article-thumbnails" />
   );
 };
 

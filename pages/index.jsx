@@ -1,34 +1,25 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_POSTS } from '../library/Queries.graphql';
 
-const Preloader = dynamic(import('../components/Preloader'));
-const Meta = dynamic(import('../components/Meta'));
 const Stories = dynamic(import('../components/Stories'));
 
-const Home = () => {
-  const category = 'stories';
+const Page = ({ posts, category }) => (
+  <>
+    <Stories posts={posts} category={category} />
+  </>
+);
 
-  const { loading, error, data } = useQuery(GET_POSTS, {
-    variables: {
-      first: 12,
-      category,
-      categoryName: category,
+export const getStaticProps = async () => {
+  const { getStories } = await import('../library/api');
+  const data = await getStories('stories');
+
+  return {
+    props: {
+      posts: data.posts,
+      category: data.category,
     },
-  });
-
-  if (loading || error) return <Preloader loading={loading} error={error} />;
-
-  return (
-    <>
-      <Meta
-        title="Inday Trending - Pinoy Short Stories"
-        description="Manunulat ng maiikling akda na sumasalamin sa pang-araw-araw na buhay, suliranin at karanasan ng isang Pilipino."
-      />
-      <Stories posts={data.posts} category={data.category} />
-    </>
-  );
+    unstable_revalidate: 1,
+  };
 };
 
-export default Home;
+export default Page;

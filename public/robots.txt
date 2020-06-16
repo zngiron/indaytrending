@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: /wp-content
-Disallow: /page
-Disallow: /tag
+Disallow: 
 
 Sitemap: https://indaytrending.com/sitemap.xml

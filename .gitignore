@@ -1,5 +1,4 @@
-public/service-worker.js
 node_modules
-.next
-.now
 .DS_Store
+.next
+.vercel

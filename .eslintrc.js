@@ -20,10 +20,10 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: [
+    'react',
+  ],
   rules: {
-    'jsx-a11y/anchor-is-valid': [0],
-    'react/jsx-props-no-spreading': [0],
     'react/prop-types': [0],
   },
 };

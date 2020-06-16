@@ -1,41 +1,56 @@
 import React from 'react';
 import Error from 'next/error';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/react-hooks';
-
-import { GET_POSTS } from '../../library/Queries.graphql';
+import dynamic from 'next/dynamic';
+import { NextSeo } from 'next-seo';
 
 const Preloader = dynamic(import('../../components/Preloader'));
-const Meta = dynamic(import('../../components/Meta'));
 const Stories = dynamic(import('../../components/Stories'));
 
-const Category = () => {
-  const { asPath, query } = useRouter();
-  const { category } = query;
+const Page = ({ posts, category }) => {
+  const { isFallback } = useRouter();
 
-  const { loading, error, data } = useQuery(GET_POSTS, {
-    variables: {
-      first: 12,
-      category,
-      categoryName: category,
-    },
-  });
-
-  if (loading || error) return <Preloader loading={loading} error={error} />;
-
-  if (data.category === null) return <Error statusCode={404} />;
+  if (!isFallback && !category?.slug) return <Error statusCode={404} />;
+  if (isFallback) return <Preloader />;
 
   return (
     <>
-      <Meta
-        url={asPath}
-        title={`${data.category.name} | Inday Trending - Pinoy Short Stories`}
-        description={data.category.description}
+      <NextSeo
+        title={category.name ? `${category.name} | Inday Trending - Pinoy Short Stories` : undefined}
+        description={category?.description}
+        openGraph={{
+          title: category.name ? `${category.name} | Inday Trending - Pinoy Short Stories` : undefined,
+          description: category?.description,
+          url: `${process.env.DOMAIN}/${category.slug}`,
+        }}
       />
-      <Stories posts={data.posts} category={data.category} />
+      <Stories posts={posts} category={category} />
     </>
   );
 };
 
-export default Category;
+export const getStaticProps = async ({ params }) => {
+  const { getStories } = await import('../../library/api');
+  const data = await getStories(params?.category);
+
+  return {
+    props: {
+      posts: data.posts,
+      category: data.category,
+    },
+    unstable_revalidate: 1,
+  };
+};
+
+export const getStaticPaths = async () => {
+  const { getCategories } = await import('../../library/api');
+  const data = await getCategories();
+  const paths = data?.edges?.map(({ node }) => `/${node.slug}`) || [];
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export default Page;

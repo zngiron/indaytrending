@@ -1,35 +1,34 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/react-hooks';
+import { NextSeo } from 'next-seo';
 
-import { GET_PAGE } from '../library/Queries.graphql';
+const Content = dynamic(import('../components/Content'));
 
-const Preloader = dynamic(import('../components/Preloader'));
-const Meta = dynamic(import('../components/Meta'));
-const Page = dynamic(import('../components/Page'));
+const Page = ({ page }) => (
+  <>
+    <NextSeo
+      title={page.title ? `${page.title} | Inday Trending - Pinoy Short Stories` : undefined}
+      openGraph={{
+        title: page.title ? `${page.title} | Inday Trending - Pinoy Short Stories` : undefined,
+        url: `${process.env.DOMAIN}/disclaimer`,
+      }}
+    />
+    <Content
+      title={page.title}
+      description={page.content}
+    />
+  </>
+);
 
-const Discalimer = () => {
-  const page = 'disclaimer';
+export const getStaticProps = async () => {
+  const { getPage } = await import('../library/api');
+  const data = await getPage('privacy');
 
-  const { asPath } = useRouter();
-  const { loading, error, data } = useQuery(GET_PAGE, {
-    variables: {
-      page,
+  return {
+    props: {
+      page: data.page,
     },
-  });
-
-  if (loading || error) return <Preloader loading={loading} error={error} />;
-
-  return (
-    <>
-      <Meta
-        title={`${data.page.title} | Inday Trending - Pinoy Short Stories`}
-        url={asPath}
-      />
-      <Page page={data.page} />
-    </>
-  );
+  };
 };
 
-export default Discalimer;
+export default Page;
