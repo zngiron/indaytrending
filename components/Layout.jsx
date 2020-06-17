@@ -6,6 +6,7 @@ import Global from './Global';
 
 const Header = dynamic(import('./Header'));
 const Footer = dynamic(import('./Footer'));
+const Taboola = dynamic(import('./Taboola'));
 
 const Facebook = styled.div``;
 const Main = styled.main`
@@ -18,6 +19,7 @@ const Root = ({ children }) => (
     <Global />
     <Header />
     <Main>{children}</Main>
+    <Taboola />
     <Footer />
   </>
 );

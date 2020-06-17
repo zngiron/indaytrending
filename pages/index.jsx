@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
       posts: data.posts,
       category: data.category,
     },
-    unstable_revalidate: 1,
+    unstable_revalidate: 3600,
   };
 };
 

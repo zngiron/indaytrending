@@ -2,13 +2,22 @@
 /* eslint-disable no-undef */
 
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 
-const Root = styled.div`
+import * as Global from './Global';
+
+const Root = styled.div``;
+const Container = styled(Global.Container)``;
+const Title = styled.h2``;
+
+const Ad = styled.div`
   margin: 0;
 `;
 
 const Taboola = () => {
+  const { query } = useRouter();
+
   useEffect(() => {
     window._taboola = window._taboola || [];
 
@@ -24,7 +33,12 @@ const Taboola = () => {
   }, []);
 
   return (
-    <Root id="taboola-below-article-thumbnails" />
+    <Root hidden={query.slug === undefined}>
+      <Container>
+        <Title>More Stories</Title>
+        <Ad id="taboola-below-article-thumbnails" />
+      </Container>
+    </Root>
   );
 };
 

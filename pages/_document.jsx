@@ -8,9 +8,9 @@ import Document, {
   NextScript,
 } from 'next/document';
 
-// import { oneLineTrim } from 'common-tags';
+import { oneLineTrim } from 'common-tags';
 
-// const production = process.env.NODE_ENV !== 'development';
+const production = process.env.NODE_ENV !== 'development';
 
 export default class Root extends Document {
   render() {
@@ -20,9 +20,17 @@ export default class Root extends Document {
         <body>
           <Main />
           <NextScript />
-          {/* {production && (
+          {production && (
             <>
               <script async src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v6.0&amp;appId=1201824889948708&amp;autoLogAppEvents=1" />
+              <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67525380-3" />
+              <script dangerouslySetInnerHTML={{
+                __html: oneLineTrim`window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date()); 
+                gtag('config', 'UA-67525380-3');`,
+              }}
+              />
               <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
               <script async src="https://cdn.taboola.com/libtrc/indaytradingsc/loader.js" id="tb_loader_script" />
               <script dangerouslySetInnerHTML={{
@@ -33,7 +41,7 @@ export default class Root extends Document {
                 <img src="https://certify.alexametrics.com/atrk.gif?account=4FMtu1Y1Mn20Io" height="1" width="1" alt="" style={{ display: 'none' }} />
               </noscript>
             </>
-          )} */}
+          )}
         </body>
       </Html>
     );
