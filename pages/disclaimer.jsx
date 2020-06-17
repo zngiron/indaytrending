@@ -22,7 +22,7 @@ const Page = ({ page }) => (
 
 export const getStaticProps = async () => {
   const { getPage } = await import('../library/api');
-  const data = await getPage('privacy');
+  const data = await getPage('disclaimer');
 
   return {
     props: {
