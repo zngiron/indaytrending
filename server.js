@@ -31,7 +31,7 @@ app.prepare().then(() => {
   }));
 
   server.use(Express.static('public'));
-  server.usse(Slash);
+  server.use(Slash);
 
   server.get('*', (req, res) => handle(req, res));
 
