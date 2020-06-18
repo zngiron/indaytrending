@@ -18,6 +18,7 @@ export default class Root extends Document {
       <Html lang="tl">
         <Head />
         <body>
+          <div id="fb-root" />
           <Main />
           <NextScript />
           {production && (

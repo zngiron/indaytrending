@@ -92,6 +92,7 @@ export const Styles = css`
     overflow-x: hidden;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    touch-action: pan-y;
   }
 
   body {
@@ -121,8 +122,8 @@ export const Styles = css`
   }
 
   #__next {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     min-height: 100vh;
   }
 `;

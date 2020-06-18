@@ -8,18 +8,20 @@ const Header = dynamic(import('./Header'));
 const Footer = dynamic(import('./Footer'));
 const Taboola = dynamic(import('./Taboola'));
 
-const Facebook = styled.div``;
 const Main = styled.main`
+  position: relative;
+  min-height: 100%;
   margin-bottom: auto;
 `;
 
 const Root = ({ children }) => (
   <>
-    <Facebook id="fb-root" />
     <Global />
     <Header />
-    <Main>{children}</Main>
-    <Taboola />
+    <Main>
+      {children}
+      <Taboola />
+    </Main>
     <Footer />
   </>
 );

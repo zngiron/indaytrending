@@ -12,7 +12,7 @@ const Container = styled(Global.Container)``;
 const Title = styled.h2``;
 
 const Ad = styled.div`
-  margin: 0;
+  margin: 0 -0.75rem;
 `;
 
 const Taboola = () => {

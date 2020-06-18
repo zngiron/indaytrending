@@ -196,6 +196,7 @@ const Header = () => {
             width={40}
             height={40}
             draggable={false}
+            loading="eager"
           />
           <Title>Inday Trending</Title>
         </Logo>

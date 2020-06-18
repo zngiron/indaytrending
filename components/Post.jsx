@@ -13,7 +13,7 @@ const Sidebar = dynamic(import('./Sidebar'));
 const Root = styled.div``;
 
 const Container = styled(Global.Container)`
- @media (min-width: ${Global.Breakpoint.lg}) {
+  @media (min-width: ${Global.Breakpoint.lg}) {
     display: grid;
     grid-template-columns: minmax(auto, 1fr) 18.75rem;  
     grid-gap: 1.25rem;
@@ -26,11 +26,13 @@ const Header = styled.div`
   }
 `;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+  font-size: 1.25rem;
+`;
 
 const Card = styled.div`
   position: relative;
-  height: 40vh;
+  height: 30vh;
   margin-bottom: 1.25rem;
   background-image: var(--color-gradient);
   transform: translateZ(0);
@@ -91,10 +93,6 @@ const Content = styled.div`
   }
 `;
 
-const Flex = styled.div`
-  display: flex;
-`;
-
 const FacebookPage = styled.div`
   margin: 1.25rem auto;
 `;
@@ -104,15 +102,13 @@ const Ads = (item, key) => (
     {parse(clean(item))}
     {(key === 2) && <Adsense slot="6234342116" />}
     {(key === 6 && (
-      <Flex>
-        <FacebookPage
-          className="fb-page"
-          data-href="https://www.facebook.com/indaytrending/"
-          data-tabs=""
-          data-show-facepile={false}
-          data-hide-cta
-        />
-      </Flex>
+    <FacebookPage
+      className="fb-page"
+      data-href="https://www.facebook.com/indaytrending/"
+      data-tabs=""
+      data-show-facepile={false}
+      data-hide-cta
+    />
     ))}
     {(key % 8 === 0 && key !== 0) && <Adsense slot="3640794162" format="fluid" layout="in-article" />}
   </React.Fragment>
@@ -128,7 +124,7 @@ const Post = ({ post }) => (
         width={1280}
         height={670}
         draggable={false}
-        loading="eager"
+        loading="lazy"
       />
       <Social>
         <Facebook
