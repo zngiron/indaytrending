@@ -18,10 +18,8 @@ const Root = ({ children }) => (
   <>
     <Global />
     <Header />
-    <Main>
-      {children}
-      <Taboola />
-    </Main>
+    <Main>{children}</Main>
+    <Taboola />
     <Footer />
   </>
 );

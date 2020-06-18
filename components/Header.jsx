@@ -9,7 +9,7 @@ import categories from '../data/menu.json';
 
 const Root = styled.header`
   position: sticky;
-  z-index: 100;
+  z-index: 1000;
   top: 0;
   display: flex;
   justify-content: center;
