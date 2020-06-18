@@ -30,7 +30,7 @@ export default async (req, res) => {
     context.fillStyle = gradient;
     context.fillRect(0, 0, width, height);
 
-    const overlay = await loadImage(`${DOMAIN}/indaytrending-overlay.png`);
+    const overlay = await loadImage(`${DOMAIN}/static/indaytrending-overlay.png`);
 
     context.drawImage(overlay, 0, 530, 1280, 140);
 

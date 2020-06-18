@@ -2,7 +2,7 @@ import React from 'react';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import { NextSeo } from 'next-seo';
+import { NextSeo, ArticleJsonLd } from 'next-seo';
 import parse from 'html-react-parser';
 
 const Preloader = dynamic(import('../../components/Preloader'));
@@ -38,6 +38,17 @@ const Page = ({ post }) => {
             },
           ],
         }}
+      />
+      <ArticleJsonLd
+        ur={`${process.env.DOMAIN}/stories/${post?.slug}`}
+        title={parse(post?.title)}
+        description={parse(post.content.match(/<p>(.*?)<\/p>/)[1])}
+        images={[
+          post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : undefined,
+        ]}
+        datePublished={post?.published}
+        dateModified={post?.modified}
+        authorName="Inday Trending"
       />
       <Post post={post} />
     </>

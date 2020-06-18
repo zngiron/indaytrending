@@ -3,7 +3,7 @@
 import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { DefaultSeo } from 'next-seo';
+import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
 
 import 'normalize.css';
 
@@ -58,6 +58,20 @@ const App = ({ Component, pageProps }) => (
         site: '@indaytrending',
         cardType: 'summary_large_image',
       }}
+    />
+    <LogoJsonLd
+      logo={`${process.env.DOMAIN}/static/indaytrending-icon-512x512.png`}
+      url={`${process.env.DOMAIN}`}
+    />
+    <SocialProfileJsonLd
+      type="Person"
+      name="Inday Trending"
+      url={`${process.env.DOMAIN}`}
+      sameAs={[
+        'http://www.facebook.com/indaytrending',
+        'http://instagram.com/indaytrending',
+        'http://twitter.com/indaytrending',
+      ]}
     />
     <Layout>
       <Component {...pageProps} />
