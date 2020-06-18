@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://indaytrending.com/sitemap.xml
+Sitemap: https://indaytrending.com/api/sitemap

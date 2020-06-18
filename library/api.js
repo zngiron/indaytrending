@@ -91,6 +91,7 @@ export const getPosts = async () => {
           edges {
             node {
               slug
+              modified
             }
           }
         }

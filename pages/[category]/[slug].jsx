@@ -58,7 +58,7 @@ export const getStaticProps = async ({ params }) => {
 export const getStaticPaths = async () => {
   const { getPosts } = await import('../../library/api');
   const data = await getPosts();
-  const paths = data?.edges?.map(({ node }) => `/stories/${node.slug}`) || [];
+  const paths = data?.posts?.edges?.map(({ node }) => `/stories/${node.slug}`) || [];
 
   return {
     paths,

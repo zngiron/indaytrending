@@ -13,6 +13,8 @@ export const clean = (html) => oneLine(
   }),
 );
 
+export const date = (e) => new Date(e).toISOString();
+
 export const copy = (e) => {
   e.preventDefault();
 
