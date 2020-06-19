@@ -4,6 +4,9 @@
   "description": "Manunulat ng maiikling akda na sumasalamin sa pang-araw-araw na buhay, suliranin at karanasan ng isang Pilipino.",
   "categories": ["website"], 
   "start_url": "/?utm_source=Homescreen&utm_medium=App",
+  "serviceworker": {
+    "src": "./service-worker.js"
+  },
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#253f4c",
