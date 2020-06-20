@@ -34,6 +34,20 @@ export default class Root extends Document {
               />
               <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
               <script async defer src="https://cdn.taboola.com/libtrc/indaytradingsc/loader.js" id="tb_loader_script" />
+              <script async defere src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" />
+              <script dangerouslySetInnerHTML={{
+                __html: oneLineTrim`window.OneSignal = window.OneSignal || [];
+                OneSignal.push(function() {
+                  OneSignal.init({
+                    appId: "f4e4605a-5698-49f8-94a2-f3dfab66da96",
+                    notifyButton: {
+                      enable: true,
+                    },
+                  });
+                });
+                `,
+              }}
+              />
               <script dangerouslySetInnerHTML={{
                 __html: oneLineTrim`_atrk_opts={atrk_acct:"4FMtu1Y1Mn20Io",domain:"indaytrending.com",dynamic:!0},function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://certify-js.alexametrics.com/atrk.js";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();`,
               }}
