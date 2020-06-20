@@ -34,7 +34,7 @@ export default class Root extends Document {
               />
               <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
               <script async defer src="https://cdn.taboola.com/libtrc/indaytradingsc/loader.js" id="tb_loader_script" />
-              <script async defere src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" />
+              <script async defer src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" />
               <script dangerouslySetInnerHTML={{
                 __html: oneLineTrim`window.OneSignal = window.OneSignal || [];
                 OneSignal.push(function() {
