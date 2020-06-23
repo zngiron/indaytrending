@@ -87,7 +87,15 @@ export const getPosts = async () => {
   try {
     const query = `
       query GET_POST($first: Int) {
-        posts(first: $first) {
+        posts(first: $first, where: {
+          dateQuery: {
+            after: {
+              year: 2019
+              month: 1
+            }
+          }
+          status: PUBLISH
+        }) {
           edges {
             node {
               slug
