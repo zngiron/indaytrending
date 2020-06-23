@@ -118,7 +118,7 @@ const Post = ({ post }) => (
   <Root>
     <Card>
       <Image
-        src={post?.image.medium}
+        src={post?.image?.medium || post?.image?.featured || '/static/indaytrending-thumbnail.png'}
         title={parse(post?.title)}
         alt={parse(post?.title)}
         width={1280}
@@ -149,7 +149,7 @@ const Post = ({ post }) => (
         </Categories>
       </Header>
       <Content onCopy={copy}>
-        {post?.content.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
+        {post?.content?.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
       </Content>
       <Sidebar />
     </Container>
