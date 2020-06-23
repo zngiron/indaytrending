@@ -18,10 +18,10 @@ const Page = ({ post }) => {
     <>
       <NextSeo
         title={parse(post?.title)}
-        description={parse(post.content.match(/<p>(.*?)<\/p>/)[1])}
+        description="Inday Trending - Pinoy Short Stories"
         openGraph={{
           title: parse(post?.title),
-          description: parse(post.content.match(/<p>(.*?)<\/p>/)[1]),
+          description: 'Inday Trending - Pinoy Short Stories',
           url: `${process.env.DOMAIN}/stories/${post?.slug}`,
           type: 'article',
           article: {
@@ -42,13 +42,15 @@ const Page = ({ post }) => {
       <ArticleJsonLd
         ur={`${process.env.DOMAIN}/stories/${post?.slug}`}
         title={parse(post?.title)}
-        description={parse(post.content.match(/<p>(.*?)<\/p>/)[1])}
+        description="Inday Trending - Pinoy Short Stories"
         images={[
           post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : undefined,
         ]}
         datePublished={post?.published}
         dateModified={post?.modified}
         authorName="Inday Trending"
+        publisherName="Likha Media"
+        publisherLogo="https://likha.media/likha-media-icon.svg"
       />
       <Post post={post} />
     </>
