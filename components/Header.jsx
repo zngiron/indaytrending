@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -163,8 +163,11 @@ const Mobile = styled.button`
 const Overlay = styled.div`
   position: fixed;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   height: -webkit-fill-available;
   background-color: var(--color-black);
   opacity: 0;
@@ -178,15 +181,127 @@ const Overlay = styled.div`
     pointer-events: auto;
     cursor: pointer;
   }
+
+  @media (min-width: ${Global.Breakpoint.xl}) {
+    z-index: 90;
+  }
+`;
+
+const Card = styled.div`
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  height: -webkit-fill-available;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem;
+  padding: 1.25rem;
+  margin: 1.25rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+
+  ${Image} {
+    margin-top: -3.75rem;
+  }
+`;
+
+const Text = styled.div`
+  margin: 1.25rem 0;
+`;
+
+const Button = styled.button`
+  align-self: stretch;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  white-space: nowrap;
+  transition: var(--transition);
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+  }
+`;
+
+const Icon = styled.span`
+  margin-right: 0.5rem;
 `;
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
+  const [install, setIntall] = useState();
+  const [card, setCard] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   const handleMenu = (action) => ((action === 'Mobile') ? setMenu(!menu) : setMenu(false));
+
+  useEffect(() => {
+    if (typeof (window) !== 'undefined') {
+      window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault();
+        setIntall(event);
+        setCard(true);
+      });
+    }
+  }, []);
+
+  const handleInstall = () => {
+    if (install) {
+      install.prompt();
+      install.userChoice.then(({ outcome }) => {
+        if (outcome === 'accepted') {
+          setSuccess(true);
+          return setTimeout(() => setCard(false), 5000);
+        }
+
+        return setCard(false);
+      });
+    }
+  };
 
   return (
     <Root>
-      <Overlay data-overlay={menu || undefined} onClick={() => handleMenu()} />
+      {card && (
+        <Card onClick={() => setCard(false)}>
+          <Container>
+            <Image
+              src="/static/indaytrending-icon-192x192.png"
+              width={192}
+              height={192}
+              alt="Inday Trending"
+              title="Inday Trending"
+              draggable={false}
+              loading="eager"
+            />
+            <Text>
+              {success ? 'Salamat sa patuloy na pagtangkilik! Maligayang pagbabasa!' : 'Mga \'Day at \'Dung maaari mo nang mabasa ang aking mga kwento sa pamamagitan nang pagdodownload ng aking Mobile App.'}
+            </Text>
+            {!success && (
+              <Button onClick={() => handleInstall()}>
+                <Icon>
+                  <FontAwesomeIcon icon={['far', 'arrow-to-bottom']} />
+                </Icon>
+                Install Mobile App
+              </Button>
+            )}
+          </Container>
+        </Card>
+      )}
+      <Overlay data-overlay={menu || card || undefined} onClick={() => handleMenu()} />
       <Link href="/" passHref>
         <Logo onClick={() => handleMenu()}>
           <Image
