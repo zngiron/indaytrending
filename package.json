@@ -8,8 +8,9 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "rimraf .next && next build",
-    "start": "node server.js"
+    "build": "next build",
+    "start": "node server.js",
+    "clean": "rimraf .next"
   },
   "dependencies": {
     "@emotion/react": "^11.0.0-next.12",
@@ -19,6 +20,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "canvas": "^2.6.1",
     "common-tags": "^1.8.0",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "graphql-request": "^2.0.0",
     "helmet": "^3.23.0",

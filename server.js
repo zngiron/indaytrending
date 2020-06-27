@@ -2,6 +2,7 @@
 
 const Express = require('express');
 const Helmet = require('helmet');
+const Compression = require('compression');
 const Next = require('next');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
@@ -18,6 +19,8 @@ app.prepare().then(() => {
       policy: ['strict-origin'],
     },
   }));
+
+  server.use(Compression());
 
   server.use(Express.static('public'));
   server.get('*', (req, res) => handle(req, res));
