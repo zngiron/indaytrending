@@ -45,7 +45,11 @@ export const getStaticProps = async ({ params }) => {
 export const getStaticPaths = async () => {
   const { getCategories } = await import('../../library/api');
   const data = await getCategories();
-  const paths = data?.edges?.map(({ node }) => `/${node.slug}`) || [];
+  const paths = data?.edges?.map(({ node }) => ({
+    params: {
+      category: node.slug,
+    },
+  })) || [];
 
   return {
     paths,

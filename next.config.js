@@ -2,6 +2,7 @@ const path = require('path');
 const nextOffline = require('next-offline');
 
 const nextConfig = {
+  exportTrailingSlash: true,
   workboxOpts: {
     swDest: path.resolve('public', 'service-worker.js'),
     runtimeCaching: [

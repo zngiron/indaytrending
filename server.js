@@ -9,17 +9,6 @@ const development = process.env.NODE_ENV !== 'production';
 const app = Next({ development });
 const handle = app.getRequestHandler();
 
-const Slash = (req, res, next) => {
-  const { url } = req;
-
-  if (url.substr(-1) === '/' && url.length > 1) {
-    res.status(301);
-    res.redirect(url.slice(0, -1));
-  }
-
-  next();
-};
-
 app.prepare().then(() => {
   const server = Express();
 
@@ -31,10 +20,7 @@ app.prepare().then(() => {
   }));
 
   server.use(Express.static('public'));
-  server.use(Slash);
-
   server.get('*', (req, res) => handle(req, res));
-
   server.listen(port, () => console.log(`Express Server is Running on http://localhost:${port}`));
 }).catch((error) => {
   throw new Error(`❌[Error]: ${error.message}`);

@@ -19,6 +19,7 @@ const Page = ({ post }) => {
       <NextSeo
         title={parse(post?.title)}
         description="Inday Trending - Pinoy Short Stories"
+        canonical={`${process.env.DOMAIN}/stories/${post?.slug}`}
         openGraph={{
           title: parse(post?.title),
           description: 'Inday Trending - Pinoy Short Stories',
@@ -40,7 +41,7 @@ const Page = ({ post }) => {
         }}
       />
       <ArticleJsonLd
-        ur={`${process.env.DOMAIN}/stories/${post?.slug}`}
+        url={`${process.env.DOMAIN}/stories/${post?.slug}`}
         title={parse(post?.title)}
         description="Inday Trending - Pinoy Short Stories"
         images={[
@@ -71,7 +72,12 @@ export const getStaticProps = async ({ params }) => {
 export const getStaticPaths = async () => {
   const { getPosts } = await import('../../library/api');
   const data = await getPosts();
-  const paths = data?.posts?.edges?.map(({ node }) => `/stories/${node.slug}`) || [];
+  const paths = data?.posts?.edges?.map(({ node }) => ({
+    params: {
+      category: 'stories',
+      slug: node.slug,
+    },
+  })) || [];
 
   return {
     paths,
