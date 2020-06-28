@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Global, css } from '@emotion/react';
 import { config, dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faArrowToBottom,
+  faArrowAltCircleDown,
   faBars,
   faExclamationCircle,
   faSearch,
@@ -14,7 +14,7 @@ import {
 config.autoAddCss = false;
 
 library.add(
-  faArrowToBottom,
+  faArrowAltCircleDown,
   faBars,
   faExclamationCircle,
   faSearch,

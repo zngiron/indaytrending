@@ -196,6 +196,7 @@ const Card = styled.div`
   width: 100%;
   height: 100%;
   height: -webkit-fill-available;
+  cursor: pointer;
 `;
 
 const Container = styled.div`
@@ -288,14 +289,14 @@ const Header = () => {
               loading="eager"
             />
             <Text>
-              {success ? 'Salamat sa patuloy na pagtangkilik! Maligayang pagbabasa!' : 'Mga \'Day at \'Dung maaari mo nang mabasa ang aking mga kwento sa pamamagitan nang pagdodownload ng aking Mobile App.'}
+              {success ? 'Salamat sa patuloy na pagtangkilik! Maligayang pagbabasa!' : 'Mga \'Day at \'Dung maaari mo nang mabasa ang aking mga kwento sa pamamagitan ng pagdownload ng aking Web App.'}
             </Text>
             {!success && (
               <Button onClick={() => handleInstall()}>
                 <Icon>
-                  <FontAwesomeIcon icon={['far', 'arrow-to-bottom']} />
+                  <FontAwesomeIcon icon={['far', 'arrow-alt-circle-down']} />
                 </Icon>
-                Install Mobile App
+                Install Inday Trending
               </Button>
             )}
           </Container>
