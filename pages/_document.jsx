@@ -51,7 +51,7 @@ export default class Root extends Document {
                   'tb_loader_script');
                   if(window.performance && typeof window.performance.mark == 'function')
                     {window.performance.mark('tbl_ic');}
-                }, 3000)
+                }, 5000)
                 `,
               }}
               />
