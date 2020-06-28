@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-undef */
 
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 
 import * as Global from './Global';
 
@@ -19,27 +19,32 @@ const Ad = styled.div`
 
 const Taboola = () => {
   const { query } = useRouter();
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    window._taboola = window._taboola || [];
+    if (!loaded) {
+      window._taboola = window._taboola || [];
+      _taboola.push({
+        mode: 'thumbnails-a',
+        container: 'taboola-below-article-thumbnails',
+        placement: 'Below Article Thumbnails',
+        target_type: 'mix',
+      });
 
-    _taboola.push({ article: 'auto' });
-    _taboola.push({
-      mode: 'thumbnails-a',
-      container: 'taboola-below-article-thumbnails',
-      placement: 'Below Article Thumbnails',
-      target_type: 'mix',
-    });
+      _taboola.push({ flush: true });
 
-    _taboola.push({ flush: true });
+      setLoaded(true);
+    }
   }, []);
 
   return (
-    <Root hidden={query.slug === undefined}>
-      <Container>
-        <Title>More Stories</Title>
-        <Ad id="taboola-below-article-thumbnails" />
-      </Container>
+    <Root hidden={query?.slug === undefined}>
+      {(query.slug || loaded) && (
+        <Container>
+          <Title>More Stories</Title>
+          <Ad id="taboola-below-article-thumbnails" />
+        </Container>
+      )}
     </Root>
   );
 };

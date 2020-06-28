@@ -28,23 +28,30 @@ export default class Root extends Document {
               <script dangerouslySetInnerHTML={{
                 __html: oneLineTrim`window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date()); 
+                  gtag('js', new Date());
                   gtag('config', 'UA-67525380-3');`,
               }}
               />
               <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
-              <script async defer src="https://cdn.taboola.com/libtrc/indaytradingsc/loader.js" id="tb_loader_script" />
-              <script async defer src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" />
               <script dangerouslySetInnerHTML={{
-                __html: oneLineTrim`window.OneSignal = window.OneSignal || [];
-                OneSignal.push(function() {
-                  OneSignal.init({
-                    appId: "f4e4605a-5698-49f8-94a2-f3dfab66da96",
-                    notifyButton: {
-                      enable: true,
-                    },
-                  });
-                });
+                __html: oneLineTrim`
+                setTimeout(function() {
+                  window._taboola = window._taboola || [];
+                  _taboola.push({article:'auto'});
+                  !function (e, f, u, i) {
+                    if (!document.getElementById(i)){
+                      e.async = 1;
+                      e.src = u;
+                      e.id = i;
+                      f.parentNode.insertBefore(e, f);
+                    }
+                  }(document.createElement('script'),
+                  document.getElementsByTagName('script')[0],
+                  '//cdn.taboola.com/libtrc/indaytradingsc/loader.js',
+                  'tb_loader_script');
+                  if(window.performance && typeof window.performance.mark == 'function')
+                    {window.performance.mark('tbl_ic');}
+                }, 3000)
                 `,
               }}
               />
