@@ -10,6 +10,7 @@ const Taboola = dynamic(import('./Taboola'));
 
 const Main = styled.main`
   position: relative;
+  flex-grow: 1;
   min-height: 100%;
   margin-bottom: auto;
 `;

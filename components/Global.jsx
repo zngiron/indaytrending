@@ -134,5 +134,4 @@ export const Styles = css`
   }
 `;
 
-
 export default () => <Global styles={Styles} />;
