@@ -66,7 +66,7 @@ const Image = styled.img`
 
 const Card = ({ post }) => (
   <Root>
-    <Link href="/[category]/[slug]" as={`/stories/${post?.slug}`} passHref>
+    <Link href="/stories/[slug]" as={`/stories/${post?.slug}`} passHref>
       <Item>
         <Image
           src={post?.image?.medium}

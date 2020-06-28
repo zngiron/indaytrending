@@ -4,13 +4,14 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 
-const Preloader = dynamic(import('../../components/Preloader'));
-const Stories = dynamic(import('../../components/Stories'));
+const Preloader = dynamic(import('../components/Preloader'));
+const Stories = dynamic(import('../components/Stories'));
 
 const Page = ({ posts, category }) => {
   const { isFallback } = useRouter();
 
-  if (!isFallback && !category?.slug) return <Error statusCode={404} />;
+  if (!category?.slug) return <Error statusCode={404} />;
+
   if (isFallback) return <Preloader />;
 
   return (
@@ -30,7 +31,7 @@ const Page = ({ posts, category }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { getStories } = await import('../../library/api');
+  const { getStories } = await import('../library/api');
   const data = await getStories(params?.category);
 
   return {
@@ -43,7 +44,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const { getCategories } = await import('../../library/api');
+  const { getCategories } = await import('../library/api');
   const data = await getCategories();
   const paths = data?.edges?.map(({ node }) => ({
     params: {

@@ -11,7 +11,8 @@ const Post = dynamic(import('../../components/Post'));
 const Page = ({ post }) => {
   const { isFallback } = useRouter();
 
-  if (!isFallback && !post?.slug) return <Error statusCode={404} />;
+  if (!post?.slug) return <Error statusCode={404} />;
+
   if (isFallback) return <Preloader />;
 
   return (
@@ -74,7 +75,6 @@ export const getStaticPaths = async () => {
   const data = await getPosts();
   const paths = data?.posts?.edges?.map(({ node }) => ({
     params: {
-      category: 'stories',
       slug: node.slug,
     },
   })) || [];
