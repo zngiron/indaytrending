@@ -2,17 +2,19 @@ import { request } from 'graphql-request';
 
 const url = process.env.API;
 
-export const getStories = async (category) => {
+export const getStories = async (category, options = {}) => {
   try {
     const query = `
-      query GET_STORIES($first: Int, $after: String, $category: ID!, $categoryName: String) {
-        posts(first: $first, after: $after, where: {categoryName: $categoryName, status: PUBLISH}) {
+      query GET_STORIES($first: Int, $after: String, $last: Int, $before: String, $category: ID!, $categoryName: String) {
+        posts(first: $first, after: $after, last: $last, before: $before, where: {categoryName: $categoryName, status: PUBLISH}) {
           pageInfo {
+            startCursor
             endCursor
             hasNextPage
             hasPreviousPage
           }
           edges {
+            cursor
             node {
               id: databaseId
               slug
@@ -34,7 +36,10 @@ export const getStories = async (category) => {
     `;
 
     const variables = {
-      first: 12,
+      first: options?.first,
+      after: options?.after,
+      last: options?.last,
+      before: options?.before,
       category,
       categoryName: category,
     };

@@ -5,6 +5,8 @@ import { config, dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
   faArrowAltCircleDown,
   faBars,
+  faChevronLeft,
+  faChevronRight,
   faExclamationCircle,
   faSearch,
   faSpinnerThird,
@@ -16,6 +18,8 @@ config.autoAddCss = false;
 library.add(
   faArrowAltCircleDown,
   faBars,
+  faChevronLeft,
+  faChevronRight,
   faExclamationCircle,
   faSearch,
   faSpinnerThird,

@@ -9,10 +9,13 @@ const Page = ({ posts, category }) => (
   </>
 );
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async ({ query }) => {
   const { getStories } = await import('../library/api');
-  const data = await getStories('stories', {
-    first: 12,
+  const data = await getStories(query?.category, {
+    first: query?.after ? 12 : null,
+    after: query?.after || null,
+    last: query?.before ? 12 : null,
+    before: query?.before || null,
   });
 
   return {
@@ -20,7 +23,6 @@ export const getStaticProps = async () => {
       posts: data.posts,
       category: data.category,
     },
-    unstable_revalidate: 1,
   };
 };
 

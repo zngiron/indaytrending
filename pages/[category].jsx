@@ -32,14 +32,16 @@ const Page = ({ posts, category }) => {
 
 export const getStaticProps = async ({ params }) => {
   const { getStories } = await import('../library/api');
-  const data = await getStories(params?.category);
+  const data = await getStories(params?.category, {
+    first: 12,
+  });
 
   return {
     props: {
       posts: data.posts,
       category: data.category,
     },
-    unstable_revalidate: 3600,
+    unstable_revalidate: 1,
   };
 };
 
