@@ -66,8 +66,8 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       post: data?.post,
-      unstable_revalidate: 1,
     },
+    unstable_revalidate: 1,
   };
 };
 
