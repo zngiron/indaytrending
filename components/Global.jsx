@@ -138,4 +138,6 @@ export const Styles = css`
   }
 `;
 
-export default () => <Global styles={Styles} />;
+const Root = () => <Global styles={Styles} />;
+
+export default Root;
