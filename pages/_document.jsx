@@ -23,6 +23,21 @@ export default class Root extends Document {
           <NextScript />
           {production && (
             <>
+              <script dangerouslySetInnerHTML={{
+                __html: oneLineTrim`
+                  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                    for(let registration of registrations) {
+                      registration.unregister();
+                    }
+                  });
+    
+                  caches.delete('workbox-precache-v2-${process.env.DOMAIN}/');
+                  caches.delete('images');
+                  caches.delete('stories');
+                  caches.delete('cache');
+                `,
+              }}
+              />
               <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v6.0&amp;appId=1201824889948708&amp;autoLogAppEvents=1" />
               <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67525380-3" />
               <script dangerouslySetInnerHTML={{
