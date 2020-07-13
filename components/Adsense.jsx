@@ -16,9 +16,11 @@ const Adsense = ({
   responsive = true,
 }) => {
   useEffect(() => {
-    if (window.adsbygoogle) {
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    }
+    setTimeout(() => {
+      if (window.adsbygoogle) {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    }, 500);
   }, []);
 
   return (

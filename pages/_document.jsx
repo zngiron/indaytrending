@@ -23,22 +23,8 @@ export default class Root extends Document {
           <NextScript />
           {production && (
             <>
-              <script dangerouslySetInnerHTML={{
-                __html: oneLineTrim`
-                  navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                    for(let registration of registrations) {
-                      registration.unregister();
-                    }
-                  });
-    
-                  caches.delete('workbox-precache-v2-${process.env.DOMAIN}/');
-                  caches.delete('images');
-                  caches.delete('stories');
-                  caches.delete('cache');
-                `,
-              }}
-              />
-              <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v6.0&amp;appId=1201824889948708&amp;autoLogAppEvents=1" />
+              <script async src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v7.0&amp;appId=1201824889948708&amp;autoLogAppEvents=1" />
+              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
               <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67525380-3" />
               <script dangerouslySetInnerHTML={{
                 __html: oneLineTrim`window.dataLayer = window.dataLayer || [];
@@ -47,7 +33,6 @@ export default class Root extends Document {
                   gtag('config', 'UA-67525380-3');`,
               }}
               />
-              <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
               <script dangerouslySetInnerHTML={{
                 __html: oneLineTrim`
                 setTimeout(function() {
@@ -66,7 +51,7 @@ export default class Root extends Document {
                   'tb_loader_script');
                   if(window.performance && typeof window.performance.mark == 'function')
                     {window.performance.mark('tbl_ic');}
-                }, 5000)
+                }, 3500)
                 `,
               }}
               />
@@ -77,6 +62,21 @@ export default class Root extends Document {
               <noscript>
                 <img src="https://certify.alexametrics.com/atrk.gif?account=4FMtu1Y1Mn20Io" height="1" width="1" alt="" style={{ display: 'none' }} />
               </noscript>
+              <script dangerouslySetInnerHTML={{
+                __html: oneLineTrim`
+                  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                    for(let registration of registrations) {
+                      registration.unregister();
+                    }
+                  });
+    
+                  caches.delete('workbox-precache-v2-${process.env.DOMAIN}/');
+                  caches.delete('images');
+                  caches.delete('stories');
+                  caches.delete('cache');
+                `,
+              }}
+              />
             </>
           )}
         </body>
