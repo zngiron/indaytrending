@@ -91,6 +91,10 @@ const Content = styled.div`
     font-size: 0.875rem;
     line-height: 1.5;
   }
+
+  figure {
+    margin: 0;
+  }
 `;
 
 const FacebookPage = styled.div`

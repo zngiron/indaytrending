@@ -3,7 +3,7 @@ import { oneLine } from 'common-tags';
 
 export const clean = (html) => oneLine(
   sanitize(html, {
-    allowedTags: ['h2', 'h3', 'h4', 'h5', 'h6', 'p', 'strong', 'img'],
+    allowedTags: ['h2', 'h3', 'h4', 'h5', 'h6', 'p', 'strong', 'img', 'figure'],
     allowedAttributes: {
       img: ['src', 'srcset', 'alt'],
     },

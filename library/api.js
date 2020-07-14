@@ -121,6 +121,39 @@ export const getPosts = async () => {
   }
 };
 
+export const getFeed = async () => {
+  try {
+    const query = `
+      query GET_FEED($first: Int) {
+        posts(first: $first, where: {dateQuery: {after: {year: 2019, month: 1}}, status: PUBLISH}) {
+          edges {
+            node {
+              id: databaseId
+              slug
+              published: date
+              modified
+              title
+              content
+              image: featuredImage {
+                featured: sourceUrl
+                medium: sourceUrl(size: MEDIUM)
+              }
+            }
+          }
+        }
+      }
+    `;
+
+    const variables = {
+      first: 300,
+    };
+
+    return await request(url, query, variables);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 export const getCategories = async () => {
   try {
     const query = `
