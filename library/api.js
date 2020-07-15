@@ -121,11 +121,19 @@ export const getPosts = async () => {
   }
 };
 
-export const getFeed = async () => {
+export const getFeed = async (entries) => {
   try {
     const query = `
       query GET_FEED($first: Int) {
-        posts(first: $first, where: {dateQuery: {after: {year: 2019, month: 1}}, status: PUBLISH}) {
+        posts(first: $first, where: {
+          status: PUBLISH
+          dateQuery: {
+            after: {
+              year: 2019,
+              month: 1
+            }
+          },
+        }) {
           edges {
             node {
               id: databaseId
@@ -145,7 +153,7 @@ export const getFeed = async () => {
     `;
 
     const variables = {
-      first: 300,
+      first: entries || undefined,
     };
 
     return await request(url, query, variables);

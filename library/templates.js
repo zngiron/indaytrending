@@ -1,8 +1,7 @@
 import { html } from 'common-tags';
-import { getFeed } from '../../library/api';
-import { clean, date } from '../../library/functions';
+import { clean, date } from './functions';
 
-const Story = ({ post }) => html`
+export const Story = ({ post }) => html`
   <!doctype html>
   <html lang="tl" prefix="op: http://media.facebook.com/op#">
     <head>
@@ -36,6 +35,7 @@ const Story = ({ post }) => html`
           <iframe>
             <script src="https://www.googletagmanager.com/gtag/js?id=${process.env.ANALYTICS}"></script>
             <script src="${process.env.DOMAIN}/analytics.js"></script>
+            <script src="${process.env.DOMAIN}/alexa.js"></script>
           </iframe>
         </figure>
         <footer>
@@ -46,7 +46,7 @@ const Story = ({ post }) => html`
   </html> 
 `;
 
-const Stories = ({ posts }) => html`
+export const Stories = ({ posts }) => html`
   <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
       <title>Inday Trending</title>
@@ -70,10 +70,3 @@ const Stories = ({ posts }) => html`
     </channel>
   </rss>
 `;
-
-export default async (req, res) => {
-  const posts = await getFeed();
-
-  res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
-  res.send(Stories(posts));
-};
