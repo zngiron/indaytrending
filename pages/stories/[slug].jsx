@@ -39,7 +39,7 @@ const Page = ({ post }) => {
           ],
           images: [
             {
-              url: post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : undefined,
+              url: !post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : `${process.env.DOMAIN}/api/image`,
               alt: post?.title,
             },
           ],

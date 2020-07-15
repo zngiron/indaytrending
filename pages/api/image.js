@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import { createCanvas, loadImage } from 'canvas';
 
 const { DOMAIN } = process.env;
@@ -7,12 +5,14 @@ const { DOMAIN } = process.env;
 export default async (req, res) => {
   const { query: { url } } = req;
 
-  const re = new RegExp(/^https:\/\/cms\.indaytrending\.com/);
+  const re = new RegExp(/^https:\/\/(.*\.)?indaytrending\.com/);
 
-  if (!url || !url.match(re)) {
+  if (url && !url.match(re)) {
     res.status(404);
     res.end();
   }
+
+  const link = url || `${DOMAIN}/static/indaytrending-thumbnail.png`;
 
   try {
     const width = 1280;
@@ -21,7 +21,7 @@ export default async (req, res) => {
     const canvas = createCanvas(width, height);
     const context = canvas.getContext('2d');
     const gradient = context.createLinearGradient(0, 0, width, height);
-    const image = await loadImage(url);
+    const image = await loadImage(link);
 
     context.drawImage(image, 0, 0);
     gradient.addColorStop(0, '#253f4c99');
@@ -37,10 +37,9 @@ export default async (req, res) => {
     const buffer = canvas.toBuffer('image/png');
 
     res.setHeader('Content-Type', 'image/png');
-    return res.send(buffer);
+    res.send(buffer);
   } catch (error) {
-    console.error(error.message);
     res.status(404);
-    return res.end();
+    res.end();
   }
 };
