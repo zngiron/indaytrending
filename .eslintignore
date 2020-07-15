@@ -3,3 +3,4 @@ node_modules
 .vercel
 analytics.js
 alexa.js
+service-worker.js

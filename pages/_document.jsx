@@ -62,21 +62,6 @@ export default class Root extends Document {
               <noscript>
                 <img src="https://certify.alexametrics.com/atrk.gif?account=4FMtu1Y1Mn20Io" height="1" width="1" alt="" style={{ display: 'none' }} />
               </noscript>
-              <script dangerouslySetInnerHTML={{
-                __html: oneLineTrim`
-                  navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                    for(let registration of registrations) {
-                      registration.unregister();
-                    }
-                  });
-    
-                  caches.delete('workbox-precache-v2-${process.env.DOMAIN}/');
-                  caches.delete('images');
-                  caches.delete('stories');
-                  caches.delete('cache');
-                `,
-              }}
-              />
             </>
           )}
         </body>
