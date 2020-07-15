@@ -39,7 +39,7 @@ const Page = ({ post }) => {
           ],
           images: [
             {
-              url: !post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : `${process.env.DOMAIN}/api/image`,
+              url: post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : `${process.env.DOMAIN}/api/image`,
               alt: post?.title,
             },
           ],
@@ -50,7 +50,7 @@ const Page = ({ post }) => {
         title={parse(post?.title)}
         description="Inday Trending - Pinoy Short Stories"
         images={[
-          post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : undefined,
+          post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : `${process.env.DOMAIN}/api/image`,
         ]}
         datePublished={post?.published}
         dateModified={post?.modified}
