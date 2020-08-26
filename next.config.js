@@ -1,5 +1,5 @@
 const nextConfig = {
-  trailingSlash: true,
+  trailingSlash: false,
   env: {
     DOMAIN: process.env.DOMAIN,
     API: process.env.API,
