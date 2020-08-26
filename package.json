@@ -13,34 +13,35 @@
     "clean": "rimraf .next"
   },
   "dependencies": {
-    "@emotion/react": "^11.0.0-next.13",
-    "@emotion/styled": "^11.0.0-next.13",
-    "@fortawesome/fontawesome-svg-core": "^1.2.29",
-    "@fortawesome/pro-regular-svg-icons": "^5.13.1",
+    "@emotion/react": "^11.0.0-next.15",
+    "@emotion/styled": "^11.0.0-next.15",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/pro-regular-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "canvas": "^2.6.1",
     "common-tags": "^1.8.0",
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "graphql-request": "^2.0.0",
-    "helmet": "^3.23.3",
+    "graphql": "^15.3.0",
+    "graphql-request": "^3.0.0",
+    "helmet": "^4.1.0",
     "html-react-parser": "^0.13.0",
-    "next": "^9.4.5-canary.33",
+    "next": "^9.5.2",
     "next-seo": "^4.7.3",
     "normalize.css": "^8.0.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "sanitize-html": "^1.27.0"
+    "sanitize-html": "^1.27.3"
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.0.0-next.13",
+    "@emotion/babel-plugin": "^11.0.0-next.15",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.4.0",
+    "eslint": "^7.7.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
     "rimraf": "^3.0.2"
   }
 }

@@ -13,11 +13,8 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = Express();
 
-  server.use(Helmet());
   server.use(Helmet({
-    referrerPolicy: {
-      policy: ['strict-origin'],
-    },
+    contentSecurityPolicy: false,
   }));
 
   server.use(Compression());

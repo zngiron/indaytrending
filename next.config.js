@@ -1,5 +1,5 @@
 const nextConfig = {
-  exportTrailingSlash: true,
+  trailingSlash: true,
   env: {
     DOMAIN: process.env.DOMAIN,
     API: process.env.API,
