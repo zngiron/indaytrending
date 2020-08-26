@@ -10,6 +10,9 @@ export const clean = (html) => oneLine(
     parser: {
       decodeEntities: true,
     },
+    exclusiveFilter(frame) {
+      return frame.tag === 'p' && !frame.text.trim();
+    },
   }),
 );
 
