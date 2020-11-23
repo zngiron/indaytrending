@@ -122,7 +122,7 @@ const Post = ({ post }) => (
   <Root>
     <Card>
       <Image
-        src={post?.image?.medium || post?.image?.featured || '/static/indaytrending-thumbnail.png'}
+        src={post?.image?.node?.medium || post?.image?.node?.featured || '/static/indaytrending-thumbnail.png'}
         title={parse(post?.title)}
         alt={parse(post?.title)}
         width={1280}

@@ -1,6 +1,4 @@
-import React from 'react';
 import Error from 'next/error';
-import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 
@@ -8,11 +6,7 @@ const Preloader = dynamic(import('../components/Preloader'));
 const Stories = dynamic(import('../components/Stories'));
 
 const Page = ({ posts, category }) => {
-  const { isFallback } = useRouter();
-
-  if (!category?.slug) return <Error statusCode={404} />;
-
-  if (isFallback) return <Preloader />;
+  if (!category) return <Error statusCode={404} />;
 
   return (
     <>
@@ -56,7 +50,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 

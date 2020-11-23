@@ -16,7 +16,7 @@ export const Story = ({ post }) => html`
       <article>
         <header>
           <figure>
-            <img src="${post?.image?.featured || `${process.env.DOMAIN}/indaytrending-thumbnail.png`}" alt="${post?.title}" />
+            <img src="${post?.image?.node?.featured || `${process.env.DOMAIN}/indaytrending-thumbnail.png`}" alt="${post?.title}" />
           </figure>
           <time class="op-published" datetime="${date(post?.published)}">${date(post?.published)}</time>
           <time class="op-modified" datetime="${date(post?.modified)}">${date(post?.modified)}</time>

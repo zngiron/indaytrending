@@ -1,13 +1,8 @@
-import React from 'react';
 import dynamic from 'next/dynamic';
 
 const Stories = dynamic(import('../components/Stories'));
 
-const Page = ({ posts, category }) => (
-  <>
-    <Stories posts={posts} category={category} />
-  </>
-);
+const Page = ({ posts, category }) => <Stories posts={posts} category={category} />;
 
 export const getServerSideProps = async ({ query }) => {
   const { getStories } = await import('../library/api');

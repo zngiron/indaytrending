@@ -1,20 +1,13 @@
-import React from 'react';
-import Error from 'next/error';
-import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import Error from 'next/error';
+import dynamic from 'next/dynamic';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 import parse from 'html-react-parser';
 
-const Preloader = dynamic(import('../../components/Preloader'));
 const Post = dynamic(import('../../components/Post'));
 
 const Page = ({ post }) => {
-  const { isFallback } = useRouter();
-
-  if (!post?.slug) return <Error statusCode={404} />;
-
-  if (isFallback) return <Preloader />;
+  if (!post) return <Error statusCode={404} />;
 
   return (
     <>
@@ -39,7 +32,7 @@ const Page = ({ post }) => {
           ],
           images: [
             {
-              url: post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : `${process.env.DOMAIN}/api/image`,
+              url: post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.node?.featured}` : `${process.env.DOMAIN}/api/image`,
               alt: post?.title,
             },
           ],
@@ -50,7 +43,7 @@ const Page = ({ post }) => {
         title={parse(post?.title)}
         description="Inday Trending - Pinoy Short Stories"
         images={[
-          post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.featured}` : `${process.env.DOMAIN}/api/image`,
+          post.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.node?.featured}` : `${process.env.DOMAIN}/api/image`,
         ]}
         datePublished={post?.published}
         dateModified={post?.modified}
@@ -86,7 +79,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 

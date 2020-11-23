@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { Global, css } from '@emotion/react';
 import { config, dom, library } from '@fortawesome/fontawesome-svg-core';

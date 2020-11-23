@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
-import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';

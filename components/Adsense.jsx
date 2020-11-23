@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-import React, { memo, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 const Root = styled.ins`

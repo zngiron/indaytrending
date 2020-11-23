@@ -20,8 +20,10 @@ export const getStories = async (category, options = {}) => {
               slug
               title
               image: featuredImage {
-                featured: sourceUrl
-                medium: sourceUrl(size: MEDIUM)
+                node {
+                  featured: sourceUrl
+                  medium: sourceUrl(size: MEDIUM)
+                }
               }
             }
           }
@@ -62,8 +64,10 @@ export const getPost = async (slug) => {
           title
           content
           image: featuredImage {
-            featured: sourceUrl
-            medium: sourceUrl(size: MEDIUM)
+            node {
+              featured: sourceUrl
+              medium: sourceUrl(size: MEDIUM)
+            }
           }
           categories {
             edges {
@@ -143,8 +147,10 @@ export const getFeed = async (entries) => {
               title
               content
               image: featuredImage {
-                featured: sourceUrl
-                medium: sourceUrl(size: MEDIUM)
+                node {
+                  featured: sourceUrl
+                  medium: sourceUrl(size: MEDIUM)
+                }
               }
             }
           }

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
@@ -69,7 +69,7 @@ const Card = ({ post }) => (
     <Link href="/stories/[slug]" as={`/stories/${post?.slug}`} passHref>
       <Item>
         <Image
-          src={post?.image?.medium}
+          src={post?.image?.node.medium}
           title={parse(post?.title)}
           alt={parse(post?.title)}
           width={1280}
