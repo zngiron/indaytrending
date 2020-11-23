@@ -15,4 +15,4 @@ gtag('set', {
   },
 });
 
-gtag('config', 'UA-67525380-3');
+gtag('config', 'G-P294E6PHLK');

@@ -24,12 +24,13 @@ export default class Root extends Document {
             <>
               <script async src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v8.0&amp;appId=1201824889948708&amp;autoLogAppEvents=1" />
               <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
-              <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67525380-3" />
+              <script async src="https://www.googletagmanager.com/gtag/js?id=G-P294E6PHLK" />
               <script dangerouslySetInnerHTML={{
                 __html: oneLineTrim`window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', 'UA-67525380-3');`,
+                  gtag('config', 'G-P294E6PHLK');
+                `,
               }}
               />
               <script dangerouslySetInnerHTML={{
