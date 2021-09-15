@@ -1,338 +1,116 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import Link from 'next/link';
-import styled from '@emotion/styled';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 
-import * as Global from './Global';
-
-import categories from '../data/menu.json';
-
-const Root = styled.header`
-  position: sticky;
-  z-index: 1000;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  height: var(--header-height);
-  box-shadow: var(--box-shadow);
-  background-color: var(--color-white);
-  
-  @media (min-width: ${Global.Breakpoint.xl}) {
-    justify-content: flex-start;
-  }
-`;
-
-const Logo = styled.a`
-  display: flex;
-  align-items: center;
-  padding: 0 1.25rem;
-  
-  @media (min-width: ${Global.Breakpoint.xl}) {
-    margin-right: auto;
-  }
-`;
-
-const Image = styled.img`
-  margin-right: 0.5rem;
-`;
-
-const Title = styled.div`
-  font-size: 0.875rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  white-space: nowrap;
-`;
-
-const Nav = styled.nav`
-  @media (min-width: ${Global.Breakpoint.xl}) {
-    margin-right: 1.25rem;
-  }
-`;
-
-const Menu = styled.ul`
-  position: fixed;
-  top: 0;
-  left: calc(-1 * var(--menu-width));
-  width: var(--menu-width);
-  height: 100vh;
-  height: -webkit-fill-available;
-  padding: 0;
-  padding-top: var(--header-height);
-  margin: 0;
-  list-style: none;
-  background-color: var(--color-primary);
-  transition: var(--transition);
-  will-change: transform;
-
-  &[data-menu] {
-    transform: translate3d(var(--menu-width), 0, 0);
-  }
-
-  @media (min-width: ${Global.Breakpoint.xl}) { 
-    position: static;
-    display: flex;
-    width: auto;
-    height: 100%;
-    padding-top: 0;
-    background-color: transparent;
-    transition: none;
-    
-    &[data-menu] {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-`;
-
-const List = styled.li``;
-
-const Item = styled.a`
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1.25rem;
-  font-size: 1.25rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
-
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-secondary);
-    transition: var(--transition);
-    transform: scale3d(0, 1, 1);
-    transform-origin: left center;
-    content: '';
-  }
-
-  &:hover,
-  &:active,
-  &:focus {
-    &::after {
-      transform: scale3d(1, 1, 1);
-    }
-  }
-
-  @media (min-width: ${Global.Breakpoint.xl}) {
-    height: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    color: var(--color-primary);
-   
-    &::after {
-      top: auto;
-      bottom: 0;
-      height: 0.25rem;
-      background-color: var(--color-primary);
-      transform-origin: center center;
-    }
-  }
-`;
-
-const Mobile = styled.button`
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: var(--header-height);
-  height: var(--header-height);
-  color: var(--color-black);
-  transition: var(--transition);
-  transform: rotate(0);
-  will-change: transform;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: var(--color-primary);
-  }
-
-  &[data-menu] {
-    color: white;
-    transform: rotate(180deg);
-  }
-
-  @media (min-width: ${Global.Breakpoint.xl}) {
-    display: none;
-  }
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  height: -webkit-fill-available;
-  background-color: var(--color-black);
-  opacity: 0;
-  pointer-events: none;
-  transition: var(--transition);
-  will-change: contents;
-  cursor: auto;
-
-  &[data-overlay] {
-    opacity: 0.8;
-    pointer-events: auto;
-    cursor: pointer;
-  }
-
-  @media (min-width: ${Global.Breakpoint.xl}) {
-    z-index: 90;
-  }
-`;
-
-const Card = styled.div`
-  position: fixed;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  height: -webkit-fill-available;
-  cursor: pointer;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 20rem;
-  padding: 1.25rem;
-  margin: 1.25rem;
-  border-radius: var(--border-radius);
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  text-align: center;
-
-  ${Image} {
-    margin-top: -3.75rem;
-  }
-`;
-
-const Text = styled.div`
-  margin: 1.25rem 0;
-`;
-
-const Button = styled.button`
-  align-self: stretch;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--border-radius);
-  background-color: var(--color-white);
-  color: var(--color-primary);
-  white-space: nowrap;
-  transition: var(--transition);
-  cursor: pointer;
-
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-  }
-`;
-
-const Icon = styled.span`
-  margin-right: 0.5rem;
-`;
-
-const Header = () => {
+const Header = ({ categories }) => {
   const [menu, setMenu] = useState(false);
-  const [install, setIntall] = useState();
-  const [card, setCard] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleMenu = (action) => ((action === 'Mobile') ? setMenu(!menu) : setMenu(false));
 
   useEffect(() => {
-    if (typeof (window) !== 'undefined') {
-      window.addEventListener('beforeinstallprompt', (event) => {
-        event.preventDefault();
-        setIntall(event);
-        setCard(true);
-      });
-    }
+    const handleResize = () => setMenu(false);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleInstall = () => {
-    if (install) {
-      install.prompt();
-      install.userChoice.then(({ outcome }) => {
-        if (outcome === 'accepted') {
-          setSuccess(true);
-          return setTimeout(() => setCard(false), 5000);
-        }
+  useEffect(() => {
+    const element = document.getElementById('__next');
 
-        return setCard(false);
-      });
+    if (menu) {
+      element.classList.add('fixed');
     }
-  };
+
+    return () => element.classList.remove('fixed');
+  }, [menu]);
 
   return (
-    <Root>
-      {card && (
-        <Card onClick={() => setCard(false)}>
-          <Container>
+    <header className="fixed z-20 top-0 inset-x-0 px-5 shadow bg-white">
+      <div className="container  flex justify-center items-center h-16 ">
+        <Link href="/">
+          <a className="flex items-center space-x-2" title="Inday Trending">
             <Image
-              src="/static/indaytrending-icon-192x192.png"
-              width={192}
-              height={192}
+              src="/static/indaytrending-icon.png"
+              width={40}
+              height={40}
               alt="Inday Trending"
-              title="Inday Trending"
               draggable={false}
-              loading="eager"
             />
-            <Text>
-              {success ? 'Salamat sa patuloy na pagtangkilik! Maligayang pagbabasa!' : 'Mga \'Day at \'Dung maaari mo nang mabasa ang aking mga kwento sa pamamagitan ng pagdownload ng aking Web App.'}
-            </Text>
-            {!success && (
-              <Button onClick={() => handleInstall()}>
-                <Icon>
-                  <FontAwesomeIcon icon={['far', 'arrow-alt-circle-down']} />
-                </Icon>
-                Install Inday Trending
-              </Button>
-            )}
-          </Container>
-        </Card>
-      )}
-      <Overlay data-overlay={menu || card || undefined} onClick={() => handleMenu()} />
-      <Link href="/" passHref>
-        <Logo onClick={() => handleMenu()}>
-          <Image
-            src="/static/indaytrending-icon.png"
-            alt="Inday Trending"
-            title="Inday Trending"
-            width={40}
-            height={40}
-            draggable={false}
-            loading="eager"
-          />
-          <Title>Inday Trending</Title>
-        </Logo>
-      </Link>
-      <Nav>
-        <Menu data-menu={menu || undefined}>
-          {categories?.nodes.map((category) => (
-            <List key={category.id}>
-              <Link href="/[category]" as={`/${category.slug}`} passHref>
-                <Item onClick={() => handleMenu()}>{category.name}</Item>
-              </Link>
-            </List>
-          ))}
-        </Menu>
-        <Mobile data-menu={menu || undefined} onClick={() => handleMenu('Mobile')} aria-label="Menu">
-          <FontAwesomeIcon icon={['far', menu ? 'times' : 'bars']} />
-        </Mobile>
-      </Nav>
-    </Root>
+            <span className="font-semibold text-primary text-sm whitespace-nowrap">Inday Trending</span>
+          </a>
+        </Link>
+        <button
+          className={`fixed z-20 left-0 flex justify-center items-center w-12 h-16 transform-gpu transition-transform duration-300 ${menu && 'text-white rotate-180'} focus:outline-none xl:hidden`}
+          type="button"
+          onClick={() => setMenu(!menu)}
+        >
+          <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={menu ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h7'} />
+          </svg>
+          <span className="sr-only">Menu</span>
+        </button>
+        <nav className={`fixed z-10 right-full inset-y-0 w-80 flex flex-col items-center bg-primary text-white transform-gpu transition-all duration-300 ${menu ? 'translate-x-full' : '-translate-x-0'} xl:static xl:flex-row xl:w-auto xl:p-0 xl:ml-auto xl:bg-transparent xl:text-primary xl:transition-none xl:translate-x-0  xl:opacity-100`}>
+          <div className="xl:hidden">
+            <Link href="/">
+              <a
+                className="flex justify-center items-center mt-6"
+                title="Inday Trending"
+                onClick={() => setMenu(false)}
+              >
+                <Image
+                  src="/static/indaytrending-icon.png"
+                  width={120}
+                  height={120}
+                  alt="Inday Trending"
+                  draggable={false}
+                />
+              </a>
+            </Link>
+            <div className="flex justify-center w-full">
+              <a className="p-4 hover:text-[#4267B2]" href="https://www.facebook.com/indaytrending" title="Facebook" target="_blank" rel="noreferrer noopener">
+                <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
+                </svg>
+              </a>
+              <a className="p-4 hover:text-[#833AB4]" href="https://www.instagram.com/indaytrending" title="Instagram" target="_blank" rel="noreferrer noopener">
+                <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                </svg>
+              </a>
+              <a className="p-4 hover:text-[#1DA1F2]" href="https://twitter.com/indaytrending" title="Twitter" target="_blank" rel="noreferrer noopener">
+                <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                </svg>
+              </a>
+              <a className="p-4 hover:text-[#FF0000]" href="https://www.youtube.com/channel/UClinuVh2qgz1mymTAVQOMCQ" title="YouTube" target="_blank" rel="noreferrer noopener">
+                <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                  <path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <ul className="flex flex-col flex-grow w-full xl:flex-row xl:auto xl:pt-0">
+            {categories?.edges?.map(({ node }) => (
+              <li key={node?.id}>
+                <Link href={`/${node?.slug}`} passHref>
+                  <button
+                    className="flex items-center w-full h-12 px-4 font-semibold text-lg opacity-80 hover:opacity-100 focus:outline-none xl:h-16 xl:px-3 xl:text-base"
+                    type="button"
+                    onClick={() => setMenu(false)}
+                  >
+                    {node?.name}
+                  </button>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div
+          className={`fixed inset-0 bg-black ${menu ? 'opacity-80 pointer-events-auto' : 'opacity-0 pointer-events-none'} cursor-pointer transition-opacity duration-300 xl:hidden`}
+          onClick={() => setMenu(false)}
+        />
+      </div>
+    </header>
   );
 };
 
-export default Header;
+export default memo(Header);

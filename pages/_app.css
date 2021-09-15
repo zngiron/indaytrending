@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::selection {
+    @apply bg-secondary text-white;
+  }
+
+  :root {
+    @apply scroll-behavior-smooth;
+  }
+
+  #__next {
+    @apply flex flex-col w-full min-h-screen text-gray-500;
+  }
+
+  .prose img {
+    @apply w-full rounded-xl content-visibility-auto;
+  }
+}
+
+@layer utilities {
+  .aspect-custom {
+    padding-top: 52.34375%
+  }
+
+  .content-visibility-auto {
+    content-visibility: auto;
+  }
+
+  .scroll-behavior-smooth {
+    scroll-behavior: smooth;
+  }
+}

@@ -1,48 +1,30 @@
-import Error from 'next/error';
 import dynamic from 'next/dynamic';
-import { NextSeo } from 'next-seo';
 
-const Preloader = dynamic(import('../components/Preloader'));
-const Stories = dynamic(import('../components/Stories'));
+import client from '../graphql/client';
+import { POSTS_QUERY, CATEGORIES_QUERY } from '../graphql/api';
 
-const Page = ({ posts, category }) => {
-  if (!category) return <Error statusCode={404} />;
+const Card = dynamic(() => import('../components/Card'));
 
-  return (
-    <>
-      <NextSeo
-        title={category.name ? `${category.name} | Inday Trending - Pinoy Short Stories` : undefined}
-        description={category?.description}
-        openGraph={{
-          title: category.name ? `${category.name} | Inday Trending - Pinoy Short Stories` : undefined,
-          description: category?.description,
-          url: `${process.env.DOMAIN}/${category.slug}`,
-        }}
-      />
-      <Stories posts={posts} category={category} />
-    </>
-  );
-};
-
-export const getStaticProps = async ({ params }) => {
-  const { getStories } = await import('../library/api');
-  const data = await getStories(params?.category, {
-    first: 12,
-  });
-
-  return {
-    props: {
-      posts: data.posts,
-      category: data.category,
-    },
-    revalidate: 1,
-  };
-};
+const Page = ({ posts, category }) => (
+  <div className="container my-10">
+    <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
+    <p>{category.description}</p>
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 my-5">
+      {posts?.edges?.map(({ node }) => (
+        <Card key={node.id} {...node} />
+      ))}
+    </div>
+  </div>
+);
 
 export const getStaticPaths = async () => {
-  const { getCategories } = await import('../library/api');
-  const data = await getCategories();
-  const paths = data?.edges?.map(({ node }) => ({
+  const { data } = await client.query({
+    query: CATEGORIES_QUERY,
+  });
+
+  const { categories } = data;
+
+  const paths = categories?.edges.map(({ node }) => ({
     params: {
       category: node.slug,
     },
@@ -50,7 +32,30 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async ({ params }) => {
+  const category = params?.category || 'stories';
+
+  const { data } = await client.query({
+    query: POSTS_QUERY,
+    variables: {
+      first: 12,
+      category,
+    },
+  });
+
+  const { posts, categories } = data;
+
+  return {
+    props: {
+      categories,
+      posts,
+      category: categories?.edges.find(({ node }) => node.slug === category).node,
+    },
+    revalidate: 60,
   };
 };
 

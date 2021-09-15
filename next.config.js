@@ -1,11 +1,10 @@
-const nextConfig = {
-  env: {
-    DOMAIN: process.env.DOMAIN,
-    API: process.env.API,
-    ANALYTICS: process.env.ANALYTICS,
-    BANNER: process.env.BANNER,
-    RECIRCULATION: process.env.RECIRCULATION,
+module.exports = {
+  experimental: {
+    esmExternals: true,
+  },
+  poweredByHeader: false,
+  reactStrictMode: true,
+  images: {
+    domains: ['cms.indaytrending.com'],
   },
 };
-
-module.exports = nextConfig;

@@ -7,6 +7,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'next',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -19,7 +20,9 @@ module.exports = {
     'react',
   ],
   rules: {
-    'react/prop-types': 'off',
-    'react/react-in-jsx-scope': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

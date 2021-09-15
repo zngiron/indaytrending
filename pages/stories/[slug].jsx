@@ -1,77 +1,32 @@
-import Head from 'next/head';
-import Error from 'next/error';
 import dynamic from 'next/dynamic';
-import { NextSeo, ArticleJsonLd } from 'next-seo';
-import parse from 'html-react-parser';
 
-const Post = dynamic(import('../../components/Post'));
+import client from '../../graphql/client';
+import { POSTS_QUERY, POST_QUERY } from '../../graphql/api';
 
-const Page = ({ post }) => {
-  if (!post) return <Error statusCode={404} />;
+const Card = dynamic(() => import('../../components/Card'));
 
-  return (
-    <>
-      <Head>
-        <meta property="ia:markup_url" content={`${process.env.DOMAIN}/api/stories/${post?.slug}`} />
-      </Head>
-      <NextSeo
-        title={parse(post?.title)}
-        description="Inday Trending - Pinoy Short Stories"
-        canonical={`${process.env.DOMAIN}/stories/${post?.slug}`}
-        openGraph={{
-          title: parse(post?.title),
-          description: 'Inday Trending - Pinoy Short Stories',
-          url: `${process.env.DOMAIN}/stories/${post?.slug}`,
-          type: 'article',
-          article: {
-            publishedTime: post?.published,
-            modifiedTime: post?.modified,
-          },
-          authors: [
-            'https://www.facebook.com/indaytrending',
-          ],
-          images: [
-            {
-              url: post?.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.node?.featured}` : `${process.env.DOMAIN}/api/image`,
-              alt: post?.title,
-            },
-          ],
-        }}
-      />
-      <ArticleJsonLd
-        url={`${process.env.DOMAIN}/stories/${post?.slug}`}
-        title={parse(post?.title)}
-        description="Inday Trending - Pinoy Short Stories"
-        images={[
-          post.image ? `${process.env.DOMAIN}/api/image?url=${post.image?.node?.featured}` : `${process.env.DOMAIN}/api/image`,
-        ]}
-        datePublished={post?.published}
-        dateModified={post?.modified}
-        authorName="Inday Trending"
-        publisherName="Likha Media"
-        publisherLogo="https://likha.media/likha-media-icon.svg"
-      />
-      <Post post={post} />
-    </>
-  );
-};
-
-export const getStaticProps = async ({ params }) => {
-  const { getPost } = await import('../../library/api');
-  const data = await getPost(params.slug);
-
-  return {
-    props: {
-      post: data?.post,
-    },
-    revalidate: 1,
-  };
-};
+const Page = ({ post }) => (
+  <div className="container my-5">
+    <div className="grid xl:grid-cols-3 gap-5">
+      <div className="space-y-5 xl:col-span-2">
+        <Card {...post} />
+        <div className="prose max-w-full" dangerouslySetInnerHTML={{ __html: post?.content }} />
+      </div>
+      <aside className="sticky top-16">
+        Sidebar
+      </aside>
+    </div>
+  </div>
+);
 
 export const getStaticPaths = async () => {
-  const { getPosts } = await import('../../library/api');
-  const data = await getPosts();
-  const paths = data?.posts?.edges?.map(({ node }) => ({
+  const { data } = await client.query({
+    query: POSTS_QUERY,
+  });
+
+  const { posts } = data;
+
+  const paths = posts?.edges.map(({ node }) => ({
     params: {
       slug: node.slug,
     },
@@ -80,6 +35,25 @@ export const getStaticPaths = async () => {
   return {
     paths,
     fallback: 'blocking',
+  };
+};
+
+export const getStaticProps = async ({ params }) => {
+  const { data } = await client.query({
+    query: POST_QUERY,
+    variables: {
+      slug: params.slug,
+    },
+  });
+
+  const { post, categories } = data;
+
+  return {
+    props: {
+      post,
+      categories,
+    },
+    revalidate: 60,
   };
 };
 

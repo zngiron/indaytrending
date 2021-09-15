@@ -1,1 +1,0 @@
-_atrk_opts={atrk_acct:"4FMtu1Y1Mn20Io",domain:"indaytrending.com",dynamic:!0},function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://certify-js.alexametrics.com/atrk.js";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();

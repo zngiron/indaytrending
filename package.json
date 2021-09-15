@@ -1,46 +1,36 @@
 {
-  "name": "indaytrending",
-  "version": "4.1.0",
+  "name": "indaytrending-next",
+  "version": "1.0.0",
   "description": "Inday Trending",
   "main": "server.js",
   "author": "Zuen Giron",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "node server.js",
-    "clean": "rimraf .next"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.1.1",
-    "@emotion/styled": "^11.0.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/pro-regular-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.12",
-    "canvas": "^2.6.1",
-    "common-tags": "^1.8.0",
-    "compression": "^1.7.4",
-    "express": "^4.17.1",
-    "graphql": "^15.4.0",
-    "graphql-request": "^3.3.0",
-    "helmet": "^4.1.0",
-    "html-react-parser": "^0.14.2",
-    "next": "^10.0.2",
-    "next-seo": "^4.17.0",
-    "normalize.css": "^8.0.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "sanitize-html": "^2.1.2"
+    "@apollo/client": "^3.4.10",
+    "@tailwindcss/typography": "^0.4.1",
+    "autoprefixer": "^10.3.4",
+    "graphql": "^15.5.3",
+    "next": "^11.1.2",
+    "next-seo": "^4.26.0",
+    "postcss": "^8.3.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tailwindcss": "^2.2.9"
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.0.0",
-    "eslint": "^7.14.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-config-next": "^11.1.2",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.1.0",
-    "rimraf": "^3.0.2"
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }

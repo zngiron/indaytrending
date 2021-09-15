@@ -3,18 +3,12 @@
   "short_name": "Inday Trending",
   "description": "Manunulat ng maiikling akda na sumasalamin sa pang-araw-araw na buhay, suliranin at karanasan ng isang Pilipino.",
   "categories": ["website"], 
-  "start_url": "/?utm_source=Inday%20Trending&utm_medium=App&utm_campaign=Progressive%20Web%20App",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#253f4c",
   "theme_color": "#253f4c",
   "icons": [
-    {
-      "src": "/static/indaytrending-icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
     {
       "src": "/static/indaytrending-icon-512x512.png",
       "sizes": "512x512",
