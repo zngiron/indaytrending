@@ -14,10 +14,10 @@ const Layout = ({ categories, children }) => {
       setContent(element);
       setTransition(true);
     }
-  }
+  };
 
   useEffect(() => {
-    setTransition(true)
+    setTransition(true);
   }, []);
 
   useEffect(() => {
@@ -68,7 +68,8 @@ const Layout = ({ categories, children }) => {
       <Header categories={categories} />
       <main
         className={`flex-grow mt-16 transition duration-500 opacity-0 ${transition ? 'opacity-100' : ''}`}
-        onTransitionEnd={() => handleTransition(children)}>
+        onTransitionEnd={() => handleTransition(children)}
+      >
         {content}
       </main>
       <Footer />

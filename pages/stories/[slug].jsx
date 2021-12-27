@@ -1,3 +1,5 @@
+/* eslint-disable react/no-danger */
+
 import dynamic from 'next/dynamic';
 
 import client from '../../graphql/client';
