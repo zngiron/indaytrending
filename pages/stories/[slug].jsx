@@ -1,11 +1,9 @@
 /* eslint-disable react/no-danger */
 
-import dynamic from 'next/dynamic';
-
 import client from '../../graphql/client';
 import { POSTS_QUERY, POST_QUERY } from '../../graphql/api';
 
-const Card = dynamic(() => import('../../components/Card'));
+import Card from '../../components/Card';
 
 const Page = ({ post }) => (
   <div className="container my-5">
@@ -24,6 +22,9 @@ const Page = ({ post }) => (
 export const getStaticPaths = async () => {
   const { data } = await client.query({
     query: POSTS_QUERY,
+    variables: {
+      first: 1,
+    },
   });
 
   const { posts } = data;

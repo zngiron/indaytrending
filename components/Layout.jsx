@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
 
-const Header = dynamic(() => import('./Header'));
-const Footer = dynamic(() => import('./Footer'));
+import Header from './Header';
+import Footer from './Footer';
 
 const Layout = ({ categories, children }) => {
   const [content, setContent] = useState(children);

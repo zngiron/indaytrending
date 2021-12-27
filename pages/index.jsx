@@ -1,9 +1,7 @@
-import dynamic from 'next/dynamic';
-
 import client from '../graphql/client';
 import { POSTS_QUERY } from '../graphql/api';
 
-const Card = dynamic(() => import('../components/Card'));
+import Card from '../components/Card';
 
 const Page = ({ posts, category }) => (
   <div className="container my-10">
