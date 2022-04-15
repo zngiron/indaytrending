@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 
@@ -26,4 +25,4 @@ const Content = ({ title, description }) => (
   </Root>
 );
 
-export default memo(Content);
+export default Content;

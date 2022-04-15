@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 
@@ -106,4 +107,4 @@ const Footer = () => (
   </Root>
 );
 
-export default Footer;
+export default memo(Footer);

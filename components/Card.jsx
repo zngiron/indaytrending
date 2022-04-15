@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
@@ -83,4 +82,4 @@ const Card = ({ post }) => (
   </Root>
 );
 
-export default memo(Card);
+export default Card;
