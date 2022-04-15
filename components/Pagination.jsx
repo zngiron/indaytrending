@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -48,4 +49,4 @@ const Pagination = ({ posts, category }) => (
   </Root>
 );
 
-export default Pagination;
+export default memo(Pagination);

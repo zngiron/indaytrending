@@ -6,12 +6,6 @@ const nextConfig = {
     BANNER: process.env.BANNER,
     RECIRCULATION: process.env.RECIRCULATION,
   },
-  experimental: {
-    emotion: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
 };
 
 module.exports = nextConfig;

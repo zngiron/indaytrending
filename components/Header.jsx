@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -335,4 +335,4 @@ const Header = () => {
   );
 };
 
-export default memo(Header);
+export default Header;
