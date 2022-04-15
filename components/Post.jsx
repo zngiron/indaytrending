@@ -106,13 +106,13 @@ const Ads = (item, key) => (
     {parse(clean(item))}
     {(key === 2) && <Adsense slot="6234342116" />}
     {(key === 6 && (
-    <FacebookPage
-      className="fb-page"
-      data-href="https://www.facebook.com/indaytrending/"
-      data-tabs=""
-      data-show-facepile={false}
-      data-hide-cta
-    />
+      <FacebookPage
+        className="fb-page"
+        data-href="https://www.facebook.com/indaytrending/"
+        data-tabs=""
+        data-show-facepile={false}
+        data-hide-cta
+      />
     ))}
     {(key % 8 === 0 && key !== 0) && <Adsense slot="3640794162" format="fluid" layout="in-article" />}
   </React.Fragment>
@@ -130,16 +130,6 @@ const Post = ({ post }) => (
         draggable={false}
         loading="lazy"
       />
-      <Social>
-        <Facebook
-          className="fb-like"
-          data-href={`${process.env.DOMAIN}$/stories/${post?.slug}`}
-          data-layout="button_count"
-          data-action="like"
-          data-size="large"
-          data-share="true"
-        />
-      </Social>
     </Card>
     <Container>
       <Header>

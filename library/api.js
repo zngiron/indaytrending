@@ -116,7 +116,7 @@ export const getPosts = async () => {
     `;
 
     const variables = {
-      first: 10000,
+      first: 1,
     };
 
     return await request(url, query, variables);

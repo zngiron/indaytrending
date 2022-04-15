@@ -2,7 +2,6 @@ import Error from 'next/error';
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 
-const Preloader = dynamic(import('../components/Preloader'));
 const Stories = dynamic(import('../components/Stories'));
 
 const Page = ({ posts, category }) => {

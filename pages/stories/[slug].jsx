@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Error from 'next/error';
 import dynamic from 'next/dynamic';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
@@ -11,9 +10,6 @@ const Page = ({ post }) => {
 
   return (
     <>
-      <Head>
-        <meta property="ia:markup_url" content={`${process.env.DOMAIN}/api/stories/${post?.slug}`} />
-      </Head>
       <NextSeo
         title={parse(post?.title)}
         description="Inday Trending - Pinoy Short Stories"

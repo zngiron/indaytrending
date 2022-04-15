@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from '@emotion/styled';
 
 const Root = styled.ins`
@@ -35,4 +35,4 @@ const Adsense = ({
   );
 };
 
-export default memo(Adsense);
+export default Adsense;
