@@ -14,6 +14,7 @@ const App = ({ Component, pageProps }) => (
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="theme-color" content="#253f4c" />
+      <meta property="fb:pages" content="342281576184179" />
       <link rel="apple-touch-icon" sizes="180x180" href="/static/indaytrending-apple-icon.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/static/indaytrending-icon-16x16.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/static/indaytrending-icon-32x32.png" />
