@@ -1,0 +1,11 @@
+#import './Category.fragment.graphql'
+
+query Categories {
+  categories {
+    edges {
+      node {
+        ...Category
+      }
+    }
+  }
+}

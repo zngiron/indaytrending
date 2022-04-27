@@ -1,21 +1,24 @@
 import client from '../graphql/client';
-import { POSTS_QUERY, CATEGORIES_QUERY } from '../graphql/api';
+import CATEGORIES_QUERY from '../graphql/Categories.graphql';
+import CATEGORY_QUERY from '../graphql/Category.graphql';
 
 import Card from '../components/Card';
 
-const Page = ({ posts, category }) => (
-  <div className="container my-10">
-    <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
-    <p>{category.description}</p>
-    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 my-5">
-      {posts?.edges?.map(({ node }) => (
-        <Card key={node.id} {...node} />
-      ))}
+function Category({ posts, category }) {
+  return (
+    <div className="container my-10">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <div className="col-span-full">
+          <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
+          <p>{category.description}</p>
+        </div>
+        {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   const { data } = await client.query({
     query: CATEGORIES_QUERY,
   });
@@ -30,15 +33,15 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
-};
+}
 
-export const getStaticProps = async ({ params }) => {
-  const category = params?.category || 'stories';
+export async function getStaticProps({ params }) {
+  const category = params.category || 'stories';
 
   const { data } = await client.query({
-    query: POSTS_QUERY,
+    query: CATEGORY_QUERY,
     variables: {
       first: 12,
       category,
@@ -49,12 +52,12 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      categories,
       posts,
-      category: categories?.edges.find(({ node }) => node.slug === category).node,
+      categories,
+      category: categories.edges.find(({ node }) => node.slug === category).node,
     },
-    revalidate: 60,
+    revalidate: 30,
   };
-};
+}
 
-export default Page;
+export default Category;

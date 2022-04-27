@@ -1,0 +1,16 @@
+#import './Category.fragment.graphql'
+#import './Post.fragment.graphql'
+
+query Post($slug: ID!) {
+  post(id: $slug, idType: SLUG) {
+    ...Post
+    content
+  }
+  categories {
+    edges {
+      node {
+        ...Category
+      }
+    }
+  }
+}

@@ -1,16 +1,14 @@
 {
   "name": "Inday Trending",
   "short_name": "Inday Trending",
-  "description": "Manunulat ng maiikling akda na sumasalamin sa pang-araw-araw na buhay, suliranin at karanasan ng isang Pilipino.",
-  "categories": ["website"], 
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#253f4c",
+  "background_color": "#fff",
   "theme_color": "#253f4c",
+  "description": "Manunulat ng maiikling akda na sumasalamin sa pang-araw-araw na buhay, suliranin at karanasan ng isang Pilipino.",
   "icons": [
     {
-      "src": "/static/indaytrending-icon-512x512.png",
+      "src": "/static/indaytrending-icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -21,7 +19,7 @@
       "src": "/static/indaytrending-thumbnail.png",
       "sizes": "1280x720",
       "type": "image/png",
-      "purpose": "any maskable"
+      "label": "Inday Trending"
     }
   ]
 }
