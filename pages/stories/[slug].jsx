@@ -80,8 +80,8 @@ function Post({ post }) {
             </div>
             <div className="prose max-w-none mx-auto text-sm leading-5 xl:text-base" dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
           </div>
-          <aside>
-            <div className="sticky top-5">
+          <aside className="sticky top-20 rounded-lg self-start bg-white p-5">
+            <div className="flex justify-center">
               <Adsense slot="2530090260" />
             </div>
           </aside>
