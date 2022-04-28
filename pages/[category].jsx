@@ -1,3 +1,5 @@
+import { NextSeo } from 'next-seo';
+
 import client from '../library/client';
 
 import CATEGORIES_QUERY from '../graphql/Categories.graphql';
@@ -7,15 +9,25 @@ import Card from '../components/Card';
 
 function Category({ posts, category }) {
   return (
-    <div className="container my-10">
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-        <div className="col-span-full">
-          <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
-          <p>{category.description}</p>
+    <>
+      <NextSeo
+        title={`${category?.name} | Inday Trending - Pinoy Short Stories`}
+        description={category?.description}
+        openGrap={{
+          title: `${category?.name} | Inday Trending - Pinoy Short Stories`,
+          description: category?.description,
+        }}
+      />
+      <div className="container my-10">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+          <div className="col-span-full">
+            <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
+            <p>{category.description}</p>
+          </div>
+          {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
         </div>
-        {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
       </div>
-    </div>
+    </>
   );
 }
 
@@ -44,7 +56,7 @@ export async function getStaticProps({ params }) {
   const { data } = await client.query({
     query: CATEGORY_QUERY,
     variables: {
-      first: 12,
+      first: 24,
       category,
     },
   });

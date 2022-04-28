@@ -1,8 +1,11 @@
 import { memo } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
 
 function Meta() {
+  const { asPath } = useRouter();
+
   return (
     <>
       <Head>
@@ -12,7 +15,7 @@ function Meta() {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#253f4c" />
         <link rel="apple-touch-icon" sizes="180x180" href="/static/indaytrending-apple-icon.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/static/indaytrending-icon.png" />
+        <link rel="shortcut icon" type="image/png" sizes="512x512" href="/static/indaytrending-icon.png" />
         <link rel="preconnect" href={process.env.NEXT_PUBLIC_API} />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
@@ -22,7 +25,7 @@ function Meta() {
         openGraph={{
           type: 'website',
           locale: 'tl_ph',
-          url: process.env.NEXT_PUBLIC_DOMAIN,
+          url: `${process.env.NEXT_PUBLIC_DOMAIN}${asPath}`,
           title: 'Inday Trending - Pinoy Short Stories',
           description: 'Manunulat ng maiikling akda na sumasalamin sa pang-araw-araw na buhay, suliranin at karanasan ng isang Pilipino.',
           images: [

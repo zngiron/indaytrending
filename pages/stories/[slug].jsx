@@ -1,5 +1,7 @@
 /* eslint-disable react/no-danger */
 
+import { NextSeo, ArticleJsonLd } from 'next-seo';
+
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -11,35 +13,71 @@ import POST_QUERY from '../../graphql/Post.graphql';
 
 function Post({ post }) {
   return (
-    <div className="container my-5">
-      <div className="grid xl:grid-cols-3 gap-5">
-        <div className="space-y-5 xl:sticky xl:top-5 xl:col-span-2">
-          <div className="relative rounded-lg bg-gradient-to-tr from-secondary via-primary to-primary aspect-[1280/670]">
-            <Image
-              className="rounded-lg transition transform-gpu will-change-transform opacity-40 group-hover:scale-105"
-              src={post?.image?.node?.featured}
-              alt={post?.title}
-              layout="fill"
-              objectFit="cover"
-              draggable={false}
-              loading="eager"
-            />
+    <>
+      <NextSeo
+        title={post?.title}
+        description="Inday Trending - Pinoy Short Stories"
+        canonical={`${process.env.NEXT_PUBLIC_DOMAIN}/stories/${post?.slug}`}
+        openGraph={{
+          title: post?.title,
+          description: 'Inday Trending - Pinoy Short Stories',
+          type: 'article',
+          article: {
+            publishedTime: post?.published,
+            modifiedTime: post?.modified,
+          },
+          authors: [
+            'https://www.facebook.com/indaytrending',
+          ],
+          images: [
+            {
+              url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/image/${post?.slug}`,
+              alt: post?.title,
+            },
+          ],
+        }}
+      />
+      <ArticleJsonLd
+        url={`${process.env.NEXT_PUBLIC_DOMAIN}/stories/${post?.slug}`}
+        title={post?.title}
+        description="Inday Trending - Pinoy Short Stories"
+        images={[`${process.env.NEXT_PUBLIC_DOMAIN}/api/image/${post?.slug}`]}
+        datePublished={post?.published}
+        dateModified={post?.modified}
+        authorName="Inday Trending"
+        publisherName="Likha Media"
+        publisherLogo="https://likha.media/likha-media-icon.svg"
+      />
+      <div className="container my-5">
+        <div className="grid xl:grid-cols-3 gap-5">
+          <div className="space-y-5 xl:sticky xl:top-5 xl:col-span-2">
+            <div className="relative rounded-lg bg-gradient-to-tr from-secondary via-primary to-primary aspect-[1280/670]">
+              <Image
+                className="rounded-lg transition transform-gpu will-change-transform opacity-40 group-hover:scale-105"
+                src={post?.image?.node?.featured}
+                alt={post?.title}
+                layout="fill"
+                objectFit="cover"
+                draggable={false}
+                loading="eager"
+              />
+            </div>
+            <h1 className="font-semibold text-primary text-xl">{post?.title}</h1>
+            <div className="flex flex-wrap gap-2">
+              {post?.categories?.edges.map(({ node }) => (
+                <Link href={`/${node.slug}`} key={node?.id}>
+                  <a className="px-4 py-1 rounded-full bg-primary font-semibold text-white text-xs hover:bg-secondary">{node?.name}</a>
+                </Link>
+              ))}
+            </div>
+            <div className="prose max-w-none mx-auto text-sm leading-5 xl:text-base" dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
           </div>
-          <h1 className="font-semibold text-primary text-xl">{post?.title}</h1>
-          <div className="flex flex-wrap gap-2">
-            {post?.categories?.edges.map(({ node }) => (
-              <Link href={`/${node.slug}`} key={node?.id}>
-                <a className="px-4 py-1 rounded-full bg-primary font-semibold text-white text-xs hover:bg-secondary">{node?.name}</a>
-              </Link>
-            ))}
-          </div>
-          <div className="prose max-w-none mx-auto text-sm leading-5 xl:text-base" dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
+          <aside>
+            <div className="sticky top-5" />
+          </aside>
         </div>
-        <aside>
-          <div className="sticky top-5" />
-        </aside>
       </div>
-    </div>
+    </>
   );
 }
 
