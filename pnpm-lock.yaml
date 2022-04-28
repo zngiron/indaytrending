@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@apollo/client': ^3.6.0
+  '@jimp/plugin-print': ^0.16.1
   '@next/eslint-plugin-next': ^12.1.5
   '@tailwindcss/line-clamp': ^0.3.1
   '@tailwindcss/typography': ^0.5.2
@@ -24,6 +25,7 @@ specifiers:
 
 dependencies:
   '@apollo/client': 3.6.0_graphql@16.4.0+react@18.1.0
+  '@jimp/plugin-print': 0.16.1
   '@tailwindcss/line-clamp': 0.3.1_tailwindcss@3.0.24
   graphql: 16.4.0
   graphql-tag: 2.12.6_graphql@16.4.0
@@ -354,6 +356,17 @@ packages:
       '@babel/runtime': 7.17.9
       '@jimp/custom': 0.16.1
       '@jimp/utils': 0.16.1
+    dev: false
+
+  /@jimp/plugin-print/0.16.1:
+    resolution: {integrity: sha512-ceWgYN40jbN4cWRxixym+csyVymvrryuKBQ+zoIvN5iE6OyS+2d7Mn4zlNgumSczb9GGyZZESIgVcBDA1ezq0Q==}
+    peerDependencies:
+      '@jimp/custom': '>=0.3.5'
+      '@jimp/plugin-blit': '>=0.3.5'
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@jimp/utils': 0.16.1
+      load-bmfont: 1.4.1
     dev: false
 
   /@jimp/plugin-print/0.16.1_5191b610a3eb861d3baa10a735e89ecc:
