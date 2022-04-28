@@ -26,11 +26,11 @@ async function handler({ query: { slug } }, res) {
     image.cover(1280, 670);
     image.quality(100);
 
-    image.print(font, 640, 80, {
+    image.print(font, 680, 80, {
       text: data.post.title,
       alignmentX: Jimp.HORIZONTAL_ALIGN_RIGHT,
       alignmentY: Jimp.VERTICAL_ALIGN_TOP,
-    }, 600, 80);
+    }, 560, 80);
 
     const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
 
