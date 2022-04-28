@@ -1,5 +1,6 @@
 query Image($slug: ID!) {
   post(id: $slug, idType: SLUG) {
+    title,
     image: featuredImage {
       node {
         featured: sourceUrl
