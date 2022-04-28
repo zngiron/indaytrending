@@ -1,5 +1,6 @@
 import { date } from '../../library/functions';
-import client from '../../graphql/client';
+import client from '../../library/client';
+
 import POSTS_QUERY from '../../graphql/Posts.graphql';
 
 async function handler(req, res) {

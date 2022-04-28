@@ -1,4 +1,5 @@
-import client from '../graphql/client';
+import client from '../library/client';
+
 import CATEGORIES_QUERY from '../graphql/Categories.graphql';
 import CATEGORY_QUERY from '../graphql/Category.graphql';
 

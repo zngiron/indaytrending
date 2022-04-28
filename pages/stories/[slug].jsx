@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { clean } from '../../library/functions';
+import client from '../../library/client';
 
-import client from '../../graphql/client';
 import POSTS_QUERY from '../../graphql/Posts.graphql';
 import POST_QUERY from '../../graphql/Post.graphql';
 

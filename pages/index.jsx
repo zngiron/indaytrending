@@ -1,4 +1,4 @@
-import client from '../graphql/client';
+import client from '../library/client';
 import CATEGORY_QUERY from '../graphql/Category.graphql';
 
 import Card from '../components/Card';
