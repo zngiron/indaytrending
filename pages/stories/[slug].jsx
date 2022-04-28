@@ -81,7 +81,7 @@ function Post({ post }) {
               <Adsense type="article" slot="3640794162" />
             </div>
           </div>
-          <aside className="self-start rounded-lg bg-white p-5 xl:sticky xl:top-20">
+          <aside className="hidden self-start rounded-lg bg-white p-5 xl:block xl:sticky xl:top-20">
             <div className="text-center">
               <Adsense slot="2530090260" />
             </div>
