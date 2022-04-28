@@ -9,7 +9,7 @@ function Document() {
   return (
     <Html lang="tl">
       <Head />
-      <body>
+      <body className="bg-gray-50">
         <Main />
         <NextScript />
       </body>

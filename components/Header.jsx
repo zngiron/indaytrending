@@ -26,7 +26,7 @@ function Header({ categories }) {
   }, [menu]);
 
   return (
-    <header className="fixed z-10 top-0 w-full bg-primary text-white">
+    <header className="fixed z-10 top-0 w-full bg-white text-primary">
       <div className="container flex justify-center items-center h-16 xl:justify-start">
         <Link href="/">
           <a className="flex items-center gap-2">
@@ -48,7 +48,7 @@ function Header({ categories }) {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`h-6 w-6 transition duration-500 transform-gpu ${menu ? 'rotate-180' : 'rotate-0'}`}
+            className={`h-6 w-6 transition duration-500 transform-gpu ${menu ? 'text-white rotate-180' : 'rotate-0'}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -62,12 +62,12 @@ function Header({ categories }) {
           </svg>
           <span className="sr-only">Menu</span>
         </button>
-        <nav className={`fixed z-10 inset-y-0 right-full w-80 pt-16 bg-primary text-white transition duration-500 transform-gpu will-change-transform xl:static xl:w-auto xl:pt-0 xl:ml-auto xl:bg-transparent xl:transition-none ${menu ? 'translate-x-full' : 'translate-x-0'}`}>
+        <nav className={`fixed z-10 inset-y-0 right-full w-80 pt-16 bg-primary text-white transition duration-500 transform-gpu will-change-transform xl:static xl:w-auto xl:pt-0 xl:ml-auto xl:bg-transparent xl:text-primary xl:transition-none ${menu ? 'translate-x-full' : 'translate-x-0'}`}>
           <ul className="flex flex-col xl:flex-row">
             {categories?.edges?.map(({ node }) => (
               <li key={node.id}>
                 <Link href={`/${node.slug}`}>
-                  <a className="flex items-center px-5 py-2 font-semibold text-lg xl:px-3 xl:text-sm hover:text-yellow-400">
+                  <a className="flex items-center px-5 py-2 font-semibold text-lg xl:px-3 xl:text-sm hover:bg-white hover:text-primary hover:xl:bg-transparent hover:xl:text-secondary">
                     {node.name}
                   </a>
                 </Link>
