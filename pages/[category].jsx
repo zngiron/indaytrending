@@ -21,7 +21,7 @@ function Category({ posts, category }) {
       />
       <div className="container my-10">
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-          <div className="flex justify-center col-span-full">
+          <div className="col-span-full text-center">
             <Adsense slot="6234342116" />
           </div>
           <div className="col-span-full">
