@@ -7,18 +7,20 @@ import Card from '../components/Card';
 
 function Home({ posts, category }) {
   return (
-    <div className="container my-10">
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-        <div className="col-span-full text-center">
-          <Adsense slot="6234342116" />
-        </div>
-        <div className="col-span-full">
-          <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
-          <p>{category.description}</p>
-        </div>
-        {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
+    <>
+      <div className="text-center my-5">
+        <Adsense slot="6234342116" />
       </div>
-    </div>
+      <div className="container my-5">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+          <div className="col-span-full">
+            <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
+            <p>{category.description}</p>
+          </div>
+          {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
+        </div>
+      </div>
+    </>
   );
 }
 

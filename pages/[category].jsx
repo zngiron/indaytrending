@@ -19,11 +19,11 @@ function Category({ posts, category }) {
           description: category?.description,
         }}
       />
-      <div className="container my-10">
+      <div className="text-center my-5">
+        <Adsense slot="6234342116" />
+      </div>
+      <div className="container my-5">
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-          <div className="col-span-full text-center">
-            <Adsense slot="6234342116" />
-          </div>
           <div className="col-span-full">
             <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
             <p>{category.description}</p>

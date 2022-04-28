@@ -50,11 +50,11 @@ function Post({ post }) {
         publisherName="Likha Media"
         publisherLogo="https://likha.media/likha-media-icon.svg"
       />
+      <div className="text-center my-5">
+        <Adsense slot="6234342116" />
+      </div>
       <div className="container my-5">
         <div className="grid xl:grid-cols-3 gap-5">
-          <div className="col-span-full text-center">
-            <Adsense slot="6234342116" />
-          </div>
           <div className="space-y-5 xl:col-span-2">
             <div className="relative rounded-lg bg-gradient-to-tr from-secondary via-primary to-primary aspect-[1280/670]">
               <Image
