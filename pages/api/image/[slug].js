@@ -1,4 +1,5 @@
-import Jimp from 'jimp';
+import path from 'path';
+import jimp from 'jimp';
 
 import client from '../../../library/client';
 import IMAGE_QUERY from '../../../graphql/Image.graphql';
@@ -18,9 +19,9 @@ async function handler({ query: { slug } }, res) {
   }
 
   try {
-    const font = await Jimp.loadFont(Jimp.FONT_SANS_16_WHITE);
-    const image = await Jimp.read(link);
-    const overlay = await Jimp.read(`${process.env.NEXT_PUBLIC_DOMAIN}/static/indaytrending-overlay.png`);
+    const font = await jimp.loadFont(path.resolve('./public/fonts/open-sans-16-white.fnt'));
+    const overlay = await jimp.read(path.resolve('./public/static/indaytrending-overlay.png'));
+    const image = await jimp.read(link);
 
     image.composite(overlay, 0, 0);
     image.cover(1280, 670);
@@ -28,11 +29,11 @@ async function handler({ query: { slug } }, res) {
 
     image.print(font, 640, 80, {
       text: data.post.title,
-      alignmentX: Jimp.HORIZONTAL_ALIGN_RIGHT,
-      alignmentY: Jimp.VERTICAL_ALIGN_TOP,
+      alignmentX: jimp.HORIZONTAL_ALIGN_RIGHT,
+      alignmentY: jimp.VERTICAL_ALIGN_TOP,
     }, 600, 80);
 
-    const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
+    const buffer = await image.getBufferAsync(jimp.MIME_PNG);
 
     return res.setHeader('Content-Type', 'image/png').status(200).send(buffer);
   } catch (error) {

@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.0",
-    "@jimp/plugin-print": "^0.16.1",
     "@tailwindcss/line-clamp": "^0.3.1",
     "graphql": "^16.4.0",
     "graphql-tag": "^2.12.6",
