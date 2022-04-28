@@ -2,12 +2,16 @@ import client from '../library/client';
 
 import CATEGORY_QUERY from '../graphql/Category.graphql';
 
+import Adsense from '../components/Adsense';
 import Card from '../components/Card';
 
 function Home({ posts, category }) {
   return (
     <div className="container my-10">
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <div className="col-span-full">
+          <Adsense slot="6234342116" />
+        </div>
         <div className="col-span-full">
           <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
           <p>{category.description}</p>

@@ -5,6 +5,8 @@ import { NextSeo, ArticleJsonLd } from 'next-seo';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import Adsense from '../../components/Adsense';
+
 import { clean } from '../../library/functions';
 import client from '../../library/client';
 
@@ -50,6 +52,9 @@ function Post({ post }) {
       />
       <div className="container my-5">
         <div className="grid xl:grid-cols-3 gap-5">
+          <div className="col-span-full">
+            <Adsense slot="6234342116" />
+          </div>
           <div className="space-y-5 xl:sticky xl:top-5 xl:col-span-2">
             <div className="relative rounded-lg bg-gradient-to-tr from-secondary via-primary to-primary aspect-[1280/670]">
               <Image
@@ -70,10 +75,15 @@ function Post({ post }) {
                 </Link>
               ))}
             </div>
+            <div>
+              <Adsense type="article" slot="3640794162" />
+            </div>
             <div className="prose max-w-none mx-auto text-sm leading-5 xl:text-base" dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
           </div>
           <aside>
-            <div className="sticky top-5" />
+            <div className="sticky top-5">
+              <Adsense slot="2530090260" />
+            </div>
           </aside>
         </div>
       </div>
