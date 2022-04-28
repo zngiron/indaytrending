@@ -1,21 +1,13 @@
 import { createCanvas, loadImage } from 'canvas';
 
-import client from '../../../library/client';
-import IMAGE_QUERY from '../../../graphql/Image.graphql';
+async function handler({ query: { url } }, res) {
+  const domain = /^https:\/\/(.*\.)?indaytrending\.com/;
 
-async function handler({ query: { slug } }, res) {
-  const { data } = await client.query({
-    query: IMAGE_QUERY,
-    variables: {
-      slug,
-    },
-  });
-
-  const link = data.post?.image.node.featured;
-
-  if (!link) {
-    res.status(404).json({ message: 'Image Not Found' });
+  if (!url || !url.match(domain)) {
+    return res.status(404).json({ message: 'Image Not Found' });
   }
+
+  const link = url || `${process.env.NEXT_PUBLIC_DOMAIN}/static/indaytrending-thumbnail.png`;
 
   try {
     const width = 1280;
@@ -39,11 +31,9 @@ async function handler({ query: { slug } }, res) {
 
     const buffer = canvas.toBuffer('image/png');
 
-    return res.setHeader('Content-Type', 'image/png').status(200).send(buffer);
+    return res.setHeader('Content-Type', 'image/png').send(buffer);
   } catch (error) {
-    return res.status(500).json({
-      message: error.message,
-    });
+    return res.status(500).json({ message: error.message });
   }
 }
 
