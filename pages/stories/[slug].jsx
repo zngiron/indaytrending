@@ -52,10 +52,10 @@ function Post({ post }) {
       />
       <div className="container my-5">
         <div className="grid xl:grid-cols-3 gap-5">
-          <div className="col-span-full">
+          <div className="col-span-full text-center">
             <Adsense slot="6234342116" />
           </div>
-          <div className="space-y-5 xl:sticky xl:top-5 xl:col-span-2">
+          <div className="space-y-5 xl:col-span-2">
             <div className="relative rounded-lg bg-gradient-to-tr from-secondary via-primary to-primary aspect-[1280/670]">
               <Image
                 className="rounded-lg transition transform-gpu will-change-transform opacity-40 group-hover:scale-105"
@@ -67,20 +67,21 @@ function Post({ post }) {
                 loading="eager"
               />
             </div>
-            <h1 className="font-semibold text-primary text-xl">{post?.title}</h1>
-            <div className="flex flex-wrap gap-2">
-              {post?.categories?.edges.map(({ node }) => (
-                <Link href={`/${node.slug}`} key={node?.id}>
-                  <a className="px-4 py-1 rounded-full bg-primary font-semibold text-white text-xs hover:bg-secondary">{node?.name}</a>
-                </Link>
-              ))}
-            </div>
-            <div>
+            <div className="p-5 space-y-5 rounded-lg bg-white">
+              <h1 className="font-semibold text-primary text-xl">{post?.title}</h1>
+              <div className="flex flex-wrap gap-2">
+                {post?.categories?.edges.map(({ node }) => (
+                  <Link href={`/${node.slug}`} key={node?.id}>
+                    <a className="px-4 py-1 rounded-full bg-primary font-semibold text-white text-xs hover:bg-secondary">{node?.name}</a>
+                  </Link>
+                ))}
+              </div>
+              <Adsense type="article" slot="3640794162" />
+              <div className="prose max-w-none mx-auto text-sm leading-5 xl:text-base" dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
               <Adsense type="article" slot="3640794162" />
             </div>
-            <div className="prose max-w-none mx-auto text-sm leading-5 xl:text-base" dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
           </div>
-          <aside className="sticky top-20 rounded-lg self-start bg-white p-5">
+          <aside className="self-start rounded-lg bg-white p-5 xl:sticky xl:top-20">
             <div className="text-center">
               <Adsense slot="2530090260" />
             </div>
