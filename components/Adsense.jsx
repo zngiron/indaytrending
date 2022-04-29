@@ -1,14 +1,8 @@
 /* eslint-disable no-undef */
 
-import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 function Adsense({ type, slot }) {
-  const router = useRouter();
-  const [, updateState] = useState();
-
-  const forceUpdate = useCallback(() => updateState({}), []);
-
   useEffect(() => {
     setTimeout(() => {
       if (window.adsbygoogle) {
@@ -16,11 +10,6 @@ function Adsense({ type, slot }) {
       }
     }, 500);
   }, []);
-
-  useEffect(() => {
-    router.events.on('routeChangeStart', forceUpdate);
-    return () => router.events.off('routeChangeStart', forceUpdate);
-  }, [router, forceUpdate]);
 
   if (type === 'article') {
     return (
