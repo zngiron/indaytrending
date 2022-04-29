@@ -56,17 +56,6 @@ function Post({ post }) {
       <div className="container my-5">
         <div className="grid xl:grid-cols-3 gap-5">
           <article className="space-y-5 xl:col-span-2">
-            <div className="relative rounded-lg bg-gradient-to-tr from-secondary via-primary to-primary aspect-[1280/670]">
-              <Image
-                className="rounded-lg transition transform-gpu will-change-transform opacity-40 group-hover:scale-105"
-                src={post?.image?.node?.featured}
-                alt={post?.title}
-                layout="fill"
-                objectFit="cover"
-                draggable={false}
-                loading="eager"
-              />
-            </div>
             <div className="p-5 space-y-5 rounded-lg bg-white">
               <h1 className="font-semibold text-primary text-xl">{post?.title}</h1>
               <div className="flex flex-wrap gap-2">
