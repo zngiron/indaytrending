@@ -32,7 +32,7 @@ function Post({ post }) {
           ],
           images: [
             {
-              url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/image/${post?.slug}`,
+              url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/image?url=${post.image?.node?.featured}`,
               alt: post?.title,
             },
           ],
@@ -42,7 +42,7 @@ function Post({ post }) {
         url={`${process.env.NEXT_PUBLIC_DOMAIN}/stories/${post?.slug}`}
         title={post?.title}
         description="Inday Trending - Pinoy Short Stories"
-        images={[`${process.env.NEXT_PUBLIC_DOMAIN}/api/image/${post?.slug}`]}
+        images={[`${process.env.NEXT_PUBLIC_DOMAIN}/api/image?url=${post.image?.node?.featured}`]}
         datePublished={post?.published}
         dateModified={post?.modified}
         authorName="Inday Trending"
