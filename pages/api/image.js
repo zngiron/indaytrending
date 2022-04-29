@@ -1,45 +1,24 @@
-import { createCanvas, loadImage } from 'canvas';
+import Jimp from 'jimp';
 
-const { DOMAIN } = process.env;
-
-export default async (req, res) => {
-  const { query: { url } } = req;
-
-  const re = new RegExp(/^https:\/\/(.*\.)?indaytrending\.com/);
-
-  if (url && !url.match(re)) {
-    res.status(404);
-    res.end();
+async function handler({ query: { url } }, res) {
+  if (!url) {
+    return res.status(404).json({ message: 'Image Not Found' });
   }
-
-  const link = url || `${DOMAIN}/static/indaytrending-thumbnail.png`;
 
   try {
-    const width = 1280;
-    const height = 670;
+    const image = await Jimp.read(url);
+    const overlay = await Jimp.read(`${process.env.DOMAIN}/static/indaytrending-overlay.png`);
 
-    const canvas = createCanvas(width, height);
-    const context = canvas.getContext('2d');
-    const gradient = context.createLinearGradient(0, 0, width, height);
-    const image = await loadImage(link);
+    image.composite(overlay, 0, 0);
+    image.cover(1280, 670);
+    image.quality(100);
 
-    context.drawImage(image, 0, 0);
-    gradient.addColorStop(0, '#253f4c99');
-    gradient.addColorStop(100, '#832f3999');
+    const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
 
-    context.fillStyle = gradient;
-    context.fillRect(0, 0, width, height);
-
-    const overlay = await loadImage(`${DOMAIN}/static/indaytrending-overlay.png`);
-
-    context.drawImage(overlay, 0, 530, 1280, 140);
-
-    const buffer = canvas.toBuffer('image/png');
-
-    res.setHeader('Content-Type', 'image/png');
-    res.send(buffer);
+    return res.setHeader('Content-Type', 'image/png').status(200).send(buffer);
   } catch (error) {
-    res.status(404);
-    res.end();
+    return res.status(500).json({ message: error.message });
   }
-};
+}
+
+export default handler;
