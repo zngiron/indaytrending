@@ -3,7 +3,6 @@
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 import Adsense from '../../components/Adsense';
 
