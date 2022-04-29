@@ -21,6 +21,7 @@ export default class Root extends Document {
           <NextScript />
           {production && (
             <>
+              <script src="//anymind360.com/js/7429/ats.js" />
               <script
                 async
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9878085739428147"
