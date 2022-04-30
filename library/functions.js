@@ -8,3 +8,6 @@ export const clean = (html) => sanitize(html, {
 });
 
 export const date = (e) => new Date(e).toISOString();
+
+
+export const keygen = () => Math.floor(Math.random() * 2048);

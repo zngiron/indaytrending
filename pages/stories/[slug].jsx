@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import Adsense from '../../components/Adsense';
 
-import { clean } from '../../library/functions';
+import { clean, keygen } from '../../library/functions';
 import client from '../../library/client';
 
 import POSTS_QUERY from '../../graphql/Posts.graphql';
@@ -49,7 +49,7 @@ function Post({ post }) {
         publisherName="Likha Media"
         publisherLogo="https://likha.media/likha-media-icon.svg"
       />
-      <div className="text-center mb-5 xl:mt-5">
+      <div className="text-center mb-5 xl:mt-5" key={keygen()}>
         <Adsense slot="6234342116" />
       </div>
 
@@ -65,9 +65,9 @@ function Post({ post }) {
                   </Link>
                 ))}
               </div>
-              <Adsense type="article" slot="3640794162" />
+              <Adsense type="article" slot="3640794162" key={keygen()} />
               <div className="prose max-w-none mx-auto text-sm leading-5 xl:text-base" dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
-              <Adsense type="article" slot="3640794162" />
+              <Adsense type="article" slot="3640794162" key={keygen()} />
             </div>
           </article>
           <aside className="hidden self-start rounded-lg bg-white p-5 xl:block xl:sticky xl:top-20">

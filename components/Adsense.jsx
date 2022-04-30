@@ -8,7 +8,7 @@ function Adsense({ type, slot }) {
       if (window.adsbygoogle) {
         (adsbygoogle = window.adsbygoogle || []).push({});
       }
-    }, 500);
+    }, 100);
   }, []);
 
   if (type === 'article') {
