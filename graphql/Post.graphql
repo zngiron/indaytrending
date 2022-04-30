@@ -4,7 +4,16 @@
 query Post($slug: ID!) {
   post(id: $slug, idType: SLUG) {
     ...Post
+    published: date
+    modified
     content
+    categories {
+      edges {
+        node {
+          ...Category
+        }
+      }
+    }
   }
   categories {
     edges {

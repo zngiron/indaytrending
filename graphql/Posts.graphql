@@ -4,8 +4,8 @@ query Posts ($first: Int) {
   posts(first: $first, where: {
     dateQuery: {
       after: {
-        year: 2019
         month: 1
+        year: 2019
       }
     },
     status: PUBLISH

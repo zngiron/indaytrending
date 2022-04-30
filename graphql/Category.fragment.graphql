@@ -1,6 +1,6 @@
 fragment Category on Category {
-  id: databaseId,
-  slug,
-  name,
+  id: databaseId
+  slug
+  name
   description
 }

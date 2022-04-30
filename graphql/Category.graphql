@@ -1,17 +1,11 @@
 #import './Category.fragment.graphql'
 #import './Post.fragment.graphql'
 
-query Category ($first: Int $category: String) {
-  posts(first: $first, where: {
-    categoryName: $category,
-    dateQuery: {
-      after: {
-        year: 2019
-        month: 1
-      }
-    },
-    status: PUBLISH
-  }) {
+query Category($first: Int, $category: String) {
+  posts(
+    first: $first
+    where: {categoryName: $category, dateQuery: {after: {month: 1, year: 2019}}, status: PUBLISH}
+  ) {
     pageInfo {
       startCursor
       endCursor
@@ -21,6 +15,13 @@ query Category ($first: Int $category: String) {
     edges {
       node {
         ...Post
+        categories {
+          edges {
+            node {
+              ...Category
+            }
+          }
+        }
       }
     }
   }

@@ -1,22 +1,10 @@
-#import './Category.fragment.graphql'
-
 fragment Post on Post {
   id: databaseId
   slug
-  published: date
-  modified
   title
   image: featuredImage {
     node {
       featured: sourceUrl
-      thumbnail: sourceUrl(size: THUMBNAIL)
-    }
-  }
-  categories {
-    edges {
-      node {
-        ...Category
-      }
     }
   }
 }
