@@ -60,7 +60,7 @@ export async function getStaticProps({ params }) {
   const { data } = await client.query({
     query: CATEGORY_QUERY,
     variables: {
-      first: 24,
+      first: 12,
       category,
     },
   });
