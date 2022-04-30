@@ -7,6 +7,9 @@ query Post($slug: ID!) {
     published: date
     modified
     content
+    next {
+      slug
+    }
     categories {
       edges {
         node {

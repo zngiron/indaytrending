@@ -68,6 +68,18 @@ function Post({ post }) {
               <Adsense type="article" slot="3640794162" key={keygen()} />
               <div className="prose max-w-none mx-auto text-sm leading-5 xl:text-base" dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
               <Adsense type="article" slot="3640794162" key={keygen()} />
+              <div className="sticky bottom-5 flex gap-5 justify-center">
+                {post?.next?.slug && (
+                  <Link href={`/stories/${post.next.slug}`}>
+                    <a className="flex grow justify-center items-center px-5 py-2 rounded-lg bg-primary font-semibold text-white xl:hidden hover:bg-secondary ">
+                      <span className="grow">Read Next Story</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </a>
+                  </Link>
+                )}
+              </div>
             </div>
           </article>
           <aside className="hidden self-start rounded-lg bg-white p-5 xl:block xl:sticky xl:top-20">
