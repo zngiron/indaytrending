@@ -8,17 +8,17 @@ function Adsense({ type, slot }) {
       if (window.adsbygoogle) {
         (adsbygoogle = window.adsbygoogle || []).push({});
       }
-    }, 100);
+    }, 1000);
   }, []);
 
   if (type === 'article') {
     return (
       <ins
         className="adsbygoogle block text-center"
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
         data-ad-client="ca-pub-9878085739428147"
         data-ad-slot={slot}
+        data-ad-format="fluid"
+        data-ad-layout="in-article"
       />
     );
   }

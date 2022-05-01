@@ -29,7 +29,7 @@ function Header({ categories }) {
     <header className="fixed z-10 top-0 w-full bg-white text-primary">
       <div className="container flex justify-center items-center h-16 xl:justify-start">
         <Link href="/">
-          <a className="flex items-center gap-2">
+          <a className="flex items-center space-x-2">
             <Image
               src="/static/indaytrending-icon.png"
               width={40}
