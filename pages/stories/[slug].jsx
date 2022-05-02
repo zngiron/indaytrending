@@ -52,12 +52,11 @@ function Post({ post }) {
       <div className="text-center mb-5 xl:mt-5" key={keygen()}>
         <Adsense slot="6234342116" />
       </div>
-
-      <div className="container my-5">
-        <div className="grid xl:grid-cols-3 gap-5">
-          <article className="space-y-5 xl:col-span-2">
-            <div className="p-5 space-y-5 rounded-lg bg-white">
-              <h1 className="font-semibold text-primary text-xl">{post?.title}</h1>
+      <div className="container my-10">
+        <div className="flex gap-5">
+          <article className="grow rounded-lg bg-white">
+            <div className="m-5 space-y-5">
+              <h1 className="font-semibold text-primary text-2xl">{post?.title}</h1>
               <div className="flex flex-wrap gap-2">
                 {post?.categories?.edges.map(({ node }) => (
                   <Link href={`/${node.slug}`} key={node?.id}>
@@ -65,25 +64,27 @@ function Post({ post }) {
                   </Link>
                 ))}
               </div>
+            </div>
+            <div className="prose max-w-none m-5">
               <Adsense type="article" slot="3640794162" key={keygen()} />
-              <div className="prose max-w-none mx-auto text-sm leading-5 xl:text-base" dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
+              <div dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
               <Adsense type="article" slot="3640794162" key={keygen()} />
-              <div className="sticky bottom-5 flex gap-5 justify-center">
-                {post?.next?.slug && (
-                  <Link href={`/stories/${post.next.slug}`}>
-                    <a className="flex grow justify-center items-center px-5 py-2 rounded-lg bg-primary font-semibold text-white xl:hidden hover:bg-secondary ">
-                      <span className="grow">Read Next Story</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </a>
-                  </Link>
-                )}
-              </div>
+            </div>
+            <div className="sticky bottom-5 m-5">
+              {post?.next?.slug && (
+                <Link href={`/stories/${post.next.slug}`}>
+                  <a className="flex grow justify-center items-center px-5 py-2 rounded-lg bg-primary font-semibold text-white xl:hidden hover:bg-secondary ">
+                    <span className="grow">Read Next Story</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                </Link>
+              )}
             </div>
           </article>
-          <aside className="hidden self-start rounded-lg bg-white p-5 xl:block xl:sticky xl:top-20">
-            <div className="text-center">
+          <aside className="hidden w-80 rounded-lg xl:block">
+            <div className="sticky top-20">
               <Adsense slot="2530090260" />
             </div>
           </aside>
