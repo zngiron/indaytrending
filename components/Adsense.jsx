@@ -6,7 +6,7 @@ function Adsense({ type, slot }) {
   useEffect(() => {
     setTimeout(() => {
       if (window.adsbygoogle) {
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        (window.adsbygoogle || []).push({});
       }
     }, 1000);
   }, []);

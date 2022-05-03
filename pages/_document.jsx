@@ -8,7 +8,9 @@ import {
 function Document() {
   return (
     <Html lang="tl">
-      <Head />
+      <Head>
+        <script src="//anymind360.com/js/7429/ats.js" />
+      </Head>
       <body className="bg-gray-50">
         <Main />
         <NextScript />

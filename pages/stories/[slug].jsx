@@ -53,37 +53,23 @@ function Post({ post }) {
         <Adsense slot="6234342116" />
       </div>
       <div className="container my-10">
-        <div className="flex gap-5">
-          <article className="grow rounded-lg bg-white">
-            <div className="m-5 space-y-5">
-              <h1 className="font-semibold text-primary text-2xl">{post?.title}</h1>
-              <div className="flex flex-wrap gap-2">
-                {post?.categories?.edges.map(({ node }) => (
-                  <Link href={`/${node.slug}`} key={node?.id}>
-                    <a className="px-4 py-1 rounded-full bg-primary font-semibold text-white text-xs hover:bg-secondary">{node?.name}</a>
-                  </Link>
-                ))}
-              </div>
+        <div className="grid grid-cols-3 gap-5">
+          <div className="col-span-full space-y-5 xl:col-span-2 xl:p-5 xl:rounded-lg xl:bg-white">
+            <h1 className="font-semibold text-primary text-2xl">{post?.title}</h1>
+            <div className="flex space-x-2">
+              {post?.categories?.edges.map(({ node }) => (
+                <Link href={`/${node.slug}`} key={node?.id}>
+                  <a className="px-4 py-1 rounded-full bg-primary font-semibold text-white text-xs hover:bg-secondary">{node?.name}</a>
+                </Link>
+              ))}
             </div>
-            <div className="prose max-w-none m-5">
+            <div className="prose xl:max-w-none">
               <Adsense type="article" slot="3640794162" key={keygen()} />
               <div dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
               <Adsense type="article" slot="3640794162" key={keygen()} />
             </div>
-            <div className="sticky bottom-5 m-5">
-              {post?.next?.slug && (
-                <Link href={`/stories/${post.next.slug}`}>
-                  <a className="flex grow justify-center items-center px-5 py-2 rounded-lg bg-primary font-semibold text-white xl:hidden hover:bg-secondary ">
-                    <span className="grow">Read Next Story</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </a>
-                </Link>
-              )}
-            </div>
-          </article>
-          <aside className="hidden w-80 rounded-lg xl:block">
+          </div>
+          <aside className="hidden w-80 xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
             <div className="sticky top-20">
               <Adsense slot="2530090260" />
             </div>

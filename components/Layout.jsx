@@ -20,10 +20,6 @@ function Layout({ categories, children }) {
       />
       <Script
         strategy="afterInteractive"
-        src="https://anymind360.com/js/7429/ats.js"
-      />
-      <Script
-        strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-P294E6PHLK"
       />
       <Script
