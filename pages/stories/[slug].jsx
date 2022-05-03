@@ -63,16 +63,14 @@ function Post({ post }) {
                 </Link>
               ))}
             </div>
-            <div className="prose xl:max-w-none">
+            <div className="prose text- xl:max-w-none xl:text-base">
               <Adsense type="article" slot="3640794162" key={keygen()} />
               <div dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
               <Adsense type="article" slot="3640794162" key={keygen()} />
             </div>
           </div>
-          <aside className="hidden w-80 xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
-            <div className="sticky top-20">
-              <Adsense slot="2530090260" />
-            </div>
+          <aside className="sticky top-20 hidden w-80 xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
+            <Adsense slot="2530090260" />
           </aside>
         </div>
       </div>
