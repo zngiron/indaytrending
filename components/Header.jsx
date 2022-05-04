@@ -31,7 +31,7 @@ function Header({ categories }) {
         <Link href="/">
           <a className="flex items-center space-x-2 whitespace-nowrap">
             <Image
-              className="w-10 h-10"
+              className="absolute inset-0 w-10 h-10"
               src="/static/indaytrending-icon.png"
               width={40}
               height={40}
