@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Script from 'next/script';
 
 import Meta from './Meta';
@@ -5,6 +7,30 @@ import Header from './Header';
 import Footer from './Footer';
 
 function Layout({ categories, children }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (window.startAnymindTS) {
+        window.startAnymindTS();
+      }
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    const handleRouterStart = () => {
+      if (window.anymindTS.dispose) {
+        window.anymindTS.dispose();
+      }
+    };
+
+    router.events.on('routeChangeStart', handleRouterStart);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouterStart);
+    };
+  }, [router]);
+
   return (
     <>
       <Meta />
@@ -13,6 +39,7 @@ function Layout({ categories, children }) {
         {children}
       </main>
       <Footer />
+
       {process.env.NODE_ENV === 'production' && (
         <>
           <Script
@@ -36,6 +63,10 @@ function Layout({ categories, children }) {
             strategy="afterInteractive"
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9878085739428147"
             crossOrigin="anonymous"
+          />
+          <Script
+            strategy="afterInteractive"
+            src="https://anymind360.com/js/7429/ats.js"
           />
           <Script
             id="taboola-init"
