@@ -18,16 +18,26 @@ function Layout({ categories, children }) {
   }, []);
 
   useEffect(() => {
-    const handleRouterStart = () => {
+    const handleRouteStart = () => {
       if (window.anymindTS.dispose) {
         window.anymindTS.dispose();
       }
     };
 
-    router.events.on('routeChangeStart', handleRouterStart);
+    const handleRouteComplete = () => {
+      setTimeout(() => {
+        if (window.startAnymindTS) {
+          window.startAnymindTS();
+        }
+      }, 1000);
+    };
+
+    router.events.on('routeChangeStart', handleRouteStart);
+    router.events.on('routeChangeComplete', handleRouteComplete);
 
     return () => {
-      router.events.off('routeChangeStart', handleRouterStart);
+      router.events.off('routeChangeStart', handleRouteStart);
+      router.events.off('routeChangeComplete', handleRouteComplete);
     };
   }, [router]);
 
@@ -39,7 +49,6 @@ function Layout({ categories, children }) {
         {children}
       </main>
       <Footer />
-
       {process.env.NODE_ENV === 'production' && (
         <>
           <Script
