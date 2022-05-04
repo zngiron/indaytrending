@@ -29,8 +29,9 @@ function Header({ categories }) {
     <header className="fixed z-10 top-0 w-full bg-white text-primary">
       <div className="container flex justify-center items-center h-16 xl:justify-start">
         <Link href="/">
-          <a className="flex items-center h-16 mx-5 space-x-2">
+          <a className="flex items-center space-x-2 whitespace-nowrap">
             <Image
+              className="w-10 h-10"
               src="/static/indaytrending-icon.png"
               width={40}
               height={40}
@@ -38,7 +39,7 @@ function Header({ categories }) {
               draggable={false}
               loading="eager"
             />
-            <span className="font-semibold text-sm whitespace-nowrap">Inday Trending</span>
+            <span className="font-semibold text-sm">Inday Trending</span>
           </a>
         </Link>
         <button

@@ -1,27 +1,20 @@
-import { keygen } from '../library/functions';
 import client from '../library/client';
 
 import CATEGORY_QUERY from '../graphql/Category.graphql';
 
-import Adsense from '../components/Adsense';
 import Card from '../components/Card';
 
 function Home({ posts, category }) {
   return (
-    <>
-      <div className="text-center mb-5 xl:mt-5" key={keygen()}>
-        <Adsense slot="6234342116" />
-      </div>
-      <div className="container my-5">
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-          <div className="col-span-full">
-            <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
-            <p>{category.description}</p>
-          </div>
-          {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
+    <div className="container my-5">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <div className="col-span-full">
+          <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
+          <p>{category.description}</p>
         </div>
+        {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,12 +1,10 @@
 import { NextSeo } from 'next-seo';
 
-import { keygen } from '../library/functions';
 import client from '../library/client';
 
 import CATEGORIES_QUERY from '../graphql/Categories.graphql';
 import CATEGORY_QUERY from '../graphql/Category.graphql';
 
-import Adsense from '../components/Adsense';
 import Card from '../components/Card';
 
 function Category({ posts, category }) {
@@ -20,9 +18,6 @@ function Category({ posts, category }) {
           description: category?.description,
         }}
       />
-      <div className="text-center mb-5 xl:mt-5" key={keygen()}>
-        <Adsense slot="6234342116" />
-      </div>
       <div className="container my-5">
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
           <div className="col-span-full">

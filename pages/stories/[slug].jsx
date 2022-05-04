@@ -18,6 +18,7 @@ function Ads(item, key) {
   return (
     <Fragment key={key}>
       <p dangerouslySetInnerHTML={{ __html: clean(item) }} />
+      {(key === 2) && <Adsense type="article" slot="3640794162" key={keygen()} />}
       {(key === 6) && <Taboola type="article" />}
       {(key % 8 === 0 && key !== 0) && <Adsense type="article" slot="3640794162" key={keygen()} />}
     </Fragment>
@@ -61,9 +62,6 @@ function Post({ post }) {
         publisherName="Likha Media"
         publisherLogo="https://likha.media/likha-media-icon.svg"
       />
-      <div className="text-center mb-5 xl:mt-5" key={keygen()}>
-        <Adsense slot="6234342116" />
-      </div>
       <div className="container my-10">
         <div className="grid grid-cols-3 gap-5">
           <div className="col-span-full space-y-5 xl:col-span-2 xl:p-5 xl:rounded-lg xl:bg-white">
