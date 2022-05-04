@@ -75,7 +75,7 @@ function Post({ post }) {
             </div>
             <div className="prose text- xl:max-w-none xl:text-base">
               {post?.content?.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
-              <Taboola type="feed" />
+              <Adsense slot="6234342116" key={keygen()} />
             </div>
           </div>
           <aside className="hidden xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
