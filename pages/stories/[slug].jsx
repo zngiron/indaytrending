@@ -1,16 +1,28 @@
 /* eslint-disable react/no-danger */
 
+import { Fragment } from 'react';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 
 import Link from 'next/link';
 
 import Adsense from '../../components/Adsense';
+import Taboola from '../../components/Taboola';
 
 import { clean, keygen } from '../../library/functions';
 import client from '../../library/client';
 
 import POSTS_QUERY from '../../graphql/Posts.graphql';
 import POST_QUERY from '../../graphql/Post.graphql';
+
+function Ads(item, key) {
+  return (
+    <Fragment key={key}>
+      <p dangerouslySetInnerHTML={{ __html: clean(item) }} />
+      {(key === 6) && <Taboola type="article" />}
+      {(key % 8 === 0 && key !== 0) && <Adsense type="article" slot="3640794162" key={keygen()} />}
+    </Fragment>
+  );
+}
 
 function Post({ post }) {
   return (
@@ -64,13 +76,12 @@ function Post({ post }) {
               ))}
             </div>
             <div className="prose text- xl:max-w-none xl:text-base">
-              <Adsense type="article" slot="3640794162" key={keygen()} />
-              <div dangerouslySetInnerHTML={{ __html: clean(post?.content) }} />
-              <Adsense type="article" slot="3640794162" key={keygen()} />
+              {post?.content?.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
+              <Taboola type="feed" />
             </div>
           </div>
-          <aside className="sticky top-20 hidden w-80 xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
-            <Adsense slot="2530090260" />
+          <aside className="hidden xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
+            <Taboola type="sidebar" />
           </aside>
         </div>
       </div>
