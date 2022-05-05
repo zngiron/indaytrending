@@ -1,3 +1,5 @@
+import { uid } from 'uid';
+
 import client from '../library/client';
 
 import CATEGORY_QUERY from '../graphql/Category.graphql';
@@ -19,7 +21,7 @@ function Home({ posts, category }) {
         </div>
       </div>
       <div className="text-center my-5">
-        <Adsense slot="6234342116" />
+        <Adsense slot="6234342116" key={uid()} />
       </div>
     </>
   );

@@ -16,12 +16,20 @@ function Layout({ categories, children }) {
       }
     };
 
-    const handleRouteComplete = () => {
-      setTimeout(() => {
-        if (window.startAnymindTS) {
-          window.startAnymindTS();
-        }
-      }, 1000);
+    const handleRouteComplete = (url) => {
+      if (window.gtag) {
+        window.gtag('config', 'G-P294E6PHLK', {
+          page_path: url,
+        });
+      }
+
+      if (window.adsbygoogle) {
+        window.adsbygoogle.push({});
+      }
+
+      if (window.startAnymindTS) {
+        window.startAnymindTS();
+      }
     };
 
     router.events.on('routeChangeStart', handleRouteStart);
@@ -41,6 +49,7 @@ function Layout({ categories, children }) {
         {children}
       </main>
       <Footer />
+
       {process.env.NODE_ENV === 'production' && (
         <>
           <Script
@@ -52,18 +61,21 @@ function Layout({ categories, children }) {
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          
-            gtag('config', 'G-P294E6PHLK');
-          `,
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                
+                gtag('js', new Date());
+                gtag('config', 'G-P294E6PHLK', {
+                  page_path: window.location.pathname,
+                });
+              `,
             }}
           />
           <Script
             strategy="afterInteractive"
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9878085739428147"
             crossOrigin="anonymous"
+            onLoad={() => window.adsbygoogle.push({})}
           />
           <Script
             strategy="afterInteractive"
@@ -75,23 +87,23 @@ function Layout({ categories, children }) {
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
-              window._taboola = window._taboola || [];
-              _taboola.push({article: 'auto'});
-              ! function (e, f, u, i) {
-                if (!document.getElementById(i)) {
-                  e.async = 1;
-                  e.src = u;
-                  e.id = i;
-                  f.parentNode.insertBefore(e, f);
+                window._taboola = window._taboola || [];
+                _taboola.push({article: 'auto'});
+                ! function (e, f, u, i) {
+                  if (!document.getElementById(i)) {
+                    e.async = 1;
+                    e.src = u;
+                    e.id = i;
+                    f.parentNode.insertBefore(e, f);
+                  }
+                }(document.createElement('script'),
+                  document.getElementsByTagName('script')[0],
+                  '//cdn.taboola.com/libtrc/indaytradingsc/loader.js',
+                  'tb_loader_script');
+                if (window.performance && typeof window.performance.mark == 'function') {
+                  window.performance.mark('tbl_ic');
                 }
-              }(document.createElement('script'),
-                document.getElementsByTagName('script')[0],
-                '//cdn.taboola.com/libtrc/indaytradingsc/loader.js',
-                'tb_loader_script');
-              if (window.performance && typeof window.performance.mark == 'function') {
-                window.performance.mark('tbl_ic');
-              }
-            `,
+              `,
             }}
           />
         </>

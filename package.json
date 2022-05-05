@@ -27,7 +27,8 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "sanitize-html": "^2.7.0",
-    "sharp": "^0.30.4"
+    "sharp": "^0.30.4",
+    "uid": "^2.0.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.6",

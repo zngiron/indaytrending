@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 import Link from 'next/link';
 import parse from 'html-react-parser';
+import { uid } from 'uid';
 
 import Adsense from '../../components/Adsense';
 import Taboola from '../../components/Taboola';
@@ -19,8 +20,8 @@ function Ads(item, key) {
   return (
     <Fragment key={key}>
       {parse(item)}
-      {(key === 2) && <Adsense type="article" slot="3640794162" />}
-      {(key % 8 === 0 && key !== 0) && <Adsense type="article" slot="3640794162" />}
+      {(key === 2) && <Adsense type="article" slot="3640794162" key={uid()} />}
+      {(key % 8 === 0 && key !== 0) && <Adsense type="article" slot="3640794162" key={uid()} />}
     </Fragment>
   );
 }

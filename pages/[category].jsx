@@ -1,3 +1,5 @@
+import { uid } from 'uid';
+
 import { NextSeo } from 'next-seo';
 
 import client from '../library/client';
@@ -29,7 +31,7 @@ function Category({ posts, category }) {
         </div>
       </div>
       <div className="text-center my-5">
-        <Adsense slot="6234342116" />
+        <Adsense slot="6234342116" key={uid()} />
       </div>
     </>
   );

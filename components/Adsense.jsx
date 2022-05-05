@@ -1,14 +1,4 @@
-import { useEffect } from 'react';
-
 function Adsense({ type, slot }) {
-  useEffect(() => {
-    setTimeout(() => {
-      if (window.adsbygoogle) {
-        (window.adsbygoogle || []).push({});
-      }
-    }, 1000);
-  }, []);
-
   if (type === 'article') {
     return (
       <ins
