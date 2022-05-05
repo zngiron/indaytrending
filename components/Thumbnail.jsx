@@ -16,12 +16,12 @@ function Thumbnail({ title, slug, image }) {
   }, []);
 
   return (
-    <article className={`group fixed z-10 inset-x-0 bg-primary text-white xl:hidden ${thumbnail ? 'block' : 'hidden'}`}>
+    <article className={`group fixed z-10 inset-x-0 bg-primary text-white transition duration-500 xl:hidden ${thumbnail ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
       <Link href={`/stories/${slug}`}>
         <a className="flex justify-center items-center h-16 px-5 gap-5 group-hover:bg-secondary">
           <div className="relative flex items-center">
-            <div className="absolute z-10 -top-1 -right-1 bg-red-600 w-2 h-2 rounded-full ">
-              <div className="animate-ping bg-red-600 w-full h-full rounded-full" />
+            <div className="absolute z-10 -top-1 -right-1 bg-red-700 w-2 h-2 rounded-full" aria-hidden>
+              <div className="animate-ping bg-red-700 w-full h-full rounded-full" />
             </div>
             <Image
               className="rounded-md opacity-70"
@@ -30,6 +30,7 @@ function Thumbnail({ title, slug, image }) {
               layout="fixed"
               width={40}
               height={40}
+              draggable={false}
             />
           </div>
           <span className="flex text-xs line-clamp-2">

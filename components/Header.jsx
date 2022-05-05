@@ -26,7 +26,7 @@ function Header({ categories }) {
   }, [menu]);
 
   return (
-    <header className="fixed z-10 top-0 w-full bg-white text-primary">
+    <header className="fixed z-20 top-0 w-full bg-white text-primary">
       <div className="container flex justify-center items-center h-16 xl:justify-start">
         <Link href="/">
           <a className="flex items-center space-x-2 whitespace-nowrap">
