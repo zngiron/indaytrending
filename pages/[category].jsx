@@ -26,8 +26,10 @@ function Category({ posts, category }) {
             <p>{category.description}</p>
           </div>
           {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
+          <div className="col-span-full">
+            <Adsense slot="6234342116" />
+          </div>
         </div>
-        <Adsense slot="6234342116" />
       </div>
     </>
   );
