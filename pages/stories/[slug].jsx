@@ -20,7 +20,6 @@ function Ads(item, key) {
     <Fragment key={key}>
       {parse(item)}
       {(key === 2) && <Adsense type="article" slot="3640794162" key={keygen()} />}
-      {(key === 6) && <Taboola type="article" />}
       {(key % 8 === 0 && key !== 0) && <Adsense type="article" slot="3640794162" key={keygen()} />}
     </Fragment>
   );
@@ -83,6 +82,7 @@ function Post({ post, content }) {
             </div>
             <div className="prose text-sm md:max-w-none xl:text-base">
               {content.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
+              <Taboola type="article" />
             </div>
           </div>
           <aside className="hidden xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
