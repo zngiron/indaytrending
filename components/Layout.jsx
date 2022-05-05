@@ -9,6 +9,11 @@ import Footer from './Footer';
 function Layout({ categories, children }) {
   const router = useRouter();
 
+  const handleAdsense = () => {
+    const elements = document.getElementsByClassName('adsense');
+    [...elements].map(() => window.adsbygoogle.push({}));
+  };
+
   useEffect(() => {
     const handleRouteStart = () => {
       if (window.anymindTS) {
@@ -24,7 +29,7 @@ function Layout({ categories, children }) {
       }
 
       if (window.adsbygoogle) {
-        window.adsbygoogle.push({});
+        handleAdsense();
       }
 
       if (window.startAnymindTS) {
@@ -39,7 +44,7 @@ function Layout({ categories, children }) {
       router.events.off('routeChangeStart', handleRouteStart);
       router.events.off('routeChangeComplete', handleRouteComplete);
     };
-  }, [router]);
+  }, [router.events]);
 
   return (
     <>
@@ -49,7 +54,6 @@ function Layout({ categories, children }) {
         {children}
       </main>
       <Footer />
-
       {process.env.NODE_ENV === 'production' && (
         <>
           <Script
@@ -75,7 +79,7 @@ function Layout({ categories, children }) {
             strategy="afterInteractive"
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9878085739428147"
             crossOrigin="anonymous"
-            onLoad={() => window.adsbygoogle.push({})}
+            onLoad={() => handleAdsense()}
           />
           <Script
             strategy="afterInteractive"
