@@ -1,4 +1,10 @@
-module.exports = {
+/* eslint-disable import/no-extraneous-dependencies */
+
+const withAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const nextConfig = {
   poweredByHeader: false,
   images: {
     domains: ['cms.indaytrending.com'],
@@ -15,3 +21,5 @@ module.exports = {
     return config;
   },
 };
+
+module.exports = withAnalyzer(nextConfig);

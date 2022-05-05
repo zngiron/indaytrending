@@ -2,11 +2,12 @@
 
 import { Fragment } from 'react';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
-
 import Link from 'next/link';
+import parse from 'html-react-parser';
 
 import Adsense from '../../components/Adsense';
 import Taboola from '../../components/Taboola';
+import Thumbnail from '../../components/Thumbnail';
 
 import { clean, keygen } from '../../library/functions';
 import client from '../../library/client';
@@ -17,7 +18,7 @@ import POST_QUERY from '../../graphql/Post.graphql';
 function Ads(item, key) {
   return (
     <Fragment key={key}>
-      <p dangerouslySetInnerHTML={{ __html: clean(item) }} />
+      {parse(item)}
       {(key === 2) && <Adsense type="article" slot="3640794162" key={keygen()} />}
       {(key === 6) && <Taboola type="article" />}
       {(key % 8 === 0 && key !== 0) && <Adsense type="article" slot="3640794162" key={keygen()} />}
@@ -25,7 +26,7 @@ function Ads(item, key) {
   );
 }
 
-function Post({ post }) {
+function Post({ post, content }) {
   return (
     <>
       <NextSeo
@@ -62,6 +63,13 @@ function Post({ post }) {
         publisherName="Likha Media"
         publisherLogo="https://likha.media/likha-media-icon.svg"
       />
+      {post.next && (
+        <Thumbnail
+          title={post?.next?.title}
+          slug={post?.next?.slug}
+          image={post?.next?.image?.node?.thumbnail}
+        />
+      )}
       <div className="container my-10">
         <div className="grid grid-cols-3 gap-5">
           <div className="col-span-full space-y-5 xl:col-span-2 xl:p-5 xl:rounded-lg xl:bg-white">
@@ -73,8 +81,11 @@ function Post({ post }) {
                 </Link>
               ))}
             </div>
-            <div className="prose text- xl:max-w-none xl:text-base">
-              {post?.content?.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
+            <div className="prose text-sm md:max-w-none xl:text-base">
+              {content.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
+              <div className="hidden xl:block">
+                <Taboola type="feed" />
+              </div>
             </div>
           </div>
           <aside className="hidden xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
@@ -121,6 +132,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       post,
+      content: clean(post?.content),
       categories,
     },
     revalidate: 30,

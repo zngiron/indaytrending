@@ -1,7 +1,7 @@
 import sanitize from 'sanitize-html';
 
 export const clean = (html) => sanitize(html, {
-  allowedTags: ['img'],
+  allowedTags: ['p', 'img'],
   allowedAttributes: {
     img: ['src', 'srcset', 'width', 'height', 'alt', 'loading'],
   },
