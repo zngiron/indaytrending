@@ -14,11 +14,13 @@ function Card({
           <Image
             className="rounded-lg transition transform-gpu will-change-transform opacity-40 group-hover:scale-105"
             src={image?.node?.featured}
+            width={1280}
+            height={670}
             alt={title}
-            layout="fill"
-            objectFit="cover"
             draggable={false}
-            loading="eager"
+            layout="responsive"
+            sizes="50vw"
+            priority
           />
           <h1 className="absolute bottom-0 m-4 font-semibold text-white leading-5 line-clamp-3 transition group-hover:text-yellow-400">{title}</h1>
         </a>

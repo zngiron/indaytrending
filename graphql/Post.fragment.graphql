@@ -2,9 +2,4 @@ fragment Post on Post {
   id: databaseId
   slug
   title
-  image: featuredImage {
-    node {
-      featured: sourceUrl
-    }
-  }
 }

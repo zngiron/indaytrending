@@ -37,7 +37,8 @@ function Header({ categories }) {
               height={40}
               alt="Inday Trending"
               draggable={false}
-              loading="eager"
+              layout="fixed"
+              priority
             />
             <span className="font-semibold text-sm">Inday Trending</span>
           </a>

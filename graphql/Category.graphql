@@ -15,6 +15,11 @@ query Category($first: Int, $category: String) {
     edges {
       node {
         ...Post
+        image: featuredImage {
+          node {
+            featured: sourceUrl
+          }
+        }
         categories {
           edges {
             node {

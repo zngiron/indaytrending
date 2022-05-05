@@ -10,16 +10,8 @@ function Layout({ categories, children }) {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => {
-      if (window.startAnymindTS) {
-        window.startAnymindTS();
-      }
-    }, 1000);
-  }, []);
-
-  useEffect(() => {
     const handleRouteStart = () => {
-      if (window.anymindTS.dispose) {
+      if (window.anymindTS) {
         window.anymindTS.dispose();
       }
     };
@@ -76,6 +68,7 @@ function Layout({ categories, children }) {
           <Script
             strategy="afterInteractive"
             src="https://anymind360.com/js/7429/ats.js"
+            onLoad={() => { window.startAnymindTS(); }}
           />
           <Script
             id="taboola-init"
