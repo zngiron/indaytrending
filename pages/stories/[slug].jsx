@@ -83,9 +83,7 @@ function Post({ post, content }) {
             </div>
             <div className="prose text-sm md:max-w-none xl:text-base">
               {content.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
-              <div className="hidden xl:block">
-                <Taboola type="feed" />
-              </div>
+              <Taboola type="feed" />
             </div>
           </div>
           <aside className="hidden xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
