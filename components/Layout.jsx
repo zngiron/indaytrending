@@ -18,6 +18,10 @@ function Layout({ categories, children }) {
 
     const handleRouteComplete = () => {
       setTimeout(() => {
+        if (window.adsbygoogle) {
+          (window.adsbygoogle || []).push({});
+        }
+
         if (window.startAnymindTS) {
           window.startAnymindTS();
         }
@@ -64,6 +68,7 @@ function Layout({ categories, children }) {
             strategy="afterInteractive"
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9878085739428147"
             crossOrigin="anonymous"
+            onLoad={() => { (window.adsbygoogle || []).push({}); }}
           />
           <Script
             strategy="afterInteractive"

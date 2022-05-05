@@ -9,7 +9,7 @@ import Adsense from '../../components/Adsense';
 import Taboola from '../../components/Taboola';
 import Thumbnail from '../../components/Thumbnail';
 
-import { clean, keygen } from '../../library/functions';
+import { clean } from '../../library/functions';
 import client from '../../library/client';
 
 import POSTS_QUERY from '../../graphql/Posts.graphql';
@@ -19,8 +19,8 @@ function Ads(item, key) {
   return (
     <Fragment key={key}>
       {parse(item)}
-      {(key === 2) && <Adsense type="article" slot="3640794162" key={keygen()} />}
-      {(key % 8 === 0 && key !== 0) && <Adsense type="article" slot="3640794162" key={keygen()} />}
+      {(key === 2) && <Adsense type="article" slot="3640794162" />}
+      {(key % 8 === 0 && key !== 0) && <Adsense type="article" slot="3640794162" />}
     </Fragment>
   );
 }
@@ -80,7 +80,7 @@ function Post({ post, content }) {
                 </Link>
               ))}
             </div>
-            <div className="prose text-sm md:max-w-none xl:text-base">
+            <div className="prose md:max-w-none">
               {content.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
               <Taboola type="article" />
             </div>

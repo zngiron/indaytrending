@@ -5,6 +5,7 @@ import client from '../library/client';
 import CATEGORIES_QUERY from '../graphql/Categories.graphql';
 import CATEGORY_QUERY from '../graphql/Category.graphql';
 
+import Adsense from '../components/Adsense';
 import Card from '../components/Card';
 
 function Category({ posts, category }) {
@@ -26,6 +27,7 @@ function Category({ posts, category }) {
           </div>
           {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
         </div>
+        <Adsense slot="6234342116" />
       </div>
     </>
   );
@@ -69,7 +71,7 @@ export async function getStaticProps({ params }) {
       categories,
       category: categories.edges.find(({ node }) => node.slug === category).node,
     },
-    revalidate: 60,
+    revalidate: 30,
   };
 }
 
