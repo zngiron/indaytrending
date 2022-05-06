@@ -60,14 +60,14 @@ function Scripts() {
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              
-              gtag('js', new Date());
-              gtag('config', 'G-P294E6PHLK', {
-                page_path: window.location.pathname,
-              });
-            `,
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            
+            gtag('js', new Date());
+            gtag('config', 'G-P294E6PHLK', {
+              page_path: window.location.pathname,
+            });
+          `,
         }}
       />
       <Script
@@ -78,13 +78,13 @@ function Scripts() {
         onLoad={() => handleAdsense()}
       />
       <Script
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         src="https://anymind360.com/js/7429/ats.js"
         onLoad={() => window.startAnymindTS()}
       />
       <Script
         id="tb_loader_script"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         async
         src="https://cdn.taboola.com/libtrc/indaytradingsc/loader.js"
         onLoad={() => handleTaboola()}

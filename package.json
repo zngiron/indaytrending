@@ -7,12 +7,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "rimraf .next && next dev",
-    "build": "rimraf .next && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "serve": "NODE_ENV=production node server.js",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "clean": "rimraf .next"
   },
   "dependencies": {
     "@apollo/client": "^3.6.2",
