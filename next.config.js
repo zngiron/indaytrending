@@ -9,7 +9,7 @@ const nextConfig = {
     return [
       {
         source: '/amp/:slug',
-        destination: '/stories`/:slug',
+        destination: '/stories/:slug',
         permanent: true,
       },
     ];
