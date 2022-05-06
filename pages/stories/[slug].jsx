@@ -71,8 +71,8 @@ function Post({ post, content }) {
         />
       )}
       <div className="container my-10">
-        <div className="grid grid-cols-3 gap-5">
-          <div className="col-span-full space-y-5 xl:col-span-2 xl:p-5 xl:rounded-lg xl:bg-white">
+        <div className="grid grid-cols-4 gap-5">
+          <div className="col-span-full space-y-5 xl:col-span-3 xl:p-5 xl:rounded-lg xl:bg-white">
             <h1 className="font-semibold text-primary text-2xl">{post?.title}</h1>
             <div className="flex space-x-2">
               {post?.categories?.edges.map(({ node }) => (

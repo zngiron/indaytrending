@@ -1,3 +1,8 @@
+export const handleAdsense = () => {
+  const elements = document.getElementsByClassName('adsense');
+  [...elements].map(() => window.adsbygoogle.push({}));
+};
+
 function Adsense({ type, slot }) {
   if (type === 'article') {
     return (

@@ -1,51 +1,9 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Script from 'next/script';
-
 import Meta from './Meta';
 import Header from './Header';
 import Footer from './Footer';
+import Scripts from './Scripts';
 
 function Layout({ categories, children }) {
-  const router = useRouter();
-
-  const handleAdsense = () => {
-    const elements = document.getElementsByClassName('adsense');
-    [...elements].map(() => window.adsbygoogle.push({}));
-  };
-
-  useEffect(() => {
-    const handleRouteStart = () => {
-      if (window.anymindTS) {
-        window.anymindTS.dispose();
-      }
-    };
-
-    const handleRouteComplete = (url) => {
-      if (window.gtag) {
-        window.gtag('config', 'G-P294E6PHLK', {
-          page_path: url,
-        });
-      }
-
-      if (window.adsbygoogle) {
-        handleAdsense();
-      }
-
-      if (window.startAnymindTS) {
-        window.startAnymindTS();
-      }
-    };
-
-    router.events.on('routeChangeStart', handleRouteStart);
-    router.events.on('routeChangeComplete', handleRouteComplete);
-
-    return () => {
-      router.events.off('routeChangeStart', handleRouteStart);
-      router.events.off('routeChangeComplete', handleRouteComplete);
-    };
-  }, [router.events]);
-
   return (
     <>
       <Meta />
@@ -54,64 +12,7 @@ function Layout({ categories, children }) {
         {children}
       </main>
       <Footer />
-      {process.env.NODE_ENV === 'production' && (
-        <>
-          <Script
-            strategy="afterInteractive"
-            src="https://www.googletagmanager.com/gtag/js?id=G-P294E6PHLK"
-          />
-          <Script
-            id="ga-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                
-                gtag('js', new Date());
-                gtag('config', 'G-P294E6PHLK', {
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
-          <Script
-            strategy="afterInteractive"
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9878085739428147"
-            crossOrigin="anonymous"
-            onLoad={() => { handleAdsense(); }}
-          />
-          <Script
-            strategy="afterInteractive"
-            src="https://anymind360.com/js/7429/ats.js"
-            onLoad={() => { window.startAnymindTS(); }}
-          />
-          <Script
-            id="taboola-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window._taboola = window._taboola || [];
-                _taboola.push({article: 'auto'});
-                ! function (e, f, u, i) {
-                  if (!document.getElementById(i)) {
-                    e.async = 1;
-                    e.src = u;
-                    e.id = i;
-                    f.parentNode.insertBefore(e, f);
-                  }
-                }(document.createElement('script'),
-                  document.getElementsByTagName('script')[0],
-                  '//cdn.taboola.com/libtrc/indaytradingsc/loader.js',
-                  'tb_loader_script');
-                if (window.performance && typeof window.performance.mark == 'function') {
-                  window.performance.mark('tbl_ic');
-                }
-              `,
-            }}
-          />
-        </>
-      )}
+      <Scripts />
     </>
   );
 }
