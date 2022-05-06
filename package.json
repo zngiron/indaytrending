@@ -11,7 +11,8 @@
     "build": "rimraf .next && next build",
     "start": "next start",
     "lint": "next lint",
-    "serve": "NODE_ENV=production node server.js"
+    "serve": "NODE_ENV=production node server.js",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@apollo/client": "^3.6.2",

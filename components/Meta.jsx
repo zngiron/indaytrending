@@ -16,7 +16,6 @@ function Meta() {
         <meta name="theme-color" content="#253f4c" />
         <link rel="apple-touch-icon" sizes="180x180" href="/static/indaytrending-apple-icon.png" />
         <link rel="shortcut icon" type="image/png" sizes="512x512" href="/static/indaytrending-icon.png" />
-        <link rel="preconnect" href={process.env.NEXT_PUBLIC_API} />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <DefaultSeo

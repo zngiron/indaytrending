@@ -5,6 +5,15 @@ const withAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/amp/:slug',
+        destination: '/stories`/:slug',
+        permanent: true,
+      },
+    ];
+  },
   poweredByHeader: false,
   images: {
     domains: ['cms.indaytrending.com'],

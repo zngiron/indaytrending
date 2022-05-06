@@ -133,7 +133,7 @@ export async function getStaticProps({ params }) {
       content: clean(post?.content),
       categories,
     },
-    revalidate: 30,
+    revalidate: 1,
   };
 }
 

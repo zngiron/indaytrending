@@ -22,6 +22,10 @@
   .prose img {
     @apply m-0 rounded-lg content-visibility-auto;
   }
+
+  .ats-slot iframe {
+    @apply mx-auto;
+  }
 }
 
 @layer utilities {
