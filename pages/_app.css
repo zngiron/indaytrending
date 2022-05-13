@@ -16,11 +16,7 @@
   }
 
   iframe {
-    @apply inline-block ;
-  }
-
-  .prose p { 
-    @apply content-visibility-auto;
+    @apply inline-block;
   }
 
   .prose img {

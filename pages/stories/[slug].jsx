@@ -1,9 +1,7 @@
 /* eslint-disable react/no-danger */
 
-import { Fragment } from 'react';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 import Link from 'next/link';
-import parse from 'html-react-parser';
 import { uid } from 'uid';
 
 import Adsense from '../../components/Adsense';
@@ -15,16 +13,6 @@ import client from '../../library/client';
 
 import POSTS_QUERY from '../../graphql/Posts.graphql';
 import POST_QUERY from '../../graphql/Post.graphql';
-
-function Ads(item, key) {
-  return (
-    <Fragment key={key}>
-      {parse(item)}
-      {(key === 2) && <Adsense type="article" slot="3640794162" key={uid()} />}
-      {(key % 8 === 0 && key !== 0) && <Adsense type="article" slot="3640794162" key={uid()} />}
-    </Fragment>
-  );
-}
 
 function Post({ post, content }) {
   return (
@@ -82,8 +70,10 @@ function Post({ post, content }) {
               ))}
             </div>
             <div className="prose md:max-w-none">
-              {content.match(/<.*?>.*?<\/.*?>/gms).map(Ads)}
+              <Adsense type="article" slot="3640794162" key={uid()} />
+              <div dangerouslySetInnerHTML={{ __html: content }} />
               <Taboola type="article" />
+              <Taboola type="feed" />
             </div>
           </div>
           <aside className="hidden xl:block xl:self-start xl:p-5 xl:rounded-lg xl:bg-white">
