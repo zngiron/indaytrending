@@ -84,7 +84,7 @@ function Scripts() {
       />
       <Script
         id="tb_loader_script"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         async
         src="https://cdn.taboola.com/libtrc/indaytradingsc/loader.js"
         onLoad={() => handleTaboola()}

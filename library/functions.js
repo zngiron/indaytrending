@@ -8,3 +8,26 @@ export const clean = (html) => sanitize(html, {
 });
 
 export const date = (e) => new Date(e).toISOString();
+
+export const ads = (html) => {
+  const re = /<.*?>.*?<\/.*?>/gms;
+  const element = `
+    <ins
+      class="adsbygoogle adsense block mx-auto text-center"
+      data-ad-client="ca-pub-9878085739428147"
+      data-ad-slot="3640794162"
+      data-ad-format="fluid"
+      data-ad-layout="in-article"
+    ></ins>
+  `;
+
+  const content = html.match(re).map((item, id) => {
+    if (id % 8 === 0 && id !== 0) {
+      return element + item;
+    }
+
+    return item;
+  });
+
+  return content.join('');
+};

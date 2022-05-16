@@ -46,7 +46,7 @@ export async function getStaticProps() {
       categories,
       category: categories.edges.find(({ node }) => node.slug === category).node,
     },
-    revalidate: 1,
+    revalidate: 30,
   };
 }
 

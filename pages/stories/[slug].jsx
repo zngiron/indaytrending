@@ -2,13 +2,11 @@
 
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 import Link from 'next/link';
-import { uid } from 'uid';
 
-import Adsense from '../../components/Adsense';
 import Taboola from '../../components/Taboola';
 import Thumbnail from '../../components/Thumbnail';
 
-import { clean } from '../../library/functions';
+import { clean, ads } from '../../library/functions';
 import client from '../../library/client';
 
 import POSTS_QUERY from '../../graphql/Posts.graphql';
@@ -70,7 +68,6 @@ function Post({ post, content }) {
               ))}
             </div>
             <div className="prose md:max-w-none">
-              <Adsense type="article" slot="3640794162" key={uid()} />
               <div dangerouslySetInnerHTML={{ __html: content }} />
               <Taboola type="article" />
               <Taboola type="feed" />
@@ -120,10 +117,10 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       post,
-      content: clean(post?.content),
+      content: ads(clean(post?.content)),
       categories,
     },
-    revalidate: 1,
+    revalidate: 30,
   };
 }
 
