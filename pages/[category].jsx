@@ -1,5 +1,3 @@
-import { uid } from 'uid';
-
 import { NextSeo } from 'next-seo';
 
 import client from '../library/client';
@@ -7,7 +5,6 @@ import client from '../library/client';
 import CATEGORIES_QUERY from '../graphql/Categories.graphql';
 import CATEGORY_QUERY from '../graphql/Category.graphql';
 
-import Adsense from '../components/Adsense';
 import Card from '../components/Card';
 
 function Category({ posts, category }) {
@@ -29,9 +26,6 @@ function Category({ posts, category }) {
           </div>
           {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
         </div>
-      </div>
-      <div className="text-center my-5">
-        <Adsense slot="6234342116" key={uid()} />
       </div>
     </>
   );
