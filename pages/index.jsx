@@ -1,5 +1,3 @@
-import { uid } from 'uid';
-
 import client from '../library/client';
 
 import CATEGORY_QUERY from '../graphql/Category.graphql';
