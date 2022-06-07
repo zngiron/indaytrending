@@ -247,3 +247,6 @@ appnexus.com, 12475, RESELLER, f5ab79cb980f11d1
 adform.com, 2742, RESELLER              
 improvedigital.com, 1738, RESELLER
 rubiconproject.com, 24386, RESELLER, 0bfd66d529a55807
+smartadserver.com, 2060-OB, RESELLER, 060d053dcf45cbf3
+teads.tv, 24474, DIRECT, 15a9c44f6d26cbe1
+adbro.me, 880a26a0-14cb-423b-a11d-19ec8a5fe578, DIRECT
