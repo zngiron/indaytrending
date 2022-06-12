@@ -5,6 +5,7 @@ import client from '../library/client';
 import CATEGORIES_QUERY from '../graphql/Categories.graphql';
 import CATEGORY_QUERY from '../graphql/Category.graphql';
 
+import Pagination from '../components/Pagination';
 import Card from '../components/Card';
 
 function Category({ posts, category }) {
@@ -23,6 +24,9 @@ function Category({ posts, category }) {
           <div className="col-span-full">
             <h1 className="font-semibold text-primary text-3xl">{category.name}</h1>
             <p>{category.description}</p>
+          </div>
+          <div className="col-span-full">
+            <Pagination posts={posts} category={category} />
           </div>
           {posts?.edges?.map(({ node }) => <Card key={node.id} {...node} />)}
         </div>

@@ -5,7 +5,7 @@ import CATEGORY_QUERY from '../graphql/Category.graphql';
 import Pagination from '../components/Pagination';
 import Card from '../components/Card';
 
-function Home({ posts, category }) {
+function Page({ posts, category }) {
   return (
     <div className="container my-5">
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
@@ -22,13 +22,16 @@ function Home({ posts, category }) {
   );
 }
 
-export async function getStaticProps() {
-  const category = 'stories';
+export async function getServerSideProps({ query }) {
+  const category = query.category || 'stories';
 
   const { data } = await client.query({
     query: CATEGORY_QUERY,
     variables: {
-      first: 12,
+      first: query.after ? 12 : null,
+      after: query.after || null,
+      last: query.before ? 12 : null,
+      before: query.before || null,
       category,
     },
   });
@@ -41,8 +44,7 @@ export async function getStaticProps() {
       categories,
       category: categories.edges.find(({ node }) => node.slug === category).node,
     },
-    revalidate: 30,
   };
 }
 
-export default Home;
+export default Page;

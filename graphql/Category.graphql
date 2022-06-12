@@ -1,10 +1,22 @@
 #import './Category.fragment.graphql'
 #import './Post.fragment.graphql'
 
-query Category($first: Int, $category: String) {
+query Category($first: Int, $after: String, $last: Int, $before: String, $category: String) {
   posts(
-    first: $first
-    where: {categoryName: $category, dateQuery: {after: {month: 1, year: 2019}}, status: PUBLISH}
+    first: $first, 
+    after: $after, 
+    last: $last, 
+    before: $before,
+    where: {
+      categoryName: $category,
+      dateQuery: {
+        after: {
+          month: 1,
+          year: 2019
+        }
+      }, 
+      status: PUBLISH
+    }
   ) {
     pageInfo {
       startCursor
