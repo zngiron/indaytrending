@@ -253,4 +253,5 @@ adbro.me, 880a26a0-14cb-423b-a11d-19ec8a5fe578, DIRECT
 adbro.me, 9e525139-f3fe-4246-b2ef-98fa9893bd75, DIRECT
 adbro.me, 63eb8fac-ed7b-4664-99a8-bcb761d3aa59, DIRECT
 adbro.me, 13d40370-e9cc-4fc9-ad9c-d27be73a5a80, DIRECT
-adbro.me, a5582446-aefd-4d54-9f89-511f0bb8ad71, DIRECT 
+adbro.me, a5582446-aefd-4d54-9f89-511f0bb8ad71, DIRECT
+anymanager.io, A3489, DIRECT
