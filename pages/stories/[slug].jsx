@@ -32,7 +32,7 @@ function Post({ post, content }) {
           ],
           images: [
             {
-              url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/image?url=${post.image?.node?.featured}`,
+              url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/image?url=${post?.image?.node?.featured}`,
               alt: post?.title,
             },
           ],
@@ -42,14 +42,14 @@ function Post({ post, content }) {
         url={`${process.env.NEXT_PUBLIC_DOMAIN}/stories/${post?.slug}`}
         title={post?.title}
         description="Inday Trending - Pinoy Short Stories"
-        images={[`${process.env.NEXT_PUBLIC_DOMAIN}/api/image?url=${post.image?.node?.featured}`]}
+        images={[`${process.env.NEXT_PUBLIC_DOMAIN}/api/image?url=${post?.image?.node?.featured}`]}
         datePublished={post?.published}
         dateModified={post?.modified}
         authorName="Inday Trending"
         publisherName="Likha Media"
         publisherLogo="https://likha.media/likha-media-icon.svg"
       />
-      {post.next && (
+      {post?.next && (
         <Thumbnail
           title={post?.next?.title}
           slug={post?.next?.slug}
@@ -113,6 +113,12 @@ export async function getStaticProps({ params }) {
   });
 
   const { post, categories } = data;
+
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

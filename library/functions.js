@@ -21,7 +21,7 @@ export const ads = (html) => {
     ></ins>
   `;
 
-  const content = html.match(re).map((item, id) => {
+  const content = html.match(re)?.map((item, id) => {
     if (id % 8 === 0 && id !== 0) {
       return element + item;
     }

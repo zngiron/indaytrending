@@ -4,6 +4,12 @@ import Footer from './Footer';
 import Scripts from './Scripts';
 
 function Layout({ categories, children }) {
+  if (!categories) {
+    return (
+      children
+    );
+  }
+
   return (
     <>
       <Meta />
