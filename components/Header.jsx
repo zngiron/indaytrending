@@ -28,20 +28,17 @@ function Header({ categories }) {
   return (
     <header className="fixed z-20 top-0 w-full bg-white text-primary">
       <div className="container flex justify-center items-center h-16 xl:justify-start">
-        <Link href="/">
-          <a className="flex items-center space-x-2 whitespace-nowrap">
-            <Image
-              className="absolute inset-0 w-10 h-10"
-              src="/static/indaytrending-icon.png"
-              width={40}
-              height={40}
-              alt="Inday Trending"
-              draggable={false}
-              layout="fixed"
-              priority
-            />
-            <span className="font-semibold text-sm">Inday Trending</span>
-          </a>
+        <Link href="/" className="flex items-center space-x-2 whitespace-nowrap">
+          <Image
+            className="w-10 h-10"
+            src="/static/indaytrending-icon.png"
+            width={40}
+            height={40}
+            alt="Inday Trending"
+            draggable={false}
+            priority
+          />
+          <span className="font-semibold text-sm">Inday Trending</span>
         </Link>
         <button
           className="absolute z-20 left-0 flex justify-center items-center w-16 h-16 xl:hidden"
@@ -68,10 +65,8 @@ function Header({ categories }) {
           <ul className="flex flex-col xl:flex-row">
             {categories?.edges?.map(({ node }) => (
               <li key={node.id}>
-                <Link href={`/${node.slug}`}>
-                  <a className="flex items-center px-5 py-2 font-semibold text-lg xl:px-3 xl:text-sm hover:bg-white hover:text-primary hover:xl:bg-transparent hover:xl:text-secondary">
-                    {node.name}
-                  </a>
+                <Link href={`/${node.slug}`} className="flex items-center px-5 py-2 font-semibold text-lg xl:px-3 xl:text-sm hover:bg-white hover:text-primary hover:xl:bg-transparent hover:xl:text-secondary">
+                  {node.name}
                 </Link>
               </li>
             ))}

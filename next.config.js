@@ -14,7 +14,6 @@ const nextConfig = {
       },
     ];
   },
-  poweredByHeader: false,
   images: {
     domains: ['cms.indaytrending.com'],
   },

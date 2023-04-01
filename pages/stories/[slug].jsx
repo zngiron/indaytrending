@@ -4,7 +4,6 @@ import { NextSeo, ArticleJsonLd } from 'next-seo';
 import Link from 'next/link';
 
 import Taboola from '../../components/Taboola';
-import Thumbnail from '../../components/Thumbnail';
 
 import { clean, ads } from '../../library/functions';
 import client from '../../library/client';
@@ -49,21 +48,14 @@ function Post({ post, content }) {
         publisherName="Likha Media"
         publisherLogo="https://likha.media/likha-media-icon.svg"
       />
-      {post?.next && (
-        <Thumbnail
-          title={post?.next?.title}
-          slug={post?.next?.slug}
-          image={post?.next?.image?.node?.thumbnail}
-        />
-      )}
       <div className="container my-10">
         <div className="grid grid-cols-4 gap-5">
           <div className="col-span-full space-y-5 xl:col-span-3 xl:p-5 xl:rounded-lg xl:bg-white">
             <h1 className="font-semibold text-primary text-2xl">{post?.title}</h1>
             <div className="flex space-x-2">
               {post?.categories?.edges.map(({ node }) => (
-                <Link href={`/${node.slug}`} key={node?.id}>
-                  <a className="px-4 py-1 rounded-full bg-primary font-semibold text-white text-xs hover:bg-secondary">{node?.name}</a>
+                <Link href={`/${node.slug}`} key={node?.id} className="px-4 py-1 rounded-full bg-primary font-semibold text-white text-xs hover:bg-secondary">
+                  {node?.name}
                 </Link>
               ))}
             </div>

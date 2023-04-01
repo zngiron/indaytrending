@@ -1,8 +1,7 @@
 module.exports = {
   extends: [
-    'plugin:@next/next/recommended',
     'airbnb',
-    'next',
+    'next/core-web-vitals',
   ],
   rules: {
     'jsx-a11y/anchor-is-valid': 'off',
