@@ -97,3 +97,7 @@ async function handler(req, res) {
 }
 
 export default handler;
+
+export const config = {
+  runtime: 'edge',
+};

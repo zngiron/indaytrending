@@ -22,3 +22,7 @@ async function handler({ query: { url } }, res) {
 }
 
 export default handler;
+
+export const config = {
+  runtime: 'edge',
+};
