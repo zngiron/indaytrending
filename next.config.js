@@ -16,9 +16,9 @@ const nextConfig = {
   },
   images: {
     domains: ['cms.indaytrending.com'],
+    unoptimized: true,
   },
   reactStrictMode: true,
-  swcMinify: true,
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(graphql|gql)$/,
