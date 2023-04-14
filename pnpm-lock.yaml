@@ -5,6 +5,7 @@ specifiers:
   '@next/bundle-analyzer': ^13.3.0
   '@tailwindcss/line-clamp': ^0.4.4
   '@tailwindcss/typography': ^0.5.9
+  '@vercel/analytics': ^0.1.11
   autoprefixer: ^10.4.14
   cssnano: ^6.0.0
   eslint: ^8.38.0
@@ -26,6 +27,7 @@ specifiers:
 
 dependencies:
   '@apollo/client': 3.7.12_gdcq4dv6opitr3wbfwyjmanyra
+  '@vercel/analytics': 0.1.11_react@18.2.0
   express: 4.18.2
   graphql: 16.6.0
   graphql-tag: 2.12.6_graphql@16.6.0
@@ -786,6 +788,14 @@ packages:
       '@typescript-eslint/types': 5.58.0
       eslint-visitor-keys: 3.4.0
     dev: true
+
+  /@vercel/analytics/0.1.11_react@18.2.0:
+    resolution: {integrity: sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@wry/context/0.7.0:
     resolution: {integrity: sha512-LcDAiYWRtwAoSOArfk7cuYvFXytxfVrdX7yxoUmK7pPITLk5jYh2F8knCwS7LjgYL8u1eidPlKKV6Ikqq0ODqQ==}
