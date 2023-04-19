@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 
 import { handleAdsense } from './Adsense';
-import { handleTaboola } from './Taboola';
+// import { handleTaboola } from './Taboola';
 
 function Scripts() {
   const router = useRouter();
@@ -32,9 +32,9 @@ function Scripts() {
         window.startAnymindTS();
       }
 
-      if (window._taboola) {
-        handleTaboola(url);
-      }
+      // if (window._taboola) {
+      //   handleTaboola(url);
+      // }
     };
 
     router.events.on('routeChangeStart', handleRouteStart);
@@ -82,13 +82,13 @@ function Scripts() {
         src="https://anymind360.com/js/7429/ats.js"
         onLoad={() => window.startAnymindTS()}
       />
-      <Script
+      {/* <Script
         id="tb_loader_script"
         strategy="lazyOnload"
         async
         src="https://cdn.taboola.com/libtrc/indaytradingsc/loader.js"
         onLoad={() => handleTaboola()}
-      />
+      /> */}
     </>
   );
 }
