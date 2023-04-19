@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-const clamp = require('@tailwindcss/line-clamp');
 const typography = require('@tailwindcss/typography');
 
 module.exports = {
@@ -21,7 +20,6 @@ module.exports = {
     },
   },
   plugins: [
-    clamp,
     typography,
   ],
 };
