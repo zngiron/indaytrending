@@ -620,7 +620,7 @@ pubmatic.com, 137711, RESELLER, 5d62403b186f2ace
 pubmatic.com, 156212, RESELLER, 5d62403b186f2ace
 rubiconproject.com, 17758, DIRECT, 0bfd66d529a55807
 appnexus.com, 7290, RESELLER
-ogury.com, 4ab44db3-8ecb-4c95-ac8d-593a41a92d65, DIRECT
+ogury.com, 4ab44db3-8ecb-4c95-ac8d-593a41a92d65, RESELLER
 appnexus.com, 11470, RESELLER
 Adsolut.in, 16362, DIRECT
 playstream.media, 1492, DIRECT
@@ -862,5 +862,10 @@ nobid.io, 22747554109, DIRECT
 openx.com, 540269102, DIRECT, 6a698e2ec38604c6
 rubiconproject.com,9041,DIRECT,0bfd66d529a55807
 sharethrough.com,dcd1a1e6,DIRECT,d53b998a7bd4ecd2
-sovrn.com, 53101, DIRECT, fafdf38b16bf6b2bvidoomy.com, 3785639, DIRECT
-
+sovrn.com, 53101, DIRECT, fafdf38b16bf6b2b
+vidoomy.com, 3785639, DIRECT
+uis.mobfox.com, 93308, DIRECT, 5529a3d1f59865be
+pubmatic.com, 163053, RESELLER, 5d62403b186f2ace
+Media.net, 8CU4IWE11, DIRECT
+smartadserver.com, 2060, RESELLER, 060d053dcf45cbf3
+risecodes.com,63832beef8189a00015cb6d3,RESELLER
