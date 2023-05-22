@@ -2,6 +2,7 @@ import Meta from './Meta';
 import Header from './Header';
 import Footer from './Footer';
 import Scripts from './Scripts';
+import Anymind from './Anymind';
 
 function Layout({ categories, children }) {
   if (!categories) {
@@ -14,7 +15,8 @@ function Layout({ categories, children }) {
     <>
       <Meta />
       <Header categories={categories} />
-      <main className="grow mt-16">
+      <Anymind />
+      <main className="grow">
         {children}
       </main>
       <Footer />
