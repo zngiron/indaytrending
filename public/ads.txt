@@ -169,3 +169,13 @@ google.com, pub-2403018226404213, RESELLER, f08c47fec0942fa0
 adcolony.com,44ef7fd4adebf701,RESELLER,1ad675c9de6b5176
 verve.com,2205665,RESELLER
 anymanager.io, A3489, DIRECT
+
+selectmedia.asia, 645b5a31e427dc0a87016fa6, DIRECT, e365c871a27c655d
+google.com, pub-4586415728471297, RESELLER, f08c47fec0942fa0
+kidoz.net, 14639, DIRECT, a109366414b7335e
+google.com, pub-5717092533913515, RESELLER, f08c47fec0942fa0
+google.com, pub-9135355251665930, RESELLER, f08c47fec0942fa0
+google.com, pub-4836542095728076, RESELLER, f08c47fec0942fa0
+admanmedia.com, 2141, DIRECT
+adagio.io, 1418, RESELLER
+gumgum.com, 15854, DIRECT, ffdef49475d318a9
