@@ -179,3 +179,37 @@ google.com, pub-4836542095728076, RESELLER, f08c47fec0942fa0
 admanmedia.com, 2141, DIRECT
 adagio.io, 1418, RESELLER
 gumgum.com, 15854, DIRECT, ffdef49475d318a9
+
+appnexus.com, 11470, RESELLER
+pubmatic.com, 163238, RESELLER, 5d62403b186f2ace
+smartadserver.com, 4537, RESELLER, 060d053dcf45cbf3
+rubiconproject.com, 25198, RESELLER, 0bfd66d529a55807
+pubmatic.com, 158481, RESELLER, 5d62403b186f2ace
+smartadserver.com, 3713, RESELLER, 060d053dcf45cbf3
+openx.com, 540866936, RESELLER, 6a698e2ec38604c6
+rubiconproject.com, 14558, RESELLER, 0bfd66d529a55807
+appnexus.com, 15349, RESELLER, f5ab79cb980f11d1
+adbro.me, cece55c2-b293-4756-b0cc-1439d68816b9, DIRECT
+improvedigital.com, 1058, RESELLER
+appnexus.com, 11197, RESELLER, f5ab79cb980f11d1
+adform.com, 2736, RESELLER, 9f5210a2f0999e32
+pubmatic.com,160987,RESELLER,5d62403b186f2ace
+pubmatic.com,160998,RESELLER,5d62403b186f2ace
+freewheel.tv, 282594, RESELLER
+freewheel.tv, 282818, RESELLER
+rubiconproject.com, 19688, RESELLER, 0bfd66d529a55807
+smartadserver.com, 2974, RESELLER
+appnexus.com, 3703, RESELLER, f5ab79cb980f11d1
+openx.com, 537149888, RESELLER, 6a698e2ec38604c6
+appnexus.com, 11664, RESELLER
+smaato.com, 1100014037, RESELLER
+appnexus.com, 3691, RESELLER
+axonix.com, 59089, RESELLER, bc385f2b4a87b721
+conversantmedia.com, 100269, RESELLER, 03113cd04947736d
+rubiconproject.com, 17608, RESELLER, 0bfd66d529a55807
+smartadserver.com,4140,RESELLER
+sonobi.com, a85c5f6129, RESELLER, d1a215d9eb5aee9e
+vidoomy.com, 4930225, RESELLER
+improvedigital.com, 2276, RESELLER
+onetag.com,82e44d118b79600,DIRECT
+pubmatic.com,163420,RESELLER,5d62403b186f2ace
