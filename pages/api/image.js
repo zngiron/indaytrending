@@ -1,24 +1,25 @@
 import Jimp from 'jimp';
-import { kv } from '@vercel/kv';
+import fs from 'fs';
+import path from 'path';
 
-async function handler(req, res) {
-  const { query: { url } } = req;
-
+async function handler({ query: { url } }, res) {
   if (!url) {
-    return res.status(404).json({ message: 'Image URL not provided' });
+    return res.status(404).json({ message: 'Image Not Found' });
   }
 
-  const cacheKey = `image-cache-${url}`;
+  const cacheDir = path.join(process.cwd(), '.next/cache/images');
+  const cacheKey = encodeURIComponent(url);
+  const cachePath = path.join(cacheDir, `${cacheKey}.png`);
 
   try {
-    const cachedImage = await kv.get(cacheKey);
+    if (fs.existsSync(cachePath)) {
+      const cachedImage = fs.readFileSync(cachePath);
 
-    if (cachedImage) {
-      return res.setHeader('Content-Type', 'image/png').status(200).send(Buffer.from(cachedImage, 'base64'));
+      return res.setHeader('Content-Type', 'image/png').status(200).send(cachedImage);
     }
 
-    if (!url.startsWith('http')) {
-      return res.status(400).json({ message: 'Invalid URL format' });
+    if (!fs.existsSync(cacheDir)) {
+      fs.mkdirSync(cacheDir);
     }
 
     const image = await Jimp.read(url);
@@ -30,13 +31,11 @@ async function handler(req, res) {
 
     const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
 
-    // Cache the image in Vercel KV
-    await kv.set(cacheKey, buffer.toString('base64'));
+    // Cache the processed image
+    fs.writeFileSync(cachePath, buffer);
 
     return res.setHeader('Content-Type', 'image/png').status(200).send(buffer);
   } catch (error) {
-    // Log the error for debugging
-    console.error('Error processing image:', error);
     return res.status(500).json({ message: error.message });
   }
 }
