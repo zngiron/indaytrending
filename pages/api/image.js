@@ -14,15 +14,22 @@ async function handler({ query: { url } }, res) {
   try {
     if (fs.existsSync(cachePath)) {
       const cachedImage = fs.readFileSync(cachePath);
-
       return res.setHeader('Content-Type', 'image/png').status(200).send(cachedImage);
     }
 
     if (!fs.existsSync(cacheDir)) {
-      fs.mkdirSync(cacheDir);
+      fs.mkdirSync(cacheDir, { recursive: true });
     }
 
-    const image = await Jimp.read(url);
+    const response = await fetch(url);
+    const contentType = response.headers.get('content-type');
+
+    if (!contentType || !contentType.startsWith('image/')) {
+      throw new Error('Invalid content type');
+    }
+
+    const imageBuffer = await response.buffer();
+    const image = await Jimp.read(imageBuffer);
     const overlay = await Jimp.read(`${process.env.NEXT_PUBLIC_DOMAIN}/static/indaytrending-overlay.png`);
 
     image.composite(overlay, 0, 0);
@@ -31,7 +38,6 @@ async function handler({ query: { url } }, res) {
 
     const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
 
-    // Cache the processed image
     fs.writeFileSync(cachePath, buffer);
 
     return res.setHeader('Content-Type', 'image/png').status(200).send(buffer);
