@@ -1,12 +1,14 @@
 import Jimp from 'jimp';
 
-export const config = {
-  runtime: 'edge',
-};
+async function handler(req, res) {
+  const { url } = req.query;
 
-async function handler({ query: { url } }, res) {
   if (!url) {
     return res.status(404).json({ message: 'Image Not Found' });
+  }
+
+  if (req.headers['if-none-match']) {
+    return res.status(304).end();
   }
 
   try {
@@ -27,8 +29,11 @@ async function handler({ query: { url } }, res) {
 
     const buffer = await centeredImage.getBufferAsync(Jimp.MIME_PNG);
 
+    const etag = Buffer.from(url).toString('base64');
+
+    res.setHeader('ETag', etag);
     res.setHeader('Content-Type', 'image/png');
-    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400');
     return res.status(200).send(buffer);
   } catch (error) {
     return res.status(500).json({ message: error.message });
