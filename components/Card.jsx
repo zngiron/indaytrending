@@ -8,7 +8,7 @@ function Card({
   categories,
 }) {
   return (
-    <article className="group overflow-hidden relative rounded-lg bg-gradient-to-tr from-secondary via-primary to-primary aspect-[1280/670]">
+    <article className="group overflow-hidden relative rounded-lg bg-gradient-to-tr from-primary via-primary to-secondary aspect-[1280/670]">
       <Link href={`/stories/${slug}`} className="absolute inset-0">
         <Image
           className="rounded-lg transition transform-gpu will-change-transform opacity-40 group-hover:scale-105"
