@@ -1,0 +1,9 @@
+query GetPostImage($slug: ID!) {
+  post(id: $slug, idType: SLUG) {
+    image: featuredImage {
+      node {
+        featured: sourceUrl
+      }
+    }
+  }
+}
