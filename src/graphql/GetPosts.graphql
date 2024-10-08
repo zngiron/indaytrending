@@ -1,0 +1,48 @@
+query GetPosts(
+  $first: Int!
+  $after: String
+  $last: Int
+  $before: String
+  $category: String!
+) {
+  posts(
+    first: $first
+    after: $after
+    last: $last
+    before: $before
+    where: { 
+      categoryName: $category
+      status: PUBLISH
+    }
+  ) {
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+    edges {
+      cursor,
+      node {
+        id: databaseId
+        slug
+        title
+        published: date
+        image: featuredImage {
+          node {
+            featured: sourceUrl
+          }
+        }
+        categories {
+          edges {
+            node {
+              id: databaseId
+              slug
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}

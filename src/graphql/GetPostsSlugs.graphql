@@ -1,0 +1,9 @@
+query GetPostsSlugs {
+  posts {
+    edges {
+      node {
+        slug
+      }
+    }
+  }
+}
