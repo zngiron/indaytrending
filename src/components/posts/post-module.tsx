@@ -1,9 +1,9 @@
 import parse from 'html-react-parser';
 
-import { PostCategory } from '@/components/posts/post-category';
 import { formatHTML } from '@/library/format';
 import { cn } from '@/library/utilities';
 import { getPost } from '@/data/posts';
+import { PostCard } from '@/components/posts/post-card';
 
 interface PostModuleProps {
   slug: string;
@@ -14,20 +14,13 @@ export async function PostModule({ slug }: PostModuleProps) {
   const html = formatHTML(post.content);
 
   return (
-    <article className="space-y-4">
-      <h1 className="font-semibold text-2xl">
-        {formatHTML(post.title)}
-      </h1>
-      <div className="flex flex-wrap gap-2">
-        {post.categories.edges.map(({ node }) => (
-          <PostCategory key={node.slug} category={node} />
-        ))}
-      </div>
+    <article className="py-4 space-y-4">
+      <PostCard post={post} featured />
       <div
         className={cn(
           'prose max-w-none',
-          'dark:text-slate-500',
-          '[&_img]:w-1/2 [&_img]:max-w-min [&_img]:rounded-md [&_img]:pointer-events-none [&_img]:content-visibility-auto',
+          'dark:text-slate-300',
+          '[&_img]:w-full [&_img]:rounded-md [&_img]:pointer-events-none [&_img]:content-visibility-auto',
         )}
       >
         {parse(html)}

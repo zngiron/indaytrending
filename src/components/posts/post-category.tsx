@@ -1,27 +1,29 @@
-import type { Category } from '@/data/categories';
-
 import Link from 'next/link';
 
 import { cn } from '@/library/utilities';
 
 interface PostCategoryProps {
-  category: Category;
+  slug: string;
+  name: string;
 }
 
-export function PostCategory({ category }: PostCategoryProps) {
+export function PostCategory({ slug, name }: PostCategoryProps) {
+  if (slug === 'stories') return null;
+
   return (
     <Link
-      href={`/${category.slug}`}
+      href={`/${slug}`}
       className={cn(
-        'px-3 py-1 rounded-full',
+        'px-3 py-1 border border-transparent rounded-full',
         'font-semibold text-xs text-white',
-        'bg-slate-950/70 backdrop-blur-lg',
-        'transition duration-300',
+        'bg-slate-900',
+        'pointer-events-auto',
         'hover:bg-white hover:text-slate-900',
-        'dark:bg-white dark:text-slate-900 dark:hover:bg-slate-950/70 dark:hover:text-white',
+        'dark:border-white dark:bg-transparent',
+        'dark:hover:border-slate-900 dark:hover:bg-slate-900 dark:hover:text-white',
       )}
     >
-      {category.name}
+      {name}
     </Link>
   );
 }

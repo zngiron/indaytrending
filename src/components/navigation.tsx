@@ -2,74 +2,138 @@
 
 import type { Categories } from '@/data/categories';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
-import { Menu, Moon, Sun } from 'lucide-react';
-
-import { cn } from '@/library/utilities';
+import {
+  Menu,
+  Sparkles,
+  TrendingUp,
+  Users,
+  Smile,
+  Heart,
+  Lightbulb,
+  Scale,
+  HeartHandshake,
+  Sparkle,
+  Search,
+  BookOpen,
+  Trophy,
+} from 'lucide-react';
 
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/library/utilities';
 
 interface NavigationProps {
   categories: Categories;
 }
 
+function getCategoryIcon(slug: string) {
+  const icons = {
+    family: Users,
+    fun: Smile,
+    heartbreaking: Heart,
+    inspiring: Lightbulb,
+    karma: Scale,
+    love: HeartHandshake,
+    miracle: Sparkle,
+    mystery: Search,
+    stories: BookOpen,
+    success: Trophy,
+  };
+
+  const Component = icons[slug as keyof typeof icons];
+
+  return Component ? <Component size={16} /> : null;
+}
+
 export function Navigation({ categories }: NavigationProps) {
-  const { setTheme } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="flex items-center gap-2">
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="ghost" size="icon">
-            <Menu size={16} />
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left">
-          <SheetHeader>
-            <SheetTitle>
-              Categories
-            </SheetTitle>
-          </SheetHeader>
-          <div className="flex flex-col gap-2">
-            {categories.edges.map(({ node }) => (
-              <Link
-                key={node.slug}
-                href={`/${node.slug}`}
-                className={cn(
-                  'text-sm',
-                  'px-4 py-2',
-                )}
-              >
-                {node.name}
-              </Link>
-            ))}
-          </div>
-        </SheetContent>
-      </Sheet>
-      <Button
-        suppressHydrationWarning
-        variant="ghost"
-        size="icon"
-        onClick={() => setTheme('light')}
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetTrigger asChild>
+        <Button variant="ghost" size="icon">
+          <Menu size={16} />
+        </Button>
+      </SheetTrigger>
+      <SheetContent
+        side="left"
+        className={cn(
+          'w-80 p-2 space-y-4 border-none',
+          'dark:bg-slate-950 dark:text-white',
+        )}
       >
-        <Sun size={16} />
-      </Button>
-      <Button
-        suppressHydrationWarning
-        variant="ghost"
-        size="icon"
-        onClick={() => setTheme('dark')}
-      >
-        <Moon size={16} />
-      </Button>
-    </nav>
+        <SheetTitle className={cn(
+          'p-2',
+          'font-semibold text-xs uppercase tracking-widest',
+          'dark:text-slate-500',
+        )}
+        >
+          Stories
+        </SheetTitle>
+        <nav className={cn(
+          '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
+          'text-sm',
+        )}
+        >
+          <Link
+            href="/"
+            className={cn(
+              'hover:bg-gray-100',
+              'dark:hover:bg-slate-900',
+            )}
+            onClick={() => setIsOpen(false)}
+          >
+            <Sparkles size={16} />
+            <span>New Stories</span>
+          </Link>
+          <Link
+            href="/"
+            className={cn(
+              'hover:bg-gray-100',
+              'dark:hover:bg-slate-900',
+            )}
+            onClick={() => setIsOpen(false)}
+          >
+            <TrendingUp size={16} />
+            <span>Trending Stories</span>
+          </Link>
+        </nav>
+        <SheetTitle className={cn(
+          'p-2',
+          'font-semibold text-xs uppercase tracking-widest',
+          'dark:text-slate-500',
+        )}
+        >
+          Categories
+        </SheetTitle>
+        <nav className={cn(
+          '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
+          'text-sm',
+        )}
+        >
+          {categories.edges.map(({ node }) => (
+            <Link
+              key={node.id}
+              href={`/${node.slug}`}
+              className={cn(
+                'hover:bg-gray-100',
+                'dark:hover:bg-slate-900',
+              )}
+              onClick={() => setIsOpen(false)}
+            >
+              {getCategoryIcon(node.slug)}
+              <span>{node.name}</span>
+            </Link>
+          ))}
+        </nav>
+      </SheetContent>
+    </Sheet>
   );
 }

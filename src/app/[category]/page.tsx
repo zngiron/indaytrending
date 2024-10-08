@@ -19,7 +19,7 @@ export const generateStaticParams = async () => {
 
 export default function Category({ params }: CategoryProps) {
   return (
-    <div className="container">
+    <div className="container max-w-3xl">
       <PostsModule slug={params.category} />
     </div>
   );

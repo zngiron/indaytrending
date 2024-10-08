@@ -10,8 +10,8 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 12 56% 59%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 14 64% 58%; /* Changed from 12 56% 59% to match #DD704D */
+    --primary-foreground: 0 0% 100%; /* Kept white for contrast */
     --secondary: 210 10% 28%;
     --secondary-foreground: 210 40% 98%;
     --muted: 0 0% 96.1%;
@@ -38,8 +38,8 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 12 56% 59%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 14 64% 58%; /* Changed to match the light theme */
+    --primary-foreground: 0 0% 100%; /* Kept white for contrast */
     --secondary: 210 10% 28%;
     --secondary-foreground: 210 40% 98%;
     --muted: 0 0% 14.9%;

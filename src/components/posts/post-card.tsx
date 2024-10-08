@@ -8,29 +8,33 @@ import { cn } from '@/library/utilities';
 
 interface PostCardProps {
   post: Post;
+  featured?: boolean;
 }
 
-export function PostCard({ post }: PostCardProps) {
+export function PostCard({ post, featured = false }: PostCardProps) {
+  const DynamicLink = featured ? 'div' : Link;
+  const DynamicTitle = featured ? 'h1' : 'h2';
+
   return (
     <div className={cn(
       'group overflow-hidden',
       'relative',
       'rounded-lg aspect-[1200/630]',
-      'bg-secondary',
+      'bg-gradient-to-tr from-secondary via-secondary to-primary',
     )}
     >
-      <Link
+      <DynamicLink
         href={`/stories/${post.slug}`}
         className={cn(
           'absolute inset-0',
           'rounded-[inherit]',
-          'after:absolute after:inset-0 after:bg-gradient-to-tr after:from-secondary/70 after:via-secondary/70 after:to-primary/70',
         )}
       >
         <Image
           className={cn(
-            'transform-gpu scale-105 will-change-transform',
+            'transform-gpu scale-105',
             'transition duration-300',
+            'opacity-30',
             'pointer-events-none select-none',
             'group-hover:scale-110',
           )}
@@ -39,25 +43,35 @@ export function PostCard({ post }: PostCardProps) {
           width={1200}
           height={630}
           draggable={false}
+          loading="lazy"
         />
         <div className={cn(
           'absolute inset-x-2 bottom-2 z-10',
           'p-4 rounded-[inherit]',
-          'backdrop-blur-sm',
         )}
         >
-          <h3 className="font-semibold text-sm text-white line-clamp-2">
+          <DynamicTitle
+            className={cn(
+              'font-semibold text-sm text-white',
+              featured ? 'text-base' : 'text-sm line-clamp-2',
+            )}
+          >
             {post.title}
-          </h3>
+          </DynamicTitle>
         </div>
-      </Link>
+      </DynamicLink>
       <div className={cn(
         'absolute inset-x-0 top-0 z-10',
         'flex flex-wrap items-center gap-2 p-6',
+        'pointer-events-none',
       )}
       >
         {post.categories.edges.map(({ node }) => (
-          <PostCategory key={node.slug} category={node} />
+          <PostCategory
+            key={node.id}
+            slug={node.slug}
+            name={node.name}
+          />
         ))}
       </div>
     </div>

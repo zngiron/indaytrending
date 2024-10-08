@@ -2,9 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Navigation } from '@/components/navigation';
-import { getCategories } from '@/data/categories';
-
+import { Switcher } from '@/components/switcher';
 import { cn } from '@/library/utilities';
+
+import { getCategories } from '@/data/categories';
 
 export async function Header() {
   const categories = await getCategories();
@@ -21,7 +22,8 @@ export async function Header() {
         'flex items-center justify-between h-16',
       )}
       >
-        <Link href="/" className="flex items-center gap-2">
+        <Navigation categories={categories} />
+        <Link href="/" className="flex items-center">
           <Image
             className="shrink-0 w-10 h-10 rounded-full"
             src="/static/indaytrending-icon.png"
@@ -31,9 +33,26 @@ export async function Header() {
             draggable={false}
             priority
           />
-          <span className="font-semibold text-sm whitespace-nowrap">Inday Trending</span>
+          <Image
+            className="dark:hidden"
+            src="/static/indaytrending-logo-light.svg"
+            width={100}
+            height={40}
+            alt="Inday Trending"
+            draggable={false}
+            priority
+          />
+          <Image
+            className="hidden dark:inline"
+            src="/static/indaytrending-logo-dark.svg"
+            width={100}
+            height={40}
+            alt="Inday Trending"
+            draggable={false}
+            priority
+          />
         </Link>
-        <Navigation categories={categories} />
+        <Switcher />
       </div>
     </header>
   );

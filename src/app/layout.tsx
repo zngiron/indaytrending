@@ -7,7 +7,6 @@ import { Providers } from '@/components/providers';
 import { Scripts } from '@/components/scripts';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-
 import { env } from '@/library/environment';
 import { cn } from '@/library/utilities';
 

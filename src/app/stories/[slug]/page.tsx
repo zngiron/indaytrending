@@ -35,7 +35,7 @@ export const generateMetadata = async ({ params }: StoryPageProps): Promise<Meta
 
 export default function StoryPage({ params }: StoryPageProps) {
   return (
-    <div className="container">
+    <div className="container max-w-3xl">
       <PostModule slug={params.slug} />
     </div>
   );
