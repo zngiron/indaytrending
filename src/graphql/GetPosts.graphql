@@ -28,6 +28,7 @@ query GetPosts(
         slug
         title
         published: date
+        modified
         image: featuredImage {
           node {
             featured: sourceUrl
