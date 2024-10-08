@@ -1,12 +1,10 @@
 import type { MetadataRoute } from 'next';
 
-import { DateTime } from 'luxon';
-
 import { env } from '@/library/environment';
 import { getCategories } from '@/data/categories';
 import { getPosts } from '@/data/posts';
 
-const today = DateTime.now().toISO();
+const today = new Date().toISOString();
 
 export const dynamic = 'force-static';
 
@@ -22,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const postsMap = posts.edges.map(({ node }) => ({
-    url: `${env.DOMAIN}/story/${node.slug}`,
+    url: `${env.DOMAIN}/stories/${node.slug}`,
     lastModified: node.modified,
     changeFrequency: 'never' as const,
   }));

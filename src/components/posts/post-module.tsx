@@ -1,9 +1,14 @@
-import parse from 'html-react-parser';
+/* eslint-disable react/no-unstable-nested-components */
+
+import parse, { domToReact } from 'html-react-parser';
+
+import { PostCard } from '@/components/posts/post-card';
+import { AdsenseAd } from '@/components/adsense/adsense-ad';
 
 import { formatHTML } from '@/library/format';
 import { cn } from '@/library/utilities';
 import { getPost } from '@/data/posts';
-import { PostCard } from '@/components/posts/post-card';
+import { Fragment } from 'react';
 
 interface PostModuleProps {
   slug: string;
@@ -12,6 +17,33 @@ interface PostModuleProps {
 export async function PostModule({ slug }: PostModuleProps) {
   const post = await getPost(slug);
   const html = formatHTML(post.content);
+
+  const options = {
+    replace: (node: any) => {
+      if (node.name === 'p' && node.prev?.name !== 'img' && node.next?.name !== 'img') {
+        let paragraphCount = 0;
+        let currentNode = node;
+
+        while (currentNode.prev) {
+          if (currentNode.prev.name === 'p') {
+            paragraphCount += 1;
+          }
+          currentNode = currentNode.prev;
+        }
+
+        if ((paragraphCount + 1) % 12 === 0) {
+          return (
+            <Fragment key={node.children[0].key}>
+              {domToReact(node.children)}
+              <AdsenseAd />
+            </Fragment>
+          );
+        }
+      }
+
+      return node;
+    },
+  };
 
   return (
     <article className="py-4 space-y-4">
@@ -23,7 +55,7 @@ export async function PostModule({ slug }: PostModuleProps) {
           '[&_img]:w-full [&_img]:rounded-md [&_img]:pointer-events-none [&_img]:content-visibility-auto',
         )}
       >
-        {parse(html)}
+        {parse(html, options)}
       </div>
     </article>
   );
