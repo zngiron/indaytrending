@@ -1,7 +1,3 @@
-'use client';
-
-import { useSuspenseQuery } from '@tanstack/react-query';
-
 import { PostCard } from '@/components/posts/post-card';
 import { getCategory } from '@/data/categories';
 import { getPosts } from '@/data/posts';
@@ -9,22 +5,14 @@ import { cn } from '@/library/utilities';
 
 interface PostsModuleProps {
   slug: string;
+  limit?: number;
 }
 
-export function PostsModule({ slug }: PostsModuleProps) {
-  const variables = {
+export async function PostsModule({ slug, limit = 12 }: PostsModuleProps) {
+  const category = await getCategory(slug);
+  const posts = await getPosts({
     category: slug,
-    first: 12,
-  };
-
-  const { data: category } = useSuspenseQuery({
-    queryKey: ['category', slug],
-    queryFn: async () => getCategory(slug),
-  });
-
-  const { data: posts } = useSuspenseQuery({
-    queryKey: ['posts', slug],
-    queryFn: async () => getPosts(variables),
+    first: limit,
   });
 
   return (

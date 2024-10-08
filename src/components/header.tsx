@@ -1,20 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 
 import { Navigation } from '@/components/navigation';
-import { getQueryClient } from '@/library/client';
 import { getCategories } from '@/data/categories';
 
 import { cn } from '@/library/utilities';
 
-export function Header() {
-  const client = getQueryClient();
-
-  client.prefetchQuery({
-    queryKey: ['categories'],
-    queryFn: async () => getCategories(),
-  });
+export async function Header() {
+  const categories = await getCategories();
 
   return (
     <header className={cn(
@@ -40,9 +33,7 @@ export function Header() {
           />
           <span className="font-semibold text-sm whitespace-nowrap">Inday Trending</span>
         </Link>
-        <HydrationBoundary state={dehydrate(client)}>
-          <Navigation />
-        </HydrationBoundary>
+        <Navigation categories={categories} />
       </div>
     </header>
   );

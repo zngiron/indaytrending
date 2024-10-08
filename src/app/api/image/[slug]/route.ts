@@ -3,13 +3,16 @@ import type { NextRequest } from 'next/server';
 import { Jimp } from 'jimp';
 
 import { env } from '@/library/environment';
-import { getPostImage } from '@/data/posts';
+import { getPostSlugs, getPostImage } from '@/data/posts';
 
-type GetParams = {
+export const revalidate = 3600;
+export const generateStaticParams = async () => getPostSlugs();
+
+interface GetParams {
   params: {
     slug: string;
   };
-};
+}
 
 export async function GET(request: NextRequest, { params }: GetParams) {
   const header = request.headers.get('If-None-Match');

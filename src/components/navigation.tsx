@@ -1,28 +1,28 @@
 'use client';
 
+import type { Categories } from '@/data/categories';
+
 import Link from 'next/link';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { useTheme } from 'next-themes';
+import { Menu, Moon, Sun } from 'lucide-react';
 
-import { getCategories } from '@/data/categories';
 import { cn } from '@/library/utilities';
-import { Button } from '@/components/ui/button';
+
 import {
-  Menu,
-  Moon,
-  Sun,
-} from 'lucide-react';
-import {
-  Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger,
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
 } from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
 
-export function Navigation() {
+interface NavigationProps {
+  categories: Categories;
+}
+
+export function Navigation({ categories }: NavigationProps) {
   const { setTheme } = useTheme();
-
-  const { data: categories } = useSuspenseQuery({
-    queryKey: ['categories'],
-    queryFn: async () => getCategories(),
-  });
 
   return (
     <nav className="flex items-center gap-2">

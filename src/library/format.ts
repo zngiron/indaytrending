@@ -1,8 +1,10 @@
-import sanitize from 'sanitize-html';
+import DOMPurify from 'isomorphic-dompurify';
 
-export const formatHTML = (html: string) => sanitize(html, {
-  allowedTags: ['p', 'img'],
-  allowedAttributes: {
-    img: ['src', 'srcset', 'width', 'height', 'alt', 'loading'],
-  },
-});
+export const formatHTML = (html: string) => {
+  const sanitized = DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: ['p', 'img'],
+    ALLOWED_ATTR: ['src', 'srcset', 'width', 'height', 'alt', 'loading'],
+  });
+
+  return sanitized.replace(/>\s+</g, '><').replace(/\s+/g, ' ').trim();
+};

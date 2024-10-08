@@ -1,27 +1,23 @@
-/* eslint-disable react/no-danger */
+import parse from 'html-react-parser';
 
-'use client';
-
-import { useSuspenseQuery } from '@tanstack/react-query';
-
-import { getPost } from '@/data/posts';
+import { PostCategory } from '@/components/posts/post-category';
 import { formatHTML } from '@/library/format';
 import { cn } from '@/library/utilities';
-import { PostCategory } from '@/components/posts/post-category';
+import { getPost } from '@/data/posts';
 
 interface PostModuleProps {
   slug: string;
 }
 
-export function PostModule({ slug }: PostModuleProps) {
-  const { data: post } = useSuspenseQuery({
-    queryKey: ['post', slug],
-    queryFn: async () => getPost(slug),
-  });
+export async function PostModule({ slug }: PostModuleProps) {
+  const post = await getPost(slug);
+  const html = formatHTML(post.content);
 
   return (
     <article className="space-y-4">
-      <h1 className="font-semibold text-2xl">{post.title}</h1>
+      <h1 className="font-semibold text-2xl">
+        {formatHTML(post.title)}
+      </h1>
       <div className="flex flex-wrap gap-2">
         {post.categories.edges.map(({ node }) => (
           <PostCategory key={node.slug} category={node} />
@@ -29,15 +25,13 @@ export function PostModule({ slug }: PostModuleProps) {
       </div>
       <div
         className={cn(
-          'prose',
-          'max-w-none',
+          'prose max-w-none',
           'dark:text-slate-500',
           '[&_img]:w-1/2 [&_img]:max-w-min [&_img]:rounded-md [&_img]:pointer-events-none [&_img]:content-visibility-auto',
         )}
-        dangerouslySetInnerHTML={{
-          __html: formatHTML(post.content),
-        }}
-      />
+      >
+        {parse(html)}
+      </div>
     </article>
   );
 }

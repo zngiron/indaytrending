@@ -1,9 +1,5 @@
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
-
 import { PostsModule } from '@/components/posts/posts-module';
-import { getQueryClient } from '@/library/client';
-import { getCategory, getCategories } from '@/data/categories';
-import { getPosts } from '@/data/posts';
+import { getCategories } from '@/data/categories';
 
 interface CategoryProps {
   params: {
@@ -21,28 +17,10 @@ export const generateStaticParams = async () => {
   }));
 };
 
-export default async function Category({ params } : CategoryProps) {
-  const client = getQueryClient();
-  const variables = {
-    category: params.category || 'stories',
-    first: 12,
-  };
-
-  client.prefetchQuery({
-    queryKey: ['category', params.category],
-    queryFn: async () => getCategory(params.category),
-  });
-
-  client.prefetchQuery({
-    queryKey: ['posts', params.category],
-    queryFn: async () => getPosts(variables),
-  });
-
+export default function Category({ params }: CategoryProps) {
   return (
     <div className="container">
-      <HydrationBoundary state={dehydrate(client)}>
-        <PostsModule slug={params.category} />
-      </HydrationBoundary>
+      <PostsModule slug={params.category} />
     </div>
   );
 }

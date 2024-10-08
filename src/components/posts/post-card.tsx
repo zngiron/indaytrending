@@ -20,7 +20,7 @@ export function PostCard({ post }: PostCardProps) {
     )}
     >
       <Link
-        href={`/story/${post.slug}`}
+        href={`/stories/${post.slug}`}
         className={cn(
           'absolute inset-0',
           'rounded-[inherit]',

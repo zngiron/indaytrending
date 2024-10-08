@@ -3,6 +3,7 @@ import type { Category } from '@/data/categories';
 
 import GetPostQuery from '@/graphql/GetPost.graphql';
 import GetPostsQuery from '@/graphql/GetPosts.graphql';
+import GetPostsSlugsQuery from '@/graphql/GetPostsSlugs.graphql';
 import GetPostImageQuery from '@/graphql/GetPostImage.graphql';
 
 import { client } from '@/library/api';
@@ -49,6 +50,7 @@ interface GetPostsParams {
 
 const GET_POSTS: TypedDocumentNode<{ posts: Posts }, GetPostsParams> = GetPostsQuery;
 const GET_POST: TypedDocumentNode<{ post: Post }, { slug: string }> = GetPostQuery;
+const GET_POST_SLUGS: TypedDocumentNode<{ posts: Posts }, { slug: string }> = GetPostsSlugsQuery;
 const GET_POST_IMAGE: TypedDocumentNode<{ post: Post }, { slug: string }> = GetPostImageQuery;
 
 export const getPosts = async (params: GetPostsParams): Promise<Posts> => {
@@ -59,6 +61,11 @@ export const getPosts = async (params: GetPostsParams): Promise<Posts> => {
 export const getPost = async (slug: string): Promise<Post> => {
   const { post } = await client.request<{ post: Post }>(GET_POST, { slug });
   return post;
+};
+
+export const getPostSlugs = async (): Promise<string[]> => {
+  const { posts } = await client.request<{ posts: Posts }>(GET_POST_SLUGS);
+  return posts.edges.map((edge) => edge.node.slug);
 };
 
 export const getPostImage = async (slug: string): Promise<string> => {
