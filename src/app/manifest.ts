@@ -13,8 +13,18 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Kwento, inspirasyon, at trending na mga ganap. Sumama sa paglalakbay ni Inday at tuklasin ang mga kwentong tatatak sa puso mo.',
     icons: [
       {
-        src: '/static/indaytrending-icon.png',
+        src: '/static/indaytrending-icon-160.png',
+        sizes: '160x160',
+        type: 'image/png',
+      },
+      {
+        src: '/static/indaytrending-icon-320.png',
         sizes: '320x320',
+        type: 'image/png',
+      },
+      {
+        src: '/static/indaytrending-icon-480.png',
+        sizes: '480x480',
         type: 'image/png',
       },
     ],
