@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import { cn } from '@/library/utilities';
 
 export function AdsenseAd() {
   useEffect(() => {
