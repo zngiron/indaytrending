@@ -55,6 +55,7 @@ export async function PostModule({ slug }: PostModuleProps) {
           '[&_img]:w-full [&_img]:rounded-md [&_img]:pointer-events-none [&_img]:content-visibility-auto',
         )}
       >
+        <AdsenseAd />
         {parse(html, options)}
       </div>
     </article>

@@ -1,6 +1,13 @@
+'use client';
+
+import { useEffect } from 'react';
 import { cn } from '@/library/utilities';
 
 export function AdsenseAd() {
+  useEffect(() => {
+    ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+  }, []);
+
   return (
     <div className={cn(
       'block py-4 mt-4 rounded-md',
