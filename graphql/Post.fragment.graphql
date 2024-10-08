@@ -1,5 +1,0 @@
-fragment Post on Post {
-  id: databaseId
-  slug
-  title
-}
