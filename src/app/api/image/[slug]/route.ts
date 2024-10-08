@@ -3,10 +3,7 @@ import type { NextRequest } from 'next/server';
 import { Jimp } from 'jimp';
 
 import { env } from '@/library/environment';
-import { getPostSlugs, getPostImage } from '@/data/posts';
-
-export const revalidate = 3600;
-export const generateStaticParams = async () => getPostSlugs();
+import { getPostImage } from '@/data/posts';
 
 interface GetParams {
   params: {
