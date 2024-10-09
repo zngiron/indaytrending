@@ -1,21 +1,25 @@
 'use client';
 
-import Script from 'next/script';
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from 'next/script';
 
 import { env } from '@/library/environment';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 
 const production = env.NODE_ENV === 'production';
 
 export function Scripts() {
-  const pathname = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (env.NODE_ENV === 'production') {
+    if (production) {
       if (window.anymindTS) {
         window.anymindTS.dispose();
+      }
+
+      if (window.startAnymindTS) {
+        window.startAnymindTS();
       }
     }
   }, [pathname]);
@@ -32,7 +36,6 @@ export function Scripts() {
             crossOrigin="anonymous"
           />
           <Script
-            async
             strategy="afterInteractive"
             src="https://anymind360.com/js/7429/ats.js"
             onLoad={() => window.startAnymindTS()}
