@@ -20,6 +20,8 @@ export const generateMetadata = async ({ params }: StoryPageProps): Promise<Meta
     title: post.title,
     openGraph: {
       type: 'article',
+      siteName: 'Inday Trending',
+      url: `${env.DOMAIN}/stories/${post.slug}`,
       title: post.title,
       publishedTime: post.published,
       modifiedTime: post.modified,

@@ -27,10 +27,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.DOMAIN),
-  title: {
-    default: 'Inday Trending - Pinoy Short Stories',
-    template: '%s | Inday Trending - Pinoy Short Stories',
-  },
+  title: 'Inday Trending - Pinoy Short Stories',
   description: 'Kwento, inspirasyon, at trending na mga ganap. Sumama sa paglalakbay ni Inday at tuklasin ang mga kwentong tatatak sa puso mo.',
   openGraph: {
     type: 'website',

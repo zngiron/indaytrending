@@ -28,7 +28,7 @@ export function Scripts() {
     <>
       {production && (
         <>
-          <GoogleAnalytics gaId={`${process.env.ANALYTICS}`} />
+          <GoogleAnalytics gaId={`${env.ANALYTICS}`} />
           <Script
             async
             strategy="afterInteractive"
