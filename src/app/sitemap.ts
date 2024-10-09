@@ -12,14 +12,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPosts({ first: 100, category: 'stories' });
   const categories = await getCategories();
 
-  const categoriesMap = categories.edges.map(({ node }) => ({
+  const categoriesMap = categories?.edges.map(({ node }) => ({
     url: `${env.DOMAIN}/${node.slug}`,
     lastModified: today,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
 
-  const postsMap = posts.edges.map(({ node }) => ({
+  const postsMap = posts?.edges.map(({ node }) => ({
     url: `${env.DOMAIN}/stories/${node.slug}`,
     lastModified: node.modified,
     changeFrequency: 'never' as const,
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily' as const,
       priority: 1,
     },
-    ...categoriesMap,
-    ...postsMap,
+    ...categoriesMap || [],
+    ...postsMap || [],
   ];
 }

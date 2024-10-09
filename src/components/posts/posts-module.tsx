@@ -18,13 +18,13 @@ export async function PostsModule({ slug, limit = 24 }: PostsModuleProps) {
   return (
     <div className="py-4">
       <h1 className={cn('font-semibold text-2xl', 'dark:text-white')}>
-        {category.name}
+        {category?.name}
       </h1>
       <p className={cn('text-slate-500', 'dark:text-slate-300')}>
-        {category.description}
+        {category?.description}
       </p>
       <div className={cn('grid gap-4 py-4', 'md:grid-cols-2')}>
-        {posts.edges.map(({ node }) => (
+        {posts?.edges.map(({ node }) => (
           <PostCard key={node.id} post={node} />
         ))}
       </div>

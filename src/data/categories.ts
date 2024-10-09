@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
 
 import GetCategoriesQuery from '@/graphql/GetCategories.graphql';
@@ -22,11 +24,21 @@ const GET_CATEGORIES: TypedDocumentNode<{ categories: Categories }> = GetCategor
 const GET_CATEGORY: TypedDocumentNode<{ category: Category }, { slug: string }> = GetCategoryQuery;
 
 export const getCategories = async () => {
-  const { categories } = await client.request(GET_CATEGORIES);
-  return categories;
+  try {
+    const { categories } = await client.request(GET_CATEGORIES);
+    return categories;
+  } catch (error) {
+    console.error('[getCategories]', error);
+    return null;
+  }
 };
 
 export const getCategory = async (slug: string) => {
-  const { category } = await client.request(GET_CATEGORY, { slug });
-  return category;
+  try {
+    const { category } = await client.request(GET_CATEGORY, { slug });
+    return category;
+  } catch (error) {
+    console.error('[getCategory]', error);
+    return null;
+  }
 };

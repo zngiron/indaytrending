@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
+
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
 import type { Category } from '@/data/categories';
 
 import GetPostQuery from '@/graphql/GetPost.graphql';
 import GetPostsQuery from '@/graphql/GetPosts.graphql';
-import GetPostsSlugsQuery from '@/graphql/GetPostsSlugs.graphql';
 import GetPostImageQuery from '@/graphql/GetPostImage.graphql';
 
 import { client } from '@/library/api';
@@ -50,25 +51,34 @@ interface GetPostsParams {
 
 const GET_POSTS: TypedDocumentNode<{ posts: Posts }, GetPostsParams> = GetPostsQuery;
 const GET_POST: TypedDocumentNode<{ post: Post }, { slug: string }> = GetPostQuery;
-const GET_POST_SLUGS: TypedDocumentNode<{ posts: Posts }, { slug: string }> = GetPostsSlugsQuery;
 const GET_POST_IMAGE: TypedDocumentNode<{ post: Post }, { slug: string }> = GetPostImageQuery;
 
-export const getPosts = async (params: GetPostsParams): Promise<Posts> => {
-  const { posts } = await client.request<{ posts: Posts }>(GET_POSTS, params);
-  return posts;
+export const getPosts = async (params: GetPostsParams) => {
+  try {
+    const { posts } = await client.request<{ posts: Posts }>(GET_POSTS, params);
+    return posts;
+  } catch (error) {
+    console.error('[getPosts]', error);
+    return null;
+  }
 };
 
-export const getPost = async (slug: string): Promise<Post> => {
-  const { post } = await client.request<{ post: Post }>(GET_POST, { slug });
-  return post;
+export const getPost = async (slug: string) => {
+  try {
+    const { post } = await client.request<{ post: Post }>(GET_POST, { slug });
+    return post;
+  } catch (error) {
+    console.error('[getPost]', error);
+    return null;
+  }
 };
 
-export const getPostSlugs = async (): Promise<string[]> => {
-  const { posts } = await client.request<{ posts: Posts }>(GET_POST_SLUGS);
-  return posts.edges.map((edge) => edge.node.slug);
-};
-
-export const getPostImage = async (slug: string): Promise<string> => {
-  const { post } = await client.request<{ post: Post }>(GET_POST_IMAGE, { slug });
-  return post.image?.node.featured || '';
+export const getPostImage = async (slug: string) => {
+  try {
+    const { post } = await client.request<{ post: Post }>(GET_POST_IMAGE, { slug });
+    return post.image?.node.featured || '';
+  } catch (error) {
+    console.error('[getPostImage]', error);
+    return null;
+  }
 };

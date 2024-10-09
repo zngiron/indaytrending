@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { PostModule } from '@/components/posts/post-module';
-import { getPost, getPostSlugs } from '@/data/posts';
+import { getPost, getPosts } from '@/data/posts';
 import { env } from '@/library/environment';
 
 interface StoryPageProps {
@@ -10,11 +10,25 @@ interface StoryPageProps {
   };
 }
 
-export const revalidate = 60;
-export const generateStaticParams = async () => getPostSlugs();
+export const revalidate = 3600;
+
+export const generateStaticParams = async () => {
+  const posts = await getPosts({
+    category: 'stories',
+    first: 12,
+  });
+
+  return posts?.edges.map((post) => ({
+    slug: post.node.slug,
+  })) || [];
+};
 
 export const generateMetadata = async ({ params }: StoryPageProps): Promise<Metadata> => {
   const post = await getPost(params.slug);
+
+  if (!post) {
+    return {};
+  }
 
   return {
     title: post.title,

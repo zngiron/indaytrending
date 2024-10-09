@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 
+import { notFound } from 'next/navigation';
 import parse, { domToReact } from 'html-react-parser';
 
 import { PostCard } from '@/components/posts/post-card';
@@ -16,6 +17,11 @@ interface PostModuleProps {
 
 export async function PostModule({ slug }: PostModuleProps) {
   const post = await getPost(slug);
+
+  if (!post) {
+    return notFound();
+  }
+
   const html = formatHTML(post.content);
 
   const options = {

@@ -30,7 +30,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/library/utilities';
 
 interface NavigationProps {
-  categories: Categories;
+  categories: Categories | null;
 }
 
 function getCategoryIcon(slug: string) {
@@ -118,7 +118,7 @@ export function Navigation({ categories }: NavigationProps) {
           'text-sm',
         )}
         >
-          {categories.edges.map(({ node }) => (
+          {categories?.edges.map(({ node }) => (
             <Link
               key={node.id}
               href={`/${node.slug}`}

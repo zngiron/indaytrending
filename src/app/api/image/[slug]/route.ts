@@ -21,6 +21,11 @@ export async function GET(request: NextRequest, { params }: GetParams) {
 
   try {
     const url = await getPostImage(params.slug);
+
+    if (!url) {
+      return Response.json({ error: 'Featured image not found' }, { status: 404 });
+    }
+
     const image = await Jimp.read(url);
     const overlay = await Jimp.read(`${env.DOMAIN}/static/indaytrending-overlay.png`);
     const generatedImage = new Jimp({
