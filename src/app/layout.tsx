@@ -51,7 +51,6 @@ export const metadata: Metadata = {
     name: 'Inday Trending',
     url: '/',
   }],
-  publisher: 'Likha Media',
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {

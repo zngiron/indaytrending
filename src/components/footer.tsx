@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { cn } from '@/library/utilities';
 
 const year = new Date().getFullYear();
@@ -11,13 +13,15 @@ export function Footer() {
     >
       <div className={cn(
         'container',
-        'flex items-center justify-center h-16',
+        'flex items-center justify-center gap-2 h-16',
+        'text-xs text-center',
       )}
       >
-        <div className="text-xs text-center">
-          <span>{`©${year} `}</span>
-          <a href="https://likha.media" target="_blank" rel="noopener noreferrer">Likha Media</a>
-        </div>
+        <span>{`©${year} Inday Trending`}</span>
+        <span>|</span>
+        <Link href="/privacy" className="underline-offset-4 hover:underline">
+          Privacy Policy
+        </Link>
       </div>
     </footer>
   );

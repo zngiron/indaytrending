@@ -30,7 +30,7 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     screenshots: [
       {
-        src: '/static/inday-trending-thumbnail.png',
+        src: '/static/indaytrending-thumbnail.png',
         sizes: '1200x630',
         type: 'image/png',
       },
