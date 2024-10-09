@@ -36,7 +36,7 @@ export async function Header() {
           <Image
             className="dark:hidden"
             src="/static/indaytrending-logo-light.svg"
-            width={100}
+            width={80}
             height={40}
             alt="Inday Trending"
             draggable={false}
@@ -45,7 +45,7 @@ export async function Header() {
           <Image
             className="hidden dark:inline"
             src="/static/indaytrending-logo-dark.svg"
-            width={100}
+            width={80}
             height={40}
             alt="Inday Trending"
             draggable={false}
