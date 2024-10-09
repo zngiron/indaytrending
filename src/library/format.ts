@@ -2,7 +2,7 @@ import DOMPurify from 'isomorphic-dompurify';
 
 export const formatHTML = (html: string) => {
   const sanitized = DOMPurify.sanitize(html, {
-    ALLOWED_TAGS: ['h1', 'h2', 'h3', 'p', 'img'],
+    ALLOWED_TAGS: ['h1', 'h2', 'h3', 'p', 'ol', 'ul', 'li', 'img'],
     ALLOWED_ATTR: ['src', 'srcset', 'width', 'height', 'alt', 'loading'],
   });
 
