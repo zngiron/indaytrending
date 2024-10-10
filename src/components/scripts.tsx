@@ -18,7 +18,7 @@ export function Scripts() {
         window.anymindTS.dispose();
       }
 
-      if (window.startAnymindTS) {
+      if (window.startAnymindTS && !window.startAnymindTS.disposed) {
         window.startAnymindTS();
       }
     }

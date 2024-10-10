@@ -1,15 +1,14 @@
 /* eslint-disable react/no-unstable-nested-components */
 
+import { Fragment } from 'react';
 import { notFound } from 'next/navigation';
 import parse, { domToReact } from 'html-react-parser';
 
 import { PostCard } from '@/components/posts/post-card';
 import { AdsenseAd } from '@/components/adsense/adsense-ad';
-
 import { formatHTML } from '@/library/format';
 import { cn } from '@/library/utilities';
 import { getPost } from '@/data/posts';
-import { Fragment } from 'react';
 
 interface PostModuleProps {
   slug: string;
@@ -37,7 +36,7 @@ export async function PostModule({ slug }: PostModuleProps) {
           currentNode = currentNode.prev;
         }
 
-        if ((paragraphCount + 1) % 12 === 0) {
+        if ((paragraphCount + 1) % 8 === 0) {
           return (
             <Fragment key={node.children[0].key}>
               {domToReact(node.children)}
