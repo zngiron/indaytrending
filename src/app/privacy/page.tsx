@@ -2,8 +2,6 @@ import { PageModule } from '@/components/pages/page-module';
 
 import { env } from '@/library/environment';
 
-export const revalidate = 3600;
-
 export const generateMetadata = () => ({
   title: 'Privacy Policy | Inday Trending - Pinoy Short Stories',
   openGraph: {
