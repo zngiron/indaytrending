@@ -24,6 +24,7 @@ export async function POST(request: NextRequest, { params }: PostParams) {
 
   revalidatePath('/');
   revalidatePath(`/stories/${params.slug}`);
+  revalidatePath(`/api/image/${params.slug}`);
 
   return new Response('Revalidated', {
     status: 200,
