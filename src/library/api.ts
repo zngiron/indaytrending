@@ -6,7 +6,7 @@ export const client = new GraphQLClient(`${env.API}/graphql`, {
   fetch: (url, options) => fetch(url, {
     ...options,
     next: {
-      revalidate: 60,
+      revalidate: 86400,
     },
   }),
 });

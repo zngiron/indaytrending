@@ -5,7 +5,6 @@ import type { Category } from '@/data/categories';
 
 import GetPostQuery from '@/graphql/GetPost.graphql';
 import GetPostsQuery from '@/graphql/GetPosts.graphql';
-import GetPostImageQuery from '@/graphql/GetPostImage.graphql';
 
 import { client } from '@/library/api';
 
@@ -51,7 +50,6 @@ interface GetPostsParams {
 
 const GET_POSTS: TypedDocumentNode<{ posts: Posts }, GetPostsParams> = GetPostsQuery;
 const GET_POST: TypedDocumentNode<{ post: Post }, { slug: string }> = GetPostQuery;
-const GET_POST_IMAGE: TypedDocumentNode<{ post: Post }, { slug: string }> = GetPostImageQuery;
 
 export const getPosts = async (params: GetPostsParams) => {
   try {

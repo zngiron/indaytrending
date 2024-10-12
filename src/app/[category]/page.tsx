@@ -10,7 +10,6 @@ interface CategoryProps {
   };
 }
 
-export const revalidate = 86400;
 export const dynamicParams = false;
 
 export const generateStaticParams = async () => {

@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server';
 import { ImageResponse } from 'next/og';
 
 import { env } from '@/library/environment';
-import { getPostImage } from '@/data/posts';
+import { getPost } from '@/data/posts';
 
 interface GetParams {
   params: {
@@ -16,9 +16,9 @@ interface GetParams {
 export const runtime = 'edge';
 
 export async function GET(_: NextRequest, { params }: GetParams) {
-  const url = await getPostImage(params.slug);
+  const post = await getPost(params.slug);
 
-  if (!url) {
+  if (!post) {
     return new Response('Not found', { status: 404 });
   }
 
@@ -29,7 +29,7 @@ export async function GET(_: NextRequest, { params }: GetParams) {
       >
         <img
           tw="absolute inset-0 w-full h-full"
-          src={url}
+          src={post.image?.node.featured}
           width={1200}
           height={630}
           alt=""
