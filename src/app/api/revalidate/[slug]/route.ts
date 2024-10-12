@@ -23,6 +23,7 @@ export async function POST(request: NextRequest, { params }: PostParams) {
   }
 
   revalidatePath('/');
+  revalidatePath('/[category]');
   revalidatePath(`/stories/${params.slug}`);
   revalidatePath(`/api/image/${params.slug}`);
 

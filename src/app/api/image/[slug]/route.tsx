@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
+import type { NextRequest } from 'next/server';
+
 import { ImageResponse } from 'next/og';
 
 import { env } from '@/library/environment';
@@ -13,7 +15,7 @@ interface GetParams {
 
 export const runtime = 'edge';
 
-export async function GET({ params }: GetParams) {
+export async function GET(_: NextRequest, { params }: GetParams) {
   const url = await getPostImage(params.slug);
 
   if (!url) {
@@ -30,14 +32,14 @@ export async function GET({ params }: GetParams) {
           src={url}
           width={1200}
           height={630}
-          alt="Inday Trending"
+          alt=""
         />
         <img
           tw="absolute inset-0 w-full h-full"
           src={`${env.DOMAIN}/static/indaytrending-overlay.png`}
           width={1200}
           height={630}
-          alt="Inday Trending"
+          alt=""
         />
       </div>
     ),
