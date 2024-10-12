@@ -70,13 +70,3 @@ export const getPost = async (slug: string) => {
     return null;
   }
 };
-
-export const getPostImage = async (slug: string) => {
-  try {
-    const { post } = await client.request<{ post: Post }>(GET_POST_IMAGE, { slug });
-    return post.image?.node.featured || '';
-  } catch (error) {
-    console.error('[getPostImage]', error);
-    return null;
-  }
-};
