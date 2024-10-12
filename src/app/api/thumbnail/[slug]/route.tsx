@@ -48,17 +48,24 @@ export async function GET(_: NextRequest, { params }: GetParams) {
           height={580}
           alt=""
         />
-        <div
-          tw="absolute inset-x-20 top-[42rem] text-white text-5xl font-bold text-[#3E3F47]"
-        >
+        <div tw="absolute inset-x-20 top-[42rem] text-white text-5xl font-bold text-[#3E3F47]">
           {post.title}
         </div>
-        <div
-          tw="absolute left-20 bottom-28 bg-[#DD704D] px-8 py-4 rounded-full font-bold text-3xl text-white"
-        >
+        <div tw="absolute left-20 bottom-28 bg-[#DD704D] px-8 py-4 rounded-full font-bold text-3xl text-white">
           Link in Comment Below
         </div>
-        <svg width="360" height="180" viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg" tw="absolute right-20 bottom-12">
+        <svg
+          viewBox="0 0 480 240"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{
+            width: '360px',
+            height: '180px',
+            position: 'absolute',
+            right: '80px',
+            bottom: '48px',
+          }}
+        >
           <path d="M63.048 112.656H74.44V132.752H29V112.656H40.392V63.12H29.896V43.152H73.544V63.12H63.048V112.656Z" fill="#DD704D" />
           <path d="M155.088 132.88L109.904 88.72V132.752C101.968 132.752 94.032 132.752 86.224 132.752V42.768H94.544L139.856 87.056V43.152C147.664 43.152 155.472 43.152 163.28 43.152V132.88H155.088Z" fill="#DD704D" />
           <path d="M216.691 43.152C275.059 43.408 275.059 132.496 216.691 132.752H182.899V43.152H216.691ZM205.811 64.016V111.888H216.691C245.235 111.888 245.235 64.016 216.691 64.016H205.811Z" fill="#DD704D" />
