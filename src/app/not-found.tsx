@@ -5,7 +5,7 @@ import { cn } from '@/library/utilities';
 
 function NotFound() {
   return (
-    <div className="flex grow items-center justify-center">
+    <div className="flex grow items-center justify-center py-4">
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="flex flex-col items-center gap-2">
           <Image
