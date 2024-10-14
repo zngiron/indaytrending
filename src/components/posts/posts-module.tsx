@@ -1,18 +1,29 @@
-import { PostCard } from '@/components/posts/post-card';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+
+import { PostsFeed } from '@/components/posts/posts-feed';
+import { getQueryClient } from '@/library/client';
+import { cn } from '@/library/utilities';
+
 import { getCategory } from '@/data/categories';
 import { getPosts } from '@/data/posts';
-import { cn } from '@/library/utilities';
 
 interface PostsModuleProps {
   slug: string;
   limit?: number;
 }
 
-export async function PostsModule({ slug, limit = 24 }: PostsModuleProps) {
+export async function PostsModule({ slug, limit = 12 }: PostsModuleProps) {
   const category = await getCategory(slug);
-  const posts = await getPosts({
-    category: slug,
-    first: limit,
+  const client = getQueryClient();
+
+  client.prefetchInfiniteQuery({
+    queryKey: ['posts', slug],
+    queryFn: async () => getPosts({
+      category: slug,
+      first: limit,
+      after: '',
+    }),
+    initialPageParam: '',
   });
 
   return (
@@ -23,11 +34,9 @@ export async function PostsModule({ slug, limit = 24 }: PostsModuleProps) {
       <p className={cn('text-slate-500', 'dark:text-slate-300')}>
         {category?.description}
       </p>
-      <div className={cn('grid gap-4 py-4', 'md:grid-cols-2')}>
-        {posts?.edges.map(({ node }) => (
-          <PostCard key={node.id} post={node} />
-        ))}
-      </div>
+      <HydrationBoundary state={dehydrate(client)}>
+        <PostsFeed slug={slug} limit={limit} />
+      </HydrationBoundary>
     </div>
   );
 }

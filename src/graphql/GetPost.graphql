@@ -20,5 +20,25 @@ query GetPost($slug: ID!) {
         }
       }
     }
+    next {
+      id: databaseId
+      slug
+      title
+      image: featuredImage {
+        node {
+          featured: sourceUrl
+        }
+      }
+    }
+    previous {
+      id: databaseId
+      slug
+      title
+      image: featuredImage {
+        node {
+          featured: sourceUrl
+        }
+      }
+    }
   }
 }

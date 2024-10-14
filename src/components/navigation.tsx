@@ -18,6 +18,7 @@ import {
   Search,
   BookOpen,
   Trophy,
+  Shield,
 } from 'lucide-react';
 
 import {
@@ -45,12 +46,15 @@ function getCategoryIcon(slug: string) {
     mystery: Search,
     stories: BookOpen,
     success: Trophy,
+    privacy: Shield,
   };
 
   const Component = icons[slug as keyof typeof icons];
 
   return Component ? <Component size={16} /> : null;
 }
+
+const year = new Date().getFullYear();
 
 export function Navigation({ categories }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,74 +69,102 @@ export function Navigation({ categories }: NavigationProps) {
       <SheetContent
         side="left"
         className={cn(
-          'w-80 p-2 space-y-4 border-none',
+          'flex flex-col justify-between w-80 p-2 border-none',
           'dark:bg-slate-950 dark:text-white',
         )}
       >
-        <SheetTitle className={cn(
-          'p-2',
-          'font-semibold text-xs uppercase tracking-widest',
-          'dark:text-slate-500',
-        )}
-        >
-          Stories
-        </SheetTitle>
-        <nav className={cn(
-          '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
-          'text-sm',
-        )}
-        >
-          <Link
-            href="/"
-            className={cn(
-              'hover:bg-gray-100',
-              'dark:hover:bg-slate-900',
-            )}
-            onClick={() => setIsOpen(false)}
+        <div className="space-y-4">
+          <SheetTitle className={cn(
+            'p-2',
+            'font-semibold text-xs uppercase tracking-widest',
+            'dark:text-slate-500',
+          )}
           >
-            <Sparkles size={16} />
-            <span>New Stories</span>
-          </Link>
-          <Link
-            href="/"
-            className={cn(
-              'hover:bg-gray-100',
-              'dark:hover:bg-slate-900',
-            )}
-            onClick={() => setIsOpen(false)}
+            Stories
+          </SheetTitle>
+          <nav className={cn(
+            '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
+            'text-sm',
+          )}
           >
-            <TrendingUp size={16} />
-            <span>Trending Stories</span>
-          </Link>
-        </nav>
-        <SheetTitle className={cn(
-          'p-2',
-          'font-semibold text-xs uppercase tracking-widest',
-          'dark:text-slate-500',
-        )}
-        >
-          Categories
-        </SheetTitle>
-        <nav className={cn(
-          '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
-          'text-sm',
-        )}
-        >
-          {categories?.edges.map(({ node }) => (
             <Link
-              key={node.id}
-              href={`/${node.slug}`}
+              href="/"
               className={cn(
                 'hover:bg-gray-100',
                 'dark:hover:bg-slate-900',
               )}
               onClick={() => setIsOpen(false)}
             >
-              {getCategoryIcon(node.slug)}
-              <span>{node.name}</span>
+              <Sparkles size={16} />
+              <span>New Stories</span>
             </Link>
-          ))}
-        </nav>
+            <Link
+              href="/"
+              className={cn(
+                'hover:bg-gray-100',
+                'dark:hover:bg-slate-900',
+              )}
+              onClick={() => setIsOpen(false)}
+            >
+              <TrendingUp size={16} />
+              <span>Trending Stories</span>
+            </Link>
+          </nav>
+          <SheetTitle className={cn(
+            'p-2',
+            'font-semibold text-xs uppercase tracking-widest',
+            'dark:text-slate-500',
+          )}
+          >
+            Categories
+          </SheetTitle>
+          <nav className={cn(
+            '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
+            'text-sm',
+          )}
+          >
+            {categories?.edges.map(({ node }) => (
+              <Link
+                key={node.id}
+                href={`/${node.slug}`}
+                className={cn(
+                  'hover:bg-gray-100',
+                  'dark:hover:bg-slate-900',
+                )}
+                onClick={() => setIsOpen(false)}
+              >
+                {getCategoryIcon(node.slug)}
+                <span>{node.name}</span>
+              </Link>
+            ))}
+          </nav>
+          <SheetTitle className={cn(
+            'p-2',
+            'font-semibold text-xs uppercase tracking-widest',
+            'dark:text-slate-500',
+          )}
+          >
+            About
+          </SheetTitle>
+          <nav className={cn(
+            '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
+            'text-sm',
+          )}
+          >
+            <Link
+              href="/privacy"
+              className={cn(
+                'hover:bg-gray-100',
+                'dark:hover:bg-slate-900',
+              )}
+              onClick={() => setIsOpen(false)}
+            >
+              {getCategoryIcon('privacy')}
+              <span>Privacy Policy</span>
+            </Link>
+          </nav>
+        </div>
+        <div className="p-2 text-xs">{`©${year} Inday Trending`}</div>
       </SheetContent>
     </Sheet>
   );

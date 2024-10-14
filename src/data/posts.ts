@@ -25,6 +25,26 @@ export type Post = {
       node: Category;
     }[];
   };
+  previous?: {
+    id: string;
+    slug: string;
+    title: string;
+    image?: {
+      node: {
+        featured: string;
+      };
+    };
+  };
+  next?: {
+    id: string;
+    slug: string;
+    title: string;
+    image?: {
+      node: {
+        featured: string;
+      };
+    };
+  };
 };
 
 export type Posts = {
