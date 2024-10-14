@@ -66,7 +66,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       >
         <Providers>
           <Header />
-          <main className="flex flex-col grow">
+          <main className="flex flex-col grow pb-32">
             {children}
           </main>
         </Providers>
