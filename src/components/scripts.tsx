@@ -40,8 +40,14 @@ export function Scripts() {
             src="https://anymind360.com/js/7429/ats.js"
             onLoad={() => window.startAnymindTS()}
           />
+          <Script
+            strategy="afterInteractive"
+            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"
+            crossOrigin="anonymous"
+          />
         </>
       )}
+      <div id="fb-root" />
       <script type="application/ld+json">
         {JSON.stringify({
           '@context': 'https://schema.org',

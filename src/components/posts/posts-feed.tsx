@@ -32,11 +32,9 @@ export function PostsFeed({ slug, limit }: PostsFeedProps) {
     };
 
     window.addEventListener('scroll', onScroll);
-    window.addEventListener('touchmove', onScroll);
 
     return () => {
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('touchmove', onScroll);
     };
   }, [fetchNextPage]);
 

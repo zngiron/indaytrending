@@ -1,8 +1,5 @@
-/* eslint-disable react/no-unstable-nested-components */
-
-import { Fragment } from 'react';
 import { notFound } from 'next/navigation';
-import parse, { domToReact } from 'html-react-parser';
+import parse from 'html-react-parser';
 
 import { PostCard } from '@/components/posts/post-card';
 import { PostSocial } from '@/components/posts/post-social';
@@ -25,37 +22,11 @@ export async function PostModule({ slug }: PostModuleProps) {
 
   const html = formatHTML(post.content);
 
-  const options = {
-    replace: (node: any) => {
-      if (node.name === 'p' && node.prev?.name !== 'img' && node.next?.name !== 'img') {
-        let paragraphCount = 0;
-        let currentNode = node;
-
-        while (currentNode.prev) {
-          if (currentNode.prev.name === 'p') {
-            paragraphCount += 1;
-          }
-          currentNode = currentNode.prev;
-        }
-
-        if ((paragraphCount + 1) % 8 === 0) {
-          return (
-            <Fragment key={node.children[0].key}>
-              {domToReact(node.children)}
-              <AdsenseAd />
-            </Fragment>
-          );
-        }
-      }
-
-      return node;
-    },
-  };
-
   return (
     <article className="py-4 space-y-4">
       <PostCard post={post} featured />
       <PostSocial slug={post.slug} />
+      <AdsenseAd />
       <div
         className={cn(
           'prose max-w-none',
@@ -63,8 +34,9 @@ export async function PostModule({ slug }: PostModuleProps) {
           '[&_img]:w-full [&_img]:rounded-md [&_img]:pointer-events-none [&_img]:content-visibility-auto',
         )}
       >
-        {parse(html, options)}
+        {parse(html)}
       </div>
+      <AdsenseAd />
       <div className="space-y-2">
         {post.next && <PostThumbnail post={post.next} label="Next Story" />}
         {post.previous && <PostThumbnail post={post.previous} label="Previous Story" />}

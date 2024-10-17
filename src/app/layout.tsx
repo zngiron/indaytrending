@@ -62,6 +62,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           'flex flex-col min-h-dvh',
           'bg-muted text-foreground antialiased',
           'dark:bg-slate-900 dark:text-white',
+          'selection:bg-primary selection:text-white',
         )}
       >
         <Providers>
