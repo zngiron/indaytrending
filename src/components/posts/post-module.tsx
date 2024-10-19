@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import parse from 'html-react-parser';
 
 import { PostCard } from '@/components/posts/post-card';
-import { PostSocial } from '@/components/posts/post-social';
 import { PostThumbnail } from '@/components/posts/post-thumbnail';
 import { AdsenseAd } from '@/components/adsense/adsense-ad';
 import { formatHTML } from '@/library/format';
@@ -25,7 +24,6 @@ export async function PostModule({ slug }: PostModuleProps) {
   return (
     <article className="py-4 space-y-4">
       <PostCard post={post} featured />
-      <PostSocial slug={post.slug} />
       <div
         className={cn(
           'prose max-w-none',

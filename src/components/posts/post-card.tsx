@@ -3,6 +3,7 @@ import type { Post } from '@/data/posts';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { PostSocial } from '@/components/posts/post-social';
 import { PostCategory } from '@/components/posts/post-category';
 import { cn } from '@/library/utilities';
 
@@ -23,6 +24,7 @@ export function PostCard({ post, featured = false }: PostCardProps) {
       'bg-gradient-to-tr from-secondary via-secondary to-primary',
     )}
     >
+      {featured && <PostSocial slug={post.slug} />}
       <DynamicLink
         href={`/stories/${post.slug}`}
         className={cn(
@@ -46,8 +48,8 @@ export function PostCard({ post, featured = false }: PostCardProps) {
           loading="lazy"
         />
         <div className={cn(
-          'absolute inset-x-2 bottom-2 z-10',
-          'p-4 rounded-[inherit]',
+          'absolute inset-x-6 bottom-6 z-10',
+          'rounded-[inherit]',
         )}
         >
           <DynamicTitle
