@@ -43,7 +43,7 @@ export function Scripts() {
         </>
       )}
       <Script
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"
         crossOrigin="anonymous"
       />
