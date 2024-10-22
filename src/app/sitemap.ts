@@ -5,6 +5,7 @@ import { getCategories } from '@/data/categories';
 import { getPosts } from '@/data/posts';
 
 const today = new Date().toISOString();
+const formatDate = (date: string) => new Date(date).toISOString();
 
 export const dynamic = 'force-static';
 
@@ -21,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const postsMap = posts?.edges.map(({ node }) => ({
     url: `${env.DOMAIN}/stories/${node.slug}`,
-    lastModified: node.modified,
+    lastModified: formatDate(node.modified),
     changeFrequency: 'never' as const,
   }));
 
