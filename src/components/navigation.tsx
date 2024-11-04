@@ -164,7 +164,7 @@ export function Navigation({ categories }: NavigationProps) {
             </Link>
           </nav>
         </div>
-        <div className="p-2 text-xs">{`©${year} Inday Trending`}</div>
+        <div className="p-2 text-xs">{`©${year} Cuida Group`}</div>
       </SheetContent>
     </Sheet>
   );

@@ -35,6 +35,10 @@ export const generateMetadata = async ({ params }: StoryPageProps): Promise<Meta
       siteName: 'Inday Trending',
       url: `${env.DOMAIN}/stories/${post.slug}`,
       title: post.title,
+      authors: [
+        'https://facebook.com/indaytrending',
+        'https://indaytrending.com',
+      ],
       publishedTime: post.published,
       modifiedTime: post.modified,
       images: [
