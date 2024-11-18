@@ -5,9 +5,7 @@ import { getPost, getPosts } from '@/data/posts';
 import { env } from '@/library/environment';
 
 interface StoryPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export const generateStaticParams = async () => {
@@ -22,7 +20,8 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({ params }: StoryPageProps): Promise<Metadata> => {
-  const post = await getPost(params.slug);
+  const data = await params;
+  const post = await getPost(data.slug);
 
   if (!post) {
     return {};
@@ -51,10 +50,11 @@ export const generateMetadata = async ({ params }: StoryPageProps): Promise<Meta
   };
 };
 
-export default function StoryPage({ params }: StoryPageProps) {
+export default async function StoryPage({ params }: StoryPageProps) {
+  const { slug } = await params;
   return (
     <div className="container max-w-3xl">
-      <PostModule slug={params.slug} />
+      <PostModule slug={slug} />
     </div>
   );
 }

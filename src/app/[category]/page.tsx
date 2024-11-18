@@ -5,9 +5,7 @@ import { getCategories, getCategory } from '@/data/categories';
 import { env } from '@/library/environment';
 
 interface CategoryProps {
-  params: {
-    category: string;
-  };
+  params: Promise<{ category: string }>;
 }
 
 export const dynamicParams = false;
@@ -21,7 +19,8 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({ params }: CategoryProps): Promise<Metadata> => {
-  const category = await getCategory(params.category);
+  const { category: slug } = await params;
+  const category = await getCategory(slug);
 
   if (!category) {
     return {};
@@ -39,9 +38,11 @@ export const generateMetadata = async ({ params }: CategoryProps): Promise<Metad
 };
 
 export default async function Category({ params }: CategoryProps) {
+  const { category } = await params;
+
   return (
     <div className="container max-w-3xl">
-      <PostsModule slug={params.category} />
+      <PostsModule slug={category} />
     </div>
   );
 }

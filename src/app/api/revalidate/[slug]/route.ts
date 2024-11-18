@@ -2,14 +2,13 @@ import { NextRequest } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
 interface PostParams {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export const runtime = 'edge';
 
 export async function POST(request: NextRequest, { params }: PostParams) {
+  const { slug } = await params;
   const token = request.headers.get('Authorization')?.split(' ')[1];
 
   if (token !== process.env.REVALIDATION_TOKEN) {
@@ -18,7 +17,7 @@ export async function POST(request: NextRequest, { params }: PostParams) {
     });
   }
 
-  if (!params.slug) {
+  if (!slug) {
     return new Response('No slug provided', {
       status: 400,
     });
@@ -26,9 +25,9 @@ export async function POST(request: NextRequest, { params }: PostParams) {
 
   revalidatePath('/');
   revalidatePath('/[category]', 'page');
-  revalidatePath(`/stories/${params.slug}`);
-  revalidatePath(`/api/image/${params.slug}`);
-  revalidatePath(`/api/thumbnail/${params.slug}`);
+  revalidatePath(`/stories/${slug}`);
+  revalidatePath(`/api/image/${slug}`);
+  revalidatePath(`/api/thumbnail/${slug}`);
 
   return new Response('Revalidated', {
     status: 200,

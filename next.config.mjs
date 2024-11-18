@@ -29,6 +29,7 @@ const nextConfig = {
       rules: {
         '*.graphql': {
           loaders: ['graphql-tag/loader'],
+          as: '*.ts',
         },
       },
     },

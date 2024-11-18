@@ -8,15 +8,14 @@ import { env } from '@/library/environment';
 import { getPost } from '@/data/posts';
 
 interface GetParams {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export const runtime = 'edge';
 
 export async function GET(_: NextRequest, { params }: GetParams) {
-  const post = await getPost(params.slug);
+  const { slug } = await params;
+  const post = await getPost(slug);
 
   if (!post) {
     return new Response('Not found', { status: 404 });
