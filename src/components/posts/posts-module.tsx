@@ -9,7 +9,7 @@ interface PostsModuleProps {
   limit?: number;
 }
 
-export async function PostsModule({ slug, limit = 12 }: PostsModuleProps) {
+export async function PostsModule({ slug, limit = 24 }: PostsModuleProps) {
   const category = await getCategory(slug);
   const posts = await getPosts({
     category: slug,

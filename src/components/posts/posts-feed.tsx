@@ -2,7 +2,7 @@
 
 import type { Posts } from '@/data/posts';
 
-import { useEffect } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 
 import { PostCard } from '@/components/posts/post-card';
@@ -16,7 +16,7 @@ interface PostsFeedProps {
 }
 
 export function PostsFeed({ posts, slug, limit }: PostsFeedProps) {
-  const { data, fetchNextPage } = useSuspenseInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage } = useSuspenseInfiniteQuery({
     queryKey: ['posts', slug],
     queryFn: async ({ pageParam }) => getPosts({
       category: slug,
@@ -35,29 +35,36 @@ export function PostsFeed({ posts, slug, limit }: PostsFeedProps) {
     },
   });
 
-  useEffect(() => {
-    const onScroll = () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        fetchNextPage();
-      }
-    };
+  const postsLoader = useRef(null);
 
-    window.addEventListener('scroll', onScroll);
+  const handleLoader = useCallback((entries: IntersectionObserverEntry[]) => {
+    const [target] = entries;
+    if (target.isIntersecting && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [fetchNextPage, hasNextPage]);
+
+  useEffect(() => {
+    const element = postsLoader.current;
+    const observer = new IntersectionObserver(handleLoader, {
+      root: null,
+      rootMargin: '50%',
+      threshold: 0,
+    });
+
+    if (element) observer.observe(element);
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
+      if (element) observer.unobserve(element);
     };
-  }, [fetchNextPage]);
+  }, [handleLoader]);
 
   return (
     <div className={cn('grid gap-4 py-4', 'md:grid-cols-2')}>
-      {data.pages.map(
-        (page) => page?.edges.map(
-          (edge) => (
-            <PostCard key={edge.node.id} post={edge.node} />
-          ),
-        ),
-      )}
+      {data.pages.map((page) => page?.edges.map((edge) => (
+        <PostCard key={edge.node.id} post={edge.node} />
+      )))}
+      <div ref={postsLoader} />
     </div>
   );
 }
