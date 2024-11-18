@@ -1,27 +1,38 @@
 'use client';
 
+import type { Posts } from '@/data/posts';
+
 import { useEffect } from 'react';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 
 import { PostCard } from '@/components/posts/post-card';
 import { cn } from '@/library/utilities';
 import { getPosts } from '@/data/posts';
 
 interface PostsFeedProps {
+  posts: Posts | null;
   slug: string;
   limit: number;
 }
 
-export function PostsFeed({ slug, limit }: PostsFeedProps) {
-  const { data, fetchNextPage } = useInfiniteQuery({
+export function PostsFeed({ posts, slug, limit }: PostsFeedProps) {
+  const { data, fetchNextPage } = useSuspenseInfiniteQuery({
     queryKey: ['posts', slug],
-    queryFn: async ({ pageParam = '' }) => getPosts({
+    queryFn: async ({ pageParam }) => getPosts({
       category: slug,
       first: limit,
       after: pageParam,
     }),
     getNextPageParam: (page) => (page?.pageInfo?.hasNextPage ? page.pageInfo.endCursor : undefined),
-    initialPageParam: '',
+    initialPageParam: posts?.pageInfo.startCursor,
+    initialData: {
+      pages: [
+        posts,
+      ],
+      pageParams: [
+        posts?.pageInfo.startCursor,
+      ],
+    },
   });
 
   useEffect(() => {
@@ -37,8 +48,6 @@ export function PostsFeed({ slug, limit }: PostsFeedProps) {
       window.removeEventListener('scroll', onScroll);
     };
   }, [fetchNextPage]);
-
-  if (!data) return null;
 
   return (
     <div className={cn('grid gap-4 py-4', 'md:grid-cols-2')}>
