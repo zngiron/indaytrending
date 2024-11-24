@@ -36,7 +36,9 @@ export async function PostModule({ slug }: PostModuleProps) {
       <AdsenseAd />
       <div className="space-y-2">
         {post.next && <PostThumbnail post={post.next} label="Next Story" />}
-        {post.previous && <PostThumbnail post={post.previous} label="Previous Story" />}
+        {post.previous && (
+          <PostThumbnail post={post.previous} label="Previous Story" />
+        )}
       </div>
     </article>
   );

@@ -68,8 +68,10 @@ interface GetPostsParams {
   category: string;
 }
 
-const GET_POSTS: TypedDocumentNode<{ posts: Posts }, GetPostsParams> = GetPostsQuery;
-const GET_POST: TypedDocumentNode<{ post: Post }, { slug: string }> = GetPostQuery;
+const GET_POSTS: TypedDocumentNode<{ posts: Posts }, GetPostsParams> =
+  GetPostsQuery;
+const GET_POST: TypedDocumentNode<{ post: Post }, { slug: string }> =
+  GetPostQuery;
 
 export const getPosts = async (params: GetPostsParams) => {
   try {

@@ -13,7 +13,8 @@ export type Page = {
   content: string;
 };
 
-const GET_PAGE: TypedDocumentNode<{ page: Page }, { slug: string }> = GetPageQuery;
+const GET_PAGE: TypedDocumentNode<{ page: Page }, { slug: string }> =
+  GetPageQuery;
 
 export const getPage = async (slug: string) => {
   try {

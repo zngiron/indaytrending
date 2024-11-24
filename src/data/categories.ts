@@ -20,8 +20,12 @@ export type Categories = {
   }[];
 };
 
-const GET_CATEGORIES: TypedDocumentNode<{ categories: Categories }> = GetCategoriesQuery;
-const GET_CATEGORY: TypedDocumentNode<{ category: Category }, { slug: string }> = GetCategoryQuery;
+const GET_CATEGORIES: TypedDocumentNode<{ categories: Categories }> =
+  GetCategoriesQuery;
+const GET_CATEGORY: TypedDocumentNode<
+  { category: Category },
+  { slug: string }
+> = GetCategoryQuery;
 
 export const getCategories = async () => {
   try {

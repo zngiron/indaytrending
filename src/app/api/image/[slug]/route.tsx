@@ -23,9 +23,7 @@ export async function GET(_: NextRequest, { params }: GetParams) {
 
   return new ImageResponse(
     (
-      <div
-        tw="relative flex w-full h-full"
-      >
+      <div tw="relative flex w-full h-full">
         <img
           tw="absolute inset-0 w-full h-full"
           src={post.image?.node.featured}

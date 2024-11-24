@@ -17,20 +17,18 @@ export function PostCard({ post, featured = false }: PostCardProps) {
   const DynamicTitle = featured ? 'h1' : 'h2';
 
   return (
-    <div className={cn(
-      'group overflow-hidden',
-      'relative',
-      'rounded-lg aspect-[1200/630]',
-      'bg-gradient-to-tr from-secondary via-secondary to-primary',
-    )}
+    <div
+      className={cn(
+        'group overflow-hidden',
+        'relative',
+        'rounded-lg aspect-[1200/630]',
+        'bg-gradient-to-tr from-secondary via-secondary to-primary',
+      )}
     >
       {featured && <PostSocial slug={post.slug} />}
       <DynamicLink
         href={`/stories/${post.slug}`}
-        className={cn(
-          'absolute inset-0',
-          'rounded-[inherit]',
-        )}
+        className={cn('absolute inset-0', 'rounded-[inherit]')}
       >
         <Image
           className={cn(
@@ -47,10 +45,11 @@ export function PostCard({ post, featured = false }: PostCardProps) {
           draggable={false}
           loading="lazy"
         />
-        <div className={cn(
-          'absolute inset-x-6 bottom-6 z-10',
-          'rounded-[inherit]',
-        )}
+        <div
+          className={cn(
+            'absolute inset-x-6 bottom-6 z-10',
+            'rounded-[inherit]',
+          )}
         >
           <DynamicTitle
             className={cn(
@@ -62,18 +61,15 @@ export function PostCard({ post, featured = false }: PostCardProps) {
           </DynamicTitle>
         </div>
       </DynamicLink>
-      <div className={cn(
-        'absolute inset-x-0 top-0 z-10',
-        'flex flex-wrap items-center gap-2 p-6',
-        'pointer-events-none',
-      )}
+      <div
+        className={cn(
+          'absolute inset-x-0 top-0 z-10',
+          'flex flex-wrap items-center gap-2 p-6',
+          'pointer-events-none',
+        )}
       >
         {post.categories.edges.map(({ node }) => (
-          <PostCategory
-            key={node.id}
-            slug={node.slug}
-            name={node.name}
-          />
+          <PostCategory key={node.id} slug={node.slug} name={node.name} />
         ))}
       </div>
     </div>

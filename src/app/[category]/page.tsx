@@ -13,12 +13,16 @@ export const dynamicParams = false;
 export const generateStaticParams = async () => {
   const categories = await getCategories();
 
-  return categories?.edges.map(({ node }) => ({
-    category: node.slug,
-  })) || [];
+  return (
+    categories?.edges.map(({ node }) => ({
+      category: node.slug,
+    })) || []
+  );
 };
 
-export const generateMetadata = async ({ params }: CategoryProps): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: CategoryProps): Promise<Metadata> => {
   const { category: slug } = await params;
   const category = await getCategory(slug);
 

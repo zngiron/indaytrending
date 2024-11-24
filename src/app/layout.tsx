@@ -27,7 +27,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(env.DOMAIN),
   title: 'Inday Trending - Pinoy Short Stories',
-  description: 'Kwento, inspirasyon, at trending na mga ganap. Sumama sa paglalakbay ni Inday at tuklasin ang mga kwentong tatatak sa puso mo.',
+  description:
+    'Kwento, inspirasyon, at trending na mga ganap. Sumama sa paglalakbay ni Inday at tuklasin ang mga kwentong tatatak sa puso mo.',
   openGraph: {
     type: 'website',
     url: '/',
@@ -46,10 +47,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     creator: '@indaytrending',
   },
-  authors: [{
-    name: 'Inday Trending',
-    url: '/',
-  }],
+  authors: [
+    {
+      name: 'Inday Trending',
+      url: '/',
+    },
+  ],
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
@@ -67,9 +70,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       >
         <Providers>
           <Header />
-          <main className="flex flex-col grow pb-32">
-            {children}
-          </main>
+          <main className="flex flex-col grow pb-32">{children}</main>
         </Providers>
         <Scripts />
       </body>

@@ -11,16 +11,15 @@ export async function Header() {
   const categories = await getCategories();
 
   return (
-    <header className={cn(
-      'sticky top-0 z-50',
-      'bg-white/70 backdrop-blur-md',
-      'dark:bg-slate-950/70 dark:text-white',
-    )}
-    >
-      <div className={cn(
-        'container',
-        'flex items-center justify-between h-16',
+    <header
+      className={cn(
+        'sticky top-0 z-50',
+        'bg-white/70 backdrop-blur-md',
+        'dark:bg-slate-950/70 dark:text-white',
       )}
+    >
+      <div
+        className={cn('container', 'flex items-center justify-between h-16')}
       >
         <Navigation categories={categories} />
         <Link href="/" className="flex items-center">

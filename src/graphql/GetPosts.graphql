@@ -10,10 +10,7 @@ query GetPosts(
     after: $after
     last: $last
     before: $before
-    where: { 
-      categoryName: $category
-      status: PUBLISH
-    }
+    where: { categoryName: $category, status: PUBLISH }
   ) {
     pageInfo {
       startCursor
@@ -22,7 +19,7 @@ query GetPosts(
       hasPreviousPage
     }
     edges {
-      cursor,
+      cursor
       node {
         id: databaseId
         slug

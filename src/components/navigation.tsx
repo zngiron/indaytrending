@@ -74,25 +74,24 @@ export function Navigation({ categories }: NavigationProps) {
         )}
       >
         <div className="space-y-4">
-          <SheetTitle className={cn(
-            'p-2',
-            'font-semibold text-xs uppercase tracking-widest',
-            'dark:text-slate-500',
-          )}
+          <SheetTitle
+            className={cn(
+              'p-2',
+              'font-semibold text-xs uppercase tracking-widest',
+              'dark:text-slate-500',
+            )}
           >
             Stories
           </SheetTitle>
-          <nav className={cn(
-            '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
-            'text-sm',
-          )}
+          <nav
+            className={cn(
+              '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
+              'text-sm',
+            )}
           >
             <Link
               href="/"
-              className={cn(
-                'hover:bg-gray-100',
-                'dark:hover:bg-slate-900',
-              )}
+              className={cn('hover:bg-gray-100', 'dark:hover:bg-slate-900')}
               onClick={() => setIsOpen(false)}
             >
               <Sparkles size={16} />
@@ -100,37 +99,33 @@ export function Navigation({ categories }: NavigationProps) {
             </Link>
             <Link
               href="/"
-              className={cn(
-                'hover:bg-gray-100',
-                'dark:hover:bg-slate-900',
-              )}
+              className={cn('hover:bg-gray-100', 'dark:hover:bg-slate-900')}
               onClick={() => setIsOpen(false)}
             >
               <TrendingUp size={16} />
               <span>Trending Stories</span>
             </Link>
           </nav>
-          <SheetTitle className={cn(
-            'p-2',
-            'font-semibold text-xs uppercase tracking-widest',
-            'dark:text-slate-500',
-          )}
+          <SheetTitle
+            className={cn(
+              'p-2',
+              'font-semibold text-xs uppercase tracking-widest',
+              'dark:text-slate-500',
+            )}
           >
             Categories
           </SheetTitle>
-          <nav className={cn(
-            '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
-            'text-sm',
-          )}
+          <nav
+            className={cn(
+              '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
+              'text-sm',
+            )}
           >
             {categories?.edges.map(({ node }) => (
               <Link
                 key={node.id}
                 href={`/${node.slug}`}
-                className={cn(
-                  'hover:bg-gray-100',
-                  'dark:hover:bg-slate-900',
-                )}
+                className={cn('hover:bg-gray-100', 'dark:hover:bg-slate-900')}
                 onClick={() => setIsOpen(false)}
               >
                 {getCategoryIcon(node.slug)}
@@ -138,25 +133,24 @@ export function Navigation({ categories }: NavigationProps) {
               </Link>
             ))}
           </nav>
-          <SheetTitle className={cn(
-            'p-2',
-            'font-semibold text-xs uppercase tracking-widest',
-            'dark:text-slate-500',
-          )}
+          <SheetTitle
+            className={cn(
+              'p-2',
+              'font-semibold text-xs uppercase tracking-widest',
+              'dark:text-slate-500',
+            )}
           >
             About
           </SheetTitle>
-          <nav className={cn(
-            '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
-            'text-sm',
-          )}
+          <nav
+            className={cn(
+              '[&_a]:flex [&_a]:items-center [&_a]:gap-4 [&_a]:p-2 [&_a]:rounded-md',
+              'text-sm',
+            )}
           >
             <Link
               href="/privacy"
-              className={cn(
-                'hover:bg-gray-100',
-                'dark:hover:bg-slate-900',
-              )}
+              className={cn('hover:bg-gray-100', 'dark:hover:bg-slate-900')}
               onClick={() => setIsOpen(false)}
             >
               {getCategoryIcon('privacy')}

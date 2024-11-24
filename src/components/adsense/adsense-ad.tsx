@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 export function AdsenseAd() {
   useEffect(() => {
-    ((window).adsbygoogle = (window).adsbygoogle || []).push({});
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
 
   return (

@@ -18,31 +18,32 @@ interface PostsFeedProps {
 export function PostsFeed({ posts, slug, limit }: PostsFeedProps) {
   const { data, fetchNextPage, hasNextPage } = useSuspenseInfiniteQuery({
     queryKey: ['posts', slug],
-    queryFn: async ({ pageParam }) => getPosts({
-      category: slug,
-      first: limit,
-      after: pageParam,
-    }),
-    getNextPageParam: (page) => (page?.pageInfo?.hasNextPage ? page.pageInfo.endCursor : undefined),
+    queryFn: async ({ pageParam }) =>
+      getPosts({
+        category: slug,
+        first: limit,
+        after: pageParam,
+      }),
+    getNextPageParam: (page) =>
+      page?.pageInfo?.hasNextPage ? page.pageInfo.endCursor : undefined,
     initialPageParam: posts?.pageInfo.startCursor,
     initialData: {
-      pages: [
-        posts,
-      ],
-      pageParams: [
-        posts?.pageInfo.startCursor,
-      ],
+      pages: [posts],
+      pageParams: [posts?.pageInfo.startCursor],
     },
   });
 
   const postsLoader = useRef(null);
 
-  const handleLoader = useCallback((entries: IntersectionObserverEntry[]) => {
-    const [target] = entries;
-    if (target.isIntersecting && hasNextPage) {
-      fetchNextPage();
-    }
-  }, [fetchNextPage, hasNextPage]);
+  const handleLoader = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const [target] = entries;
+      if (target.isIntersecting && hasNextPage) {
+        fetchNextPage();
+      }
+    },
+    [fetchNextPage, hasNextPage],
+  );
 
   useEffect(() => {
     const element = postsLoader.current;
@@ -61,9 +62,11 @@ export function PostsFeed({ posts, slug, limit }: PostsFeedProps) {
 
   return (
     <div className={cn('grid gap-4 py-4', 'md:grid-cols-2')}>
-      {data.pages.map((page) => page?.edges.map((edge) => (
-        <PostCard key={edge.node.id} post={edge.node} />
-      )))}
+      {data.pages.map((page) =>
+        page?.edges.map((edge) => (
+          <PostCard key={edge.node.id} post={edge.node} />
+        )),
+      )}
       <div ref={postsLoader} />
     </div>
   );

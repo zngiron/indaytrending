@@ -20,9 +20,7 @@ export async function PageModule({ slug }: PageModuleProps) {
 
   return (
     <article className="py-4 space-y-4">
-      <h1 className="font-semibold text-2xl">
-        {page.title}
-      </h1>
+      <h1 className="font-semibold text-2xl">{page.title}</h1>
       <div
         className={cn(
           'prose max-w-none',

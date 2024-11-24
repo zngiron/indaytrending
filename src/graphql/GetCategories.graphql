@@ -5,7 +5,7 @@ query GetCategories {
         id: databaseId
         name
         slug
-        description 
+        description
       }
     }
   }

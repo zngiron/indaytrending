@@ -20,11 +20,12 @@ export function PostThumbnail({ label, post }: PostThumbnailProps) {
         'dark:bg-slate-950/70',
       )}
     >
-      <div className={cn(
-        'overflow-hidden',
-        'shrink-0 rounded-lg aspect-[200/100]',
-        'bg-gradient-to-tr from-secondary via-secondary to-primary',
-      )}
+      <div
+        className={cn(
+          'overflow-hidden',
+          'shrink-0 rounded-lg aspect-[200/100]',
+          'bg-gradient-to-tr from-secondary via-secondary to-primary',
+        )}
       >
         <Image
           className={cn(
@@ -41,9 +42,7 @@ export function PostThumbnail({ label, post }: PostThumbnailProps) {
         />
       </div>
       <div className="space-y-2 text-sm">
-        <div className="font-semibold text-xs uppercase">
-          {label}
-        </div>
+        <div className="font-semibold text-xs uppercase">{label}</div>
         <h3 className="line-clamp-3 text-muted-foreground">{post?.title}</h3>
       </div>
     </Link>

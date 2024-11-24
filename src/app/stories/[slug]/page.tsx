@@ -14,12 +14,16 @@ export const generateStaticParams = async () => {
     first: 12,
   });
 
-  return posts?.edges.map((post) => ({
-    slug: post.node.slug,
-  })) || [];
+  return (
+    posts?.edges.map((post) => ({
+      slug: post.node.slug,
+    })) || []
+  );
 };
 
-export const generateMetadata = async ({ params }: StoryPageProps): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: StoryPageProps): Promise<Metadata> => {
   const data = await params;
   const post = await getPost(data.slug);
 
