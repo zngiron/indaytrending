@@ -13,7 +13,7 @@ const nextConfig = {
   logging: {
     fetches: {
       fullUrl: true,
-    }
+    },
   },
   webpack: (config) => {
     config.module.rules.push({

@@ -69,10 +69,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    animate,
-    typography,
-  ],
+  plugins: [animate, typography],
 };
 
 export default config;
