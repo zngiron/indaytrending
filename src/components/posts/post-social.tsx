@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { env } from '@/library/environment';
 import { cn } from '@/library/utilities';
 
@@ -8,7 +9,16 @@ interface PostSocialProps {
 }
 
 export function PostSocial({ slug }: PostSocialProps) {
+  const [mounted, setMounted] = useState(false);
   const url = `${env.DOMAIN}/stories/${slug}`;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div
