@@ -35,11 +35,7 @@ import { Button } from '@/components/ui/button';
 import { env } from '@/library/environment';
 import { cn } from '@/library/utilities';
 
-interface PromoModuleProps {
-  onCallBack?: () => void;
-}
-
-export function PromoModule({ onCallBack }: PromoModuleProps) {
+export function PromoModule() {
   const contentRef = useRef<HTMLDivElement>(null);
   const { width, height } = useWindowSize();
 
