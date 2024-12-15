@@ -13,6 +13,16 @@ export function Scripts() {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname === '/privacy' || pathname === '/campaign/[uuid]') {
+      if (window.anymindTS) {
+        window.anymindTS.dispose();
+      }
+    }
+
+    console.log(pathname);
+  }, [pathname]);
+
+  useEffect(() => {
     if (production) {
       if (window.anymindTS) {
         window.anymindTS.dispose();

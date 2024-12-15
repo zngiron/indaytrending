@@ -31,7 +31,6 @@ export default async function Page({ params }: CampaignPageProps) {
   return (
     <div className="container grow max-w-3xl flex flex-col items-center justify-center gap-8 py-12">
       <div className="flex flex-col items-center gap-4">
-        {campaign.url}
         <Image
           src="/static/indaytrending-icon.png"
           width={160}
@@ -66,7 +65,7 @@ export default async function Page({ params }: CampaignPageProps) {
           ma-claim ang iyong premyo!
         </p>
       </div>
-      <div className="space-y-1 text-sm text-muted-foreground text-center">
+      <div className="space-y-2 text-sm text-center">
         <div className="flex justify-center">
           <Image
             className="rounded-lg"
