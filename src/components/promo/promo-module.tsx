@@ -1,19 +1,3 @@
-/*
-
-- This will be a popup
-- Show up 1 minute after the page loads.
-- Winning rate is 1/5000
-- This should trigger to save ip address and random uuid to database
-- This should produce a qr code that will be read by the backend to verify the ip address and uuid
-- This should have a button to close the popup
-- Use Shadcn/UI and TailwindCSS for styling
-- Instruct user to screenshot the qr code and send it to facebook message
-- IP address should only win once per 30 days
-- For Development purposes, show in 5 seconds 100% of the time
-- I want a button to screenshot this component
-
-*/
-
 'use client';
 
 import Image from 'next/image';
@@ -35,16 +19,29 @@ import { Button } from '@/components/ui/button';
 import { env } from '@/library/environment';
 import { cn } from '@/library/utilities';
 
+import { createCampaign, getIpAddress } from '@/data/campaign';
+import { useParams } from 'next/navigation';
+
 export function PromoModule() {
+  const params = useParams();
   const contentRef = useRef<HTMLDivElement>(null);
   const { width, height } = useWindowSize();
 
   const [open, setOpen] = useState(false);
   const uuid = uuidv4();
+
+  const onCreateCampaign = async () => {
+    const { ip } = await getIpAddress();
+    const { slug } = await params;
+
+    await createCampaign({ ip, uuid, url: `${slug}` });
+  };
+
   useEffect(() => {
     const random = Math.floor(Math.random() * 10000);
     if (random === 0) {
       setTimeout(() => {
+        onCreateCampaign();
         setOpen(true);
       }, 30000);
     }

@@ -1,0 +1,17 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_PRISMA_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model campaign {
+  id Int @id @default(autoincrement())
+  uuid String @unique
+  ip String
+  url String
+  status Boolean @default(false)
+  createdAt DateTime @default(now())
+}
