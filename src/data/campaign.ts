@@ -1,6 +1,7 @@
 'use server';
 
 import { PrismaClient } from '@prisma/client';
+import { cache } from 'react';
 
 const prisma = new PrismaClient();
 
@@ -10,7 +11,7 @@ interface CreateCampaignParams {
   url: string;
 }
 
-export const createCampaign = async (params: CreateCampaignParams) => {
+export const createCampaign = cache(async (params: CreateCampaignParams) => {
   try {
     return await prisma.campaign.create({
       data: {
@@ -22,20 +23,24 @@ export const createCampaign = async (params: CreateCampaignParams) => {
   } catch (error) {
     throw new Error('Failed to create campaign');
   }
-};
+});
 
-export const getCampaign = async (params: { uuid: string }) => {
+export const getAllCampaigns = cache(async () => {
+  return await prisma.campaign.findMany();
+});
+
+export const getCampaign = cache(async (params: { uuid: string }) => {
   try {
     return await prisma.campaign.findUnique({
       where: { uuid: params.uuid },
     });
   } catch (error) {
-    throw new Error('Failed to get campaign');
+    console.error(error);
   }
-};
+});
 
-export const getIpAddress = async () => {
+export const getIpAddress = cache(async () => {
   return await fetch('https://api.ipify.org?format=json').then((res) =>
     res.json(),
   );
-};
+});
