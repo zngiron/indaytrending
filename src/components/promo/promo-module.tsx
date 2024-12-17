@@ -28,7 +28,7 @@ export function PromoModule() {
   const { width, height } = useWindowSize();
 
   const [open, setOpen] = useState(false);
-  const uuid = uuidv4();
+  const [uuid] = useState(() => uuidv4());
 
   const onCreateCampaign = async () => {
     const { ip } = await getIpAddress();
