@@ -31,6 +31,8 @@ export function PromoModule() {
   const [uuid] = useState(() => uuidv4());
 
   const onCreateCampaign = async () => {
+    window.anymindTS.dispose();
+
     const { ip } = await getIpAddress();
     const { slug } = await params;
 
