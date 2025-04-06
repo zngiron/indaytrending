@@ -1,5 +1,6 @@
 OWNERDOMAIN=indaytrending.com
 MANAGERDOMAIN=anymanager.io
+google.com, pub-9878085739428147, DIRECT, f08c47fec0942fa0
 
 #AnyMindSEA
 google.com, pub-9058291854443881, RESELLER, f08c47fec0942fa0
